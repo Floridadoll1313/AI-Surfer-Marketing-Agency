@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-pink: #ff00ff;
+  --color-neon-cyan: #00ffff;
+  --color-neon-green: #39ff14;
+  --color-neon-blue: #0077ff;
+  --color-neon-red: #ff0000;
+  --color-neon-orange: #ff8c00;
+  --color-neon-yellow: #ffff00;
+  --color-neon-purple: #9d00ff;
+  --color-deep-ocean: #020617;
+}
+
+@layer base {
+  body {
+    margin: 0;
+    background-color: #020617;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  @keyframes ocean-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .animate-ocean-gradient {
+    background: linear-gradient(-45deg, #020617, #001e3c, #064e3b, #4c0519);
+    background-size: 400% 400%;
+    animation: ocean-flow 15s ease infinite;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% { box-shadow: 0 0 5px rgba(0,255,255,0.2), 0 0 10px rgba(255,0,255,0.2); }
+    50% { box-shadow: 0 0 20px rgba(0,255,255,0.6), 0 0 30px rgba(57,255,20,0.4); }
+  }
+
+  @keyframes rainbow-glow {
+    0% { border-color: #ff0000; box-shadow: 0 0 15px #ff0000; }
+    14% { border-color: #ff8c00; box-shadow: 0 0 15px #ff8c00; }
+    28% { border-color: #ffff00; box-shadow: 0 0 15px #ffff00; }
+    42% { border-color: #39ff14; box-shadow: 0 0 15px #39ff14; }
+    56% { border-color: #00ffff; box-shadow: 0 0 15px #00ffff; }
+    70% { border-color: #0077ff; box-shadow: 0 0 15px #0077ff; }
+    84% { border-color: #9d00ff; box-shadow: 0 0 15px #9d00ff; }
+    100% { border-color: #ff00ff; box-shadow: 0 0 15px #ff00ff; }
+  }
+
+  .animate-rainbow {
+    animation: rainbow-glow 8s linear infinite;
+  }
+
+  @keyframes animation-2 {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(10px, -10px) rotate(2deg); }
+    66% { transform: translate(-10px, 10px) rotate(-2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+
+  .animate-2 {
+    animation: animation-2 10s ease-in-out infinite;
+  }
+
+  .neon-border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: neon-pulse 4s infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .glass-card {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+
+  .text-neon-glow {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(255, 0, 255, 0.5);
+  }
+
+  .rainbow-text {
+    background: linear-gradient(to right, #ff0000, #ff8c00, #ffff00, #39ff14, #00ffff, #0077ff, #9d00ff, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: ocean-flow 5s linear infinite;
+  }
+
+  .markdown-body {
+    @apply space-y-4;
+  }
+  .markdown-body p {
+    @apply mb-4 leading-relaxed;
+  }
+  .markdown-body ul {
+    @apply list-disc list-inside mb-4;
+  }
+  .markdown-body ol {
+    @apply list-decimal list-inside mb-4;
+  }
+  .markdown-body h1, .markdown-body h2, .markdown-body h3 {
+    @apply font-bold mt-6 mb-2 text-white;
+  }
+  .markdown-body code {
+    @apply bg-white/10 px-1.5 py-0.5 rounded font-mono text-xs text-neon-cyan;
+  }
+  .markdown-body pre {
+    @apply bg-black/50 p-4 rounded-xl border border-white/10 overflow-x-auto mb-4;
+  }
+  .markdown-body pre code {
+    @apply bg-transparent p-0 text-slate-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #00ffff, #ff00ff);
+  border-radius: 10px;
+}
