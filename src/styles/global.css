@@ -1,0 +1,37 @@
+/* GLOBAL THEME — Neon Ocean */
+
+:root {
+  --ocean-bg: #020617;
+  --ocean-surface: rgba(255, 255, 255, 0.05);
+  --ocean-glow: #38bdf8;
+  --ocean-text: #e0f2fe;
+  --ocean-accent: #0ea5e9;
+  --ocean-radius: 14px;
+  --ocean-blur: 18px;
+}
+
+body {
+  background: var(--ocean-bg);
+  color: var(--ocean-text);
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Glassmorphism panels */
+.ocean-glass {
+  background: var(--ocean-surface);
+  backdrop-filter: blur(var(--ocean-blur));
+  border-radius: var(--ocean-radius);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Neon glow edges */
+.ocean-glow {
+  box-shadow: 0 0 12px var(--ocean-glow);
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.25s ease;
+}
