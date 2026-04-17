@@ -2,6 +2,13 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Globe, Zap, Database, Bot, Lock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+export default function Home() {
+  return (
+    <div>
+      Home Page
+    </div>
+  )
+}
 
 const villages = [
   {
