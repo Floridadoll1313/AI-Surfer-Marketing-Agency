@@ -1,0 +1,92 @@
+/* ============================================================
+   BUTTON SYSTEM — Neon Ocean Cinematic UI
+   Primary, Secondary, Ghost, Glass, Neon Edge
+   ============================================================ */
+
+button, .btn {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.3px;
+}
+
+/* --- PRIMARY BUTTON (solid neon ocean) --- */
+.btn-primary {
+  background: var(--ocean-accent);
+  color: #00121f;
+  font-weight: 600;
+  box-shadow: 0 0 8px var(--ocean-glow);
+}
+
+.btn-primary:hover {
+  background: #38bdf8;
+  box-shadow: 0 0 14px var(--ocean-glow);
+  transform: translateY(-3px);
+}
+
+/* --- SECONDARY BUTTON (soft ocean surface) --- */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ocean-text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-3px);
+}
+
+/* --- GHOST BUTTON (text only, neon hover) --- */
+.btn-ghost {
+  background: transparent;
+  color: var(--ocean-text);
+}
+
+.btn-ghost:hover {
+  color: var(--ocean-accent);
+  text-shadow: 0 0 8px var(--ocean-glow);
+  transform: translateY(-2px);
+}
+
+/* --- GLASS BUTTON (glassmorphic panel) --- */
+.btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ocean-text);
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 12px var(--ocean-glow);
+  transform: translateY(-3px);
+}
+
+/* --- NEON EDGE BUTTON (glowing border) --- */
+.btn-neon {
+  background: transparent;
+  color: var(--ocean-text);
+  border: 2px solid var(--ocean-accent);
+  box-shadow: 0 0 8px var(--ocean-glow);
+}
+
+.btn-neon:hover {
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 16px var(--ocean-glow);
+  transform: translateY(-3px);
+}
+
+/* --- DISABLED STATE --- */
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
