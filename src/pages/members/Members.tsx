@@ -1,15 +1,22 @@
-useEffect(() => {
-  async function checkMembership() {
-    const email = localStorage.getItem("email");
-    if (!email) return;
+import "./dashboard.css";
+import React from "react";
 
-    const res = await fetch(`/memberships/${email}`);
-    const token = await res.text();
+export default function Dashboard() {
+  return (
+    <div className="dashboard-container">
+      <div className="dashboard-glass">
+        <h1 className="dashboard-title">Victoria’s Dashboard</h1>
+        <p className="dashboard-subtitle">
+          Private Founder Cockpit — Ocean Tide Drop AI Surfer
+        </p>
 
-    if (token) {
-      localStorage.setItem("membership", token);
-    }
-  }
-
-  checkMembership();
-}, []);
+        <div className="dashboard-grid">
+          <div className="dashboard-tile">Realm Metrics</div>
+          <div className="dashboard-tile">Lore Engine</div>
+          <div className="dashboard-tile">Member Signals</div>
+          <div className="dashboard-tile">Cinematic Systems</div>
+        </div>
+      </div>
+    </div>
+  );
+}
