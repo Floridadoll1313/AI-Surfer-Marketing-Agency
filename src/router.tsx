@@ -1,55 +1,36 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from "react-router-dom";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Contact from "./pages/Contact";
+import MemberPortal from "./pages/members/MemberPortal";
+import MemberPass from "./pages/members/MemberPass";
+import MemberServices from "./pages/members/MemberServices";
 
-// Pages
-import Home from './pages/Home'
-import Services from './pages/Services'
-import Contact from './pages/Contact'
-
-// Members Area
-import Members from './pages/members/Members'
-import Tools from './pages/members/Tools'
-import Dashboard from './pages/members/Dashboard'   // private founder cockpit
-
-// Lore & Worldbuilding
-import Lore from './pages/Lore'
-import Blueprints from './pages/Blueprints'
-import Progression from './pages/Progression'
-
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path: '/',
-    element: <Home />
+    path: "/",
+    element: <Home />,
   },
   {
-    path: '/services',
-    element: <Services />
+    path: "/services",
+    element: <Services />,
   },
   {
-    path: '/contact',
-    element: <Contact />
+    path: "/contact",
+    element: <Contact />,
   },
   {
-    path: '/members',
-    element: <Members />
+    path: "/members",
+    element: <MemberPortal />,
   },
   {
-    path: '/members/tools',
-    element: <Tools />
+    path: "/members/pass",
+    element: <MemberPass />,
   },
   {
-    path: '/members/dashboard',
-    element: <Dashboard />
-  },
-  {
-    path: '/lore',
-    element: <Lore />
-  },
-  {
-    path: '/blueprints',
-    element: <Blueprints />
-  },
-  {
-    path: '/progression',
-    element: <Progression />
+    path: "/members/services",
+    element: <MemberServices />,
   }
-])
+]);
+
+export default router;
