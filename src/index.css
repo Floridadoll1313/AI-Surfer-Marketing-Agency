@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global resets */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
