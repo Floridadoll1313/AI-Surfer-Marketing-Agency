@@ -1,0 +1,32 @@
+.member404-container {
+  padding: 80px 20px;
+  text-align: center;
+  color: #7feaff;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.member404-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 18px #00c8ff, 0 0 28px #0099cc;
+  animation: pulseGlow 2.4s infinite ease-in-out;
+}
+
+.member404-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 12px #00c8ff; }
+  50% { text-shadow: 0 0 28px #00eaff; }
+  100% { text-shadow: 0 0 12px #00c8ff; }
+}
