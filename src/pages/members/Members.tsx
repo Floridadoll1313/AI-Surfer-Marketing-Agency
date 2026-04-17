@@ -1,13 +1,15 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-import ToolLoader from "./ToolLoader";
+useEffect(() => {
+  async function checkMembership() {
+    const email = localStorage.getItem("email");
+    if (!email) return;
 
-export default function Members() {
-  const { tool } = useParams();
+    const res = await fetch(`/memberships/${email}`);
+    const token = await res.text();
 
-  return (
-    <div style={{ padding: "40px" }}>
-      <ToolLoader tool={tool} />
-    </div>
-  );
-}
+    if (token) {
+      localStorage.setItem("membership", token);
+    }
+  }
+
+  checkMembership();
+}, []);
