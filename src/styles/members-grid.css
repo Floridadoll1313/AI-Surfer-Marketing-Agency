@@ -1,0 +1,101 @@
+/* MEMBERS AREA — Hybrid Cinematic Tile Grid */
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Base tile */
+.tile {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.75rem;
+  color: var(--ocean-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Neon edge glow */
+.tile:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px var(--ocean-glow);
+}
+
+/* Title */
+.tile-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* Description */
+.tile-desc {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.45;
+}
+
+/* Icon slot */
+.tile-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--ocean-accent);
+  filter: drop-shadow(0 0 6px var(--ocean-glow));
+}
+
+/* Mixed-size variants */
+.tile.large {
+  grid-column: span 2;
+  grid-row: span 2;
+  min-height: 360px;
+}
+
+.tile.wide {
+  grid-column: span 2;
+}
+
+.tile.tall {
+  grid-row: span 2;
+}
+
+/* Ocean motion overlay */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(56, 189, 248, 0.12),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tile:hover::before {
+  opacity: 1;
+}
+
+/* Responsive collapse */
+@media (max-width: 900px) {
+  .tile.large,
+  .tile.wide,
+  .tile.tall {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 240px;
+  }
+}
