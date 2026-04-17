@@ -1,3 +1,60 @@
-import "./dashboard.css";
+.dashboard-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: radial-gradient(circle at 50% 0%, #0a1f2e, #02070b 70%);
+}
 
-import React from "react";
+.dashboard-glass {
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  background: rgba(0, 255, 255, 0.06);
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+}
+
+.dashboard-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #7df9ff;
+  text-shadow: 0 0 12px #00eaff;
+  margin-bottom: 10px;
+}
+
+.dashboard-subtitle {
+  font-size: 1.2rem;
+  color: #b8faff;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.dashboard-tile {
+  padding: 25px;
+  border-radius: 16px;
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  color: #dffcff;
+  font-size: 1.1rem;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: 0.25s ease;
+  cursor: pointer;
+}
+
+.dashboard-tile:hover {
+  background: rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 18px rgba(0, 255, 255, 0.35);
+  transform: translateY(-4px);
+}
