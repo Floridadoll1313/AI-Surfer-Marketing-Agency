@@ -1,15 +1,27 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
 export async function onRequest(context) {
-  const genAI = new GoogleGenerativeAI(context.env.GEMINI_API_KEY);
+  const apiKey = context.env.GEMINI_API_KEY;
 
-  const model = genAI.getGenerativeModel({
-    model: "gemini-3-flash-preview"
-  });
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + apiKey,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [
+          {
+            parts: [
+              { text: "Explain how AI works in a few words." }
+            ]
+          }
+        ]
+      })
+    }
+  );
 
-  const result = await model.generateContent("Explain how AI works in a few words");
+  const data = await response.json();
 
-  return new Response(result.response.text(), {
-    headers: { "Content-Type": "text/plain" }
-  });
+  return new Response(
+    data.candidates?.[0]?.content?.parts?.[0]?.text || "No response",
+    { headers: { "Content-Type": "text/plain" } }
+  );
 }
