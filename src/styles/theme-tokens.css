@@ -1,0 +1,101 @@
+/* ============================================================
+   THEME TOKENS — Neon Ocean Universe
+   Colors, radii, shadows, spacing, motion, surfaces
+   ============================================================ */
+
+:root {
+  /* ------------------------------------------------------------
+     COLOR SYSTEM
+     ------------------------------------------------------------ */
+
+  /* Core brand */
+  --ocean-bg: #020617;
+  --ocean-surface: rgba(255, 255, 255, 0.05);
+  --ocean-surface-strong: rgba(255, 255, 255, 0.12);
+
+  /* Neon accents */
+  --ocean-accent: #0ea5e9;
+  --ocean-glow: #38bdf8;
+  --ocean-accent-soft: #7dd3fc;
+
+  /* Text */
+  --ocean-text: #e0f2fe;
+  --ocean-text-muted: rgba(224, 242, 254, 0.75);
+
+  /* Status colors */
+  --success: #22c55e;
+  --warning: #facc15;
+  --danger: #ef4444;
+
+  /* ------------------------------------------------------------
+     RADII
+     ------------------------------------------------------------ */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* ------------------------------------------------------------
+     SHADOWS
+     ------------------------------------------------------------ */
+  --shadow-soft: 0 0 6px rgba(56, 189, 248, 0.25);
+  --shadow-strong: 0 0 14px rgba(56, 189, 248, 0.45);
+  --shadow-deep: 0 0 22px rgba(56, 189, 248, 0.6);
+
+  /* ------------------------------------------------------------
+     SPACING SCALE
+     ------------------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ------------------------------------------------------------
+     MOTION / ANIMATION CURVES
+     ------------------------------------------------------------ */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-snappy: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* ------------------------------------------------------------
+     SURFACES
+     ------------------------------------------------------------ */
+  --surface-glass: rgba(255, 255, 255, 0.05);
+  --surface-glass-strong: rgba(255, 255, 255, 0.12);
+  --surface-panel: rgba(2, 6, 23, 0.6);
+
+  /* ------------------------------------------------------------
+     BLUR
+     ------------------------------------------------------------ */
+  --blur-sm: 8px;
+  --blur-md: 14px;
+  --blur-lg: 22px;
+  --blur-xl: 32px;
+}
+
+/* Utility classes for quick use */
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(var(--blur-md));
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-glass-strong);
+}
+
+.glow {
+  box-shadow: var(--shadow-strong);
+}
+
+.text-muted {
+  color: var(--ocean-text-muted);
+}
