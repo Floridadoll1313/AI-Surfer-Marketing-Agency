@@ -18,7 +18,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Glassmorphism panels */
+/* Glassmorphism */
 .ocean-glass {
   background: var(--ocean-surface);
   backdrop-filter: blur(var(--ocean-blur));
@@ -26,7 +26,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Neon glow edges */
+/* Neon glow */
 .ocean-glow {
   box-shadow: 0 0 12px var(--ocean-glow);
 }
