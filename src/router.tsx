@@ -1,39 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-
-// Members Area pages
-import MemberPortal from "./pages/members/MemberPortal";
-import MemberPass from "./pages/members/MemberPass";
-import MemberServices from "./pages/members/MemberServices";
+import Members from "./pages/members/Members";
+import Dashboard from "./pages/members/Dashboard";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/services",
-    element: <Services />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
-  {
-    path: "/members",
-    element: <MemberPortal />,
-  },
-  {
-    path: "/members/pass",
-    element: <MemberPass />,
-  },
-  {
-    path: "/members/services",
-    element: <MemberServices />,
-  }
+  { path: "/", element: <Home /> },
+  { path: "/services", element: <Services /> },
+  { path: "/contact", element: <Contact /> },
+
+  // Members Area — Dashboard is now the landing page
+  { path: "/members", element: <Dashboard /> },
+
+  // Optional: keep Members.tsx accessible if needed
+  { path: "/members/home", element: <Members /> },
 ]);
 
 export default router;
