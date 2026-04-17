@@ -79,4 +79,7 @@
 .dashboard-tile:active {
   transform: scale(0.97);
 }
+.dashboard-wrapper {
+  display: flex;
+}
 
