@@ -58,3 +58,25 @@
   box-shadow: 0 0 18px rgba(0, 255, 255, 0.35);
   transform: translateY(-4px);
 }
+.dashboard-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dashboard-tile:hover::after {
+  opacity: 1;
+}
+
+.dashboard-tile:active {
+  transform: scale(0.97);
+}
+
