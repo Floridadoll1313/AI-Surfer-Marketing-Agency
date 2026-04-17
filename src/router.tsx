@@ -8,9 +8,16 @@ import Members from "./pages/members/Members";
 
 // Simple auth wrapper (expand later if needed)
 function RequireAuth({ children }) {
-  const isLoggedIn = true; // placeholder — replace with real auth later
-  return isLoggedIn ? children : <div>Please log in to access this area.</div>;
+  const token = localStorage.getItem("membership");
+
+  if (!token) {
+    return <CheckoutAI />;
+  }
+
+  return children;
 }
+
+
 
 // 404 fallback for unknown member tools
 function MemberNotFound() {
