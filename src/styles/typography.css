@@ -1,0 +1,112 @@
+/* ============================================================
+   TYPOGRAPHY SYSTEM — Neon Ocean Aesthetic
+   Headings, paragraphs, accent text, lore text
+   ============================================================ */
+
+/* --- BASE TEXT --- */
+
+body, p, span, li {
+  font-family: system-ui, sans-serif;
+  color: var(--ocean-text);
+  line-height: 1.55;
+  font-size: 1rem;
+}
+
+/* --- HEADINGS --- */
+
+h1, .h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+  color: var(--ocean-text);
+  text-shadow: 0 0 12px var(--ocean-glow);
+}
+
+h2, .h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ocean-text);
+  text-shadow: 0 0 8px var(--ocean-glow);
+}
+
+h3, .h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ocean-text);
+}
+
+h4, .h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: var(--ocean-text);
+}
+
+/* --- PARAGRAPHS --- */
+
+p {
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* --- ACCENT TEXT (neon ocean) --- */
+
+.accent {
+  color: var(--ocean-accent);
+  font-weight: 600;
+  text-shadow: 0 0 6px var(--ocean-glow);
+}
+
+/* --- SMALL TEXT --- */
+
+.small {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* --- UI LABELS --- */
+
+.label {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* --- LORE TEXT (mythic, glowing, ceremonial) --- */
+
+.lore {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ocean-accent);
+  text-shadow: 0 0 10px var(--ocean-glow);
+  letter-spacing: 0.4px;
+  opacity: 0.95;
+}
+
+/* --- QUOTES --- */
+
+.quote {
+  font-style: italic;
+  opacity: 0.85;
+  border-left: 3px solid var(--ocean-accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+/* --- LINKS --- */
+
+a {
+  color: var(--ocean-accent);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: #7dd3fc;
+  text-shadow: 0 0 8px var(--ocean-glow);
+}
