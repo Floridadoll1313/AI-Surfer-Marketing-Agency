@@ -4,24 +4,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.6)
-    ),
-    url("/your-hero-image.jpg") center/cover no-repeat;
+  background: radial-gradient(circle at 50% 0%, #02131d, #000000 70%);
   text-align: center;
   padding: 40px;
 }
 
 .hero-content {
   max-width: 700px;
-  color: white;
+  color: #7df9ff;
+  text-shadow: 0 0 12px #00eaff;
+  animation: fadeIn 1.2s ease forwards;
 }
 
 .hero-title {
   font-size: 3.2rem;
   font-weight: 700;
   margin-bottom: 15px;
+  animation: pulseGlow 2.4s infinite ease-in-out;
 }
 
 .hero-subtitle {
@@ -43,4 +42,16 @@
 
 .hero-button:hover {
   background: #7df9ff;
+  box-shadow: 0 0 18px #00eaff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { text-shadow: 0 0 12px #00eaff; }
+  50% { text-shadow: 0 0 28px #7df9ff; }
+  100% { text-shadow: 0 0 12px #00eaff; }
 }
