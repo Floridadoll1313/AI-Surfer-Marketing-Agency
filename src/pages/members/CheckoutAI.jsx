@@ -53,7 +53,14 @@ export default function CheckoutAI() {
         }
       >
         Enterprise – $7,500/mo
-      </button>
+      </button><button
+  onClick={() =>
+    startCheckout(import.meta.env.VITE_PRICE_AI_SURFER)
+  }
+>
+  🌊 Join AI Surfer – $17/mo
+</button>
+
     </div>
   );
 }
