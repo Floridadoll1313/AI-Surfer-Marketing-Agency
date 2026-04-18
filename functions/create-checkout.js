@@ -1,27 +1,40 @@
 import Stripe from "stripe";
 
-export default {
-  async fetch(request, env) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
+
+  try {
+    const { email, priceId } = await request.json();
+
+    if (!email || !priceId) {
+      return new Response(
+        JSON.stringify({ error: "Missing email or priceId" }),
+        { status: 400 }
+      );
+    }
+
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 
-    const { email } = await request.json();
-
     const session = await stripe.checkout.sessions.create({
-      mode: "subscription",
-      payment_method_types: ["card"],
       customer_email: email,
+      mode: "subscription",
       line_items: [
         {
-          price: env.STRIPE_PRICE_ID,
+          price: priceId,
           quantity: 1,
         },
       ],
-      success_url: `${env.PUBLIC_URL}/members?success=true`,
-      cancel_url: `${env.PUBLIC_URL}/members?canceled=true`,
+      success_url: `${env.BASE_URL}/success`,
+      cancel_url: `${env.BASE_URL}/cancel`,
     });
 
     return new Response(JSON.stringify({ url: session.url }), {
       headers: { "Content-Type": "application/json" },
     });
-  },
-};
+  } catch (err) {
+    return new Response(
+      JSON.stringify({ error: err.message }),
+      { status: 500 }
+    );
+  }
+}
