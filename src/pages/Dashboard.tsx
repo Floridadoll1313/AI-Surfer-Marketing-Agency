@@ -104,7 +104,7 @@ export const Dashboard = () => {
     { name: 'Member Chat', path: '/chat', icon: MessageSquare, color: 'text-neon-green', bg: 'bg-neon-green/5' },
     { name: 'Member Directory', path: '/directory', icon: Sparkles, color: 'text-neon-yellow', bg: 'bg-neon-yellow/5' },
     { name: 'Supabase Vault', path: '/supabase-vault', icon: Database, color: 'text-neon-purple', bg: 'bg-neon-purple/5' },
-    { name: 'Archipelago Map', path: '/map', icon: Globe, color: 'text-neon-pink', bg: 'bg-neon-pink/5' },
+    { name: 'Hatteras Map', path: '/map', icon: Globe, color: 'text-neon-pink', bg: 'bg-neon-pink/5' },
     { name: 'Prompt Toolkit', path: '/toolkit', icon: Cpu, color: 'text-white', bg: 'bg-white/5' },
   ];
 
@@ -205,7 +205,7 @@ export const Dashboard = () => {
               </AnimatePresence>
             </div>
             <div className="mt-8 text-[10px] text-slate-600 font-mono tracking-widest uppercase">
-              // Source: Archipelago Core Oracle
+              // Source: Collective Core Oracle
             </div>
           </motion.div>
 

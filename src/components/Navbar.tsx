@@ -6,6 +6,7 @@ import { useAuth } from './AuthProvider';
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
+  { name: 'Members', path: '/members', icon: User },
   { name: 'Rodanthe', path: '/rodanthe', icon: Globe },
   { name: 'Avon', path: '/avon', icon: Zap },
   { name: 'Buxton', path: '/buxton', icon: Database },
@@ -61,10 +62,10 @@ export const Navbar = () => {
       )}
       {user && (
         <Link
-          to="/dashboard"
+          to="/members"
           className={cn(
             "p-2 rounded-full transition-all duration-300 group relative",
-            location.pathname === '/dashboard' ? "bg-neon-cyan/20 text-neon-cyan" : "text-slate-400 hover:text-neon-cyan"
+            location.pathname === '/members' ? "bg-neon-cyan/20 text-neon-cyan" : "text-slate-400 hover:text-neon-cyan"
           )}
         >
           <LayoutDashboard size={20} />
@@ -97,7 +98,7 @@ export const Navbar = () => {
         >
           <MapIcon size={20} />
           <span className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-black text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10">
-            Archipelago Map
+            Hatteras Map
           </span>
         </Link>
       )}

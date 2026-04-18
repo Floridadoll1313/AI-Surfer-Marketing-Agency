@@ -45,10 +45,10 @@ type ObserveType = 'image' | 'video';
 type Persona = 'Architect' | 'Visionary' | 'Specialist' | 'Custom';
 
 const personas = {
-  Architect: "You are the Architect of the Hatteras Archipelago. Your focus is on structure, technical blueprints, and the underlying logic of the digital realm. You are precise, technical, and authoritative.",
-  Visionary: "You are the Visionary of the Hatteras Archipelago. You see the future of the digital dunes. Your language is poetic, inspiring, and focused on potential and evolution.",
-  Specialist: "You are the Specialist of the Hatteras Archipelago. You have deep knowledge of specific island nodes. You are practical, efficient, and direct.",
-  Custom: "You are a custom intelligence unit within the Hatteras Archipelago. You use local terminology like 'dunes', 'tides', 'shoals', and 'sound' to describe digital phenomena."
+  Architect: "You are the Architect of the Hatteras Collective. Your focus is on structure, technical blueprints, and the underlying logic of the digital realm. You are precise, technical, and authoritative.",
+  Visionary: "You are the Visionary of the Hatteras Collective. You see the future of the digital dunes. Your language is poetic, inspiring, and focused on potential and evolution.",
+  Specialist: "You are the Specialist of the Hatteras Collective. You have deep knowledge of specific island nodes. You are practical, efficient, and direct.",
+  Custom: "You are a custom intelligence unit within the Hatteras Collective. You use local terminology like 'dunes', 'tides', 'shoals', and 'sound' to describe digital phenomena."
 };
 
 const aspectRatios = ['1:1', '3:4', '4:3', '9:16', '16:9', '21:9', '2:3', '3:2'];
@@ -155,9 +155,15 @@ export const AIStudio = () => {
 
         const uri = operation.response?.generatedVideos?.[0]?.video?.uri;
         if (uri) {
-          const resp = await fetch(uri, { headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY || '' } });
-          const blob = await resp.blob();
-          setResultUrl(URL.createObjectURL(blob));
+          try {
+            const resp = await fetch(uri, { headers: { 'x-goog-api-key': process.env.GEMINI_API_KEY || '' } });
+            if (!resp.ok) throw new Error(`Video fetch failed: ${resp.status} ${resp.statusText}`);
+            const blob = await resp.blob();
+            setResultUrl(URL.createObjectURL(blob));
+          } catch (fetchErr) {
+            console.error('Error fetching generated video:', fetchErr);
+            setStatus('Error: Could not retrieve video stream');
+          }
         }
 
       } else if (manifestType === 'music') {
@@ -629,7 +635,7 @@ export const AIStudio = () => {
                       <Bot className="text-neon-green" size={24} />
                     </div>
                     <div>
-                      <h4 className="font-black italic uppercase text-lg text-white">Archipelago Intelligence</h4>
+                      <h4 className="font-black italic uppercase text-lg text-white">Collective Intelligence</h4>
                       <p className="text-[10px] tracking-[0.3em] text-slate-500 uppercase font-black">Multi-Modal Cognition Chain</p>
                     </div>
                   </div>
@@ -663,7 +669,7 @@ export const AIStudio = () => {
                 </div>
                 
                 <form onSubmit={handleDialogue} className="p-8 bg-black/40 border-t border-white/10 flex gap-4">
-                   <input type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Query the Archipelago Intelligence..." className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-8 py-5 outline-none focus:border-neon-green transition-all text-white font-light" />
+                   <input type="text" value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Query the Collective Intelligence..." className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-8 py-5 outline-none focus:border-neon-green transition-all text-white font-light" />
                    <button type="submit" disabled={isGenerating || !prompt.trim()} className="bg-neon-green text-black p-5 rounded-2xl hover:bg-white transition-all disabled:opacity-50"><Bot size={24} /></button>
                 </form>
               </motion.div>
@@ -677,7 +683,17 @@ export const AIStudio = () => {
                       {manifestType === 'image' || observeType === 'image' ? (
                         <img src={resultUrl} alt="Manifested" className="w-full h-full object-cover" />
                       ) : manifestType === 'video' || observeType === 'video' ? (
-                        <video src={resultUrl} controls autoPlay loop className="w-full h-full object-cover" />
+                        <video 
+                          key={resultUrl}
+                          src={resultUrl} 
+                          controls 
+                          autoPlay 
+                          loop 
+                          playsInline
+                          preload="auto"
+                          className="w-full h-full object-cover" 
+                          onError={(e) => console.error("Video playback error in AI Studio:", e)}
+                        />
                       ) : (
                         <div className="w-full h-full flex flex-col items-center justify-center bg-black/80">
                            <Music size={80} className="text-neon-yellow animate-bounce" />
@@ -685,7 +701,7 @@ export const AIStudio = () => {
                         </div>
                       )}
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-6">
-                        <a href={resultUrl} download="archipelago-manifest.png" className="p-5 bg-neon-cyan text-black rounded-full hover:scale-110 transition-transform"><Download size={32} /></a>
+                        <a href={resultUrl} download="hatteras-manifest.png" className="p-5 bg-neon-cyan text-black rounded-full hover:scale-110 transition-transform"><Download size={32} /></a>
                       </div>
                     </div>
                   ) : (
@@ -725,6 +741,68 @@ export const AIStudio = () => {
             )}
           </AnimatePresence>
         </div>
+      </div>
+
+      {/* Info Sections */}
+      <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-cyan">The Neural Core (How it Works)</h2>
+          <div className="space-y-4">
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">1. Modal Synthesis</h4>
+              <p className="text-slate-400 text-sm">Our labs utilize cross-modal Gemini architectures to synthesize data across text, image, audio, and video domains simultaneously.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">2. Recursive Cognition</h4>
+              <p className="text-slate-400 text-sm">Advanced 'High Thinking' models perform recursive analysis of their own outputs, refining results through multiple logical passes before manifestation.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">3. Infinite Context</h4>
+              <p className="text-slate-400 text-sm">With ultra-long context windows, our neural labs can digest entire project libraries to ensure generated assets are perfectly aligned with your environment.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-pink">The Architect's Gain (Business Value)</h2>
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-pink/10 rounded-xl flex items-center justify-center border border-neon-pink/20 shrink-0">
+                <Sparkles size={20} className="text-neon-pink" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Rapid Prototyping</h4>
+                <p className="text-slate-400 text-sm">Manifest high-fidelity visual and audio assets in seconds, reducing the time from concept to prototype by up to 90%.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
+                <Brain size={20} className="text-neon-cyan" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Intelligent Analysis</h4>
+                <p className="text-slate-400 text-sm">Use the 'Observe' lab to automate the analysis of visual data, extracting business insights from images and videos without manual overhead.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
+                <Volume2 size={20} className="text-neon-green" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Sonic Branding</h4>
+                <p className="text-slate-400 text-sm">Create unique, AI-generated soundscapes and vocal identities for your applications, enhancing brand recognition across auditory channels.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

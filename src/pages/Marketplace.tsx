@@ -18,7 +18,7 @@ const manifestations: Manifestation[] = [
   { id: '3', title: 'Data Stream', author: 'NeuralNode', image: 'https://picsum.photos/seed/stream/1200/800', prompt: 'Abstract representation of data flowing through a neural network, glowing lines, dark background', likes: 210, category: 'Image' },
   { id: '4', title: 'Temporal Drift', author: 'TimeSurfer', image: 'https://picsum.photos/seed/drift/800/800', prompt: 'A clock melting into a digital ocean, surrealism, neon accents', likes: 56, category: 'Prompt' },
   { id: '5', title: 'Cyber Hatteras', author: 'IslandDev', image: 'https://picsum.photos/seed/hatteras/800/800', prompt: 'The Hatteras lighthouse in a futuristic cyberpunk setting, neon lights, stormy digital sky', likes: 167, category: 'Image' },
-  { id: '6', title: 'Archipelago AI', author: 'BotMaster', image: 'https://picsum.photos/seed/ai/800/800', prompt: 'A brain made of glowing islands in a vast digital sea', likes: 342, category: 'Image' },
+  { id: '6', title: 'Hatteras AI', author: 'BotMaster', image: 'https://picsum.photos/seed/ai/800/800', prompt: 'A brain made of glowing islands in a vast digital sea', likes: 342, category: 'Image' },
 ];
 
 export const Marketplace = () => {
@@ -45,7 +45,7 @@ export const Marketplace = () => {
         </div>
         <h1 className="text-6xl font-black italic tracking-tighter mb-4 uppercase">Neural Marketplace</h1>
         <p className="text-slate-400 text-xl font-light tracking-wide max-w-2xl mx-auto">
-          Exchange manifestations, prompts, and digital assets within the archipelago.
+          Exchange manifestations, prompts, and digital assets within the collective.
         </p>
       </motion.div>
 
@@ -124,6 +124,68 @@ export const Marketplace = () => {
             </div>
           </motion.div>
         ))}
+      </div>
+
+      {/* Info Sections */}
+      <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-cyan">The Exchange (How it Works)</h2>
+          <div className="space-y-4">
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">1. Manifestation Listing</h4>
+              <p className="text-slate-400 text-sm">Architects within the Collective can list their most successful AI manifestations—images, videos, or prompt templates—for others to verify and use.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">2. Provenance Tracking</h4>
+              <p className="text-slate-400 text-sm">Every asset is tagged with its origin metadata, including the neural model used and the prompt structure that birthed it, ensuring transparency.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">3. Peer Verification</h4>
+              <p className="text-slate-400 text-sm">A decentralized 'likes' system allows the community to verify which manifestations are highest quality, surfacing the most effective neural logic.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-pink">The Yield (Business Value)</h2>
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-pink/10 rounded-xl flex items-center justify-center border border-neon-pink/20 shrink-0">
+                <ShoppingBag size={20} className="text-neon-pink" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Asset Portability</h4>
+                <p className="text-slate-400 text-sm">Seamlessly move proven internal prompts and visual assets across different branches of your business or even sell them to partners.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
+                <Wand2 size={20} className="text-neon-cyan" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Knowledge Monetization</h4>
+                <p className="text-slate-400 text-sm">Turn your internal prompt engineering expertise into a revenue stream by listing your highest-performing instructions for others to purchase.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
+                <Sparkles size={20} className="text-neon-green" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Inspirational Velocity</h4>
+                <p className="text-slate-400 text-sm">Jumpstart your manifestation process by discovering existing asset patterns that have already proven successful for similar business needs.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

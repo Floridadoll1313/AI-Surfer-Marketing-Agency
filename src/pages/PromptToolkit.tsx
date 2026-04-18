@@ -145,8 +145,8 @@ export const PromptToolkit = () => {
           PROMPT ENGINEERING TOOLKIT
         </h1>
         <p className="text-slate-400 text-lg font-light tracking-wide max-w-2xl mx-auto">
-          Refine your core ideas into multi-dimensional neural instructions. 
-          Architect the perfect input for our Archipelago nodes.
+          Architect the perfect input for our Collective nodes.
+          Refine your core ideas into multi-dimensional neural instructions.
         </p>
       </motion.div>
 
@@ -360,6 +360,67 @@ export const PromptToolkit = () => {
             )}
           </AnimatePresence>
         </div>
+      </div>
+      {/* Info Sections */}
+      <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-cyan">The Articulation (How it Works)</h2>
+          <div className="space-y-4">
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">1. Seed Ingestion</h4>
+              <p className="text-slate-400 text-sm">We take your raw "Core Idea" and identify the underlying intent, semantic themes, and technical requirements needed for the target node.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">2. Persona Infusion</h4>
+              <p className="text-slate-400 text-sm">Our engineering logic cross-references your core idea against the specific linguistic and logical biases of your chosen personas.</p>
+            </div>
+            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold mb-2">3. Prompt Optimization</h4>
+              <p className="text-slate-400 text-sm">A specialized LLM refines the final instruction set, adding 'negative constraints' and 'activation tokens' to ensure the highest fidelity results from the neural core.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-3xl font-black italic tracking-tighter uppercase text-neon-pink">The Yield (Business Value)</h2>
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-pink/10 rounded-xl flex items-center justify-center border border-neon-pink/20 shrink-0">
+                <Wand2 size={20} className="text-neon-pink" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Consistency at Scale</h4>
+                <p className="text-slate-400 text-sm">Create high-quality, repeatable instructions that ensure your AI agents and generators produce consistent output every single time.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
+                <Sparkles size={20} className="text-neon-cyan" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Reduced "Hallucination"</h4>
+                <p className="text-slate-400 text-sm">Better engineered prompts ground AI responses in your specific technical constraints, drastically reducing the risk of unusable or off-brand output.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
+                <Zap size={20} className="text-neon-green" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold mb-1">Expert-Level IP</h4>
+                <p className="text-slate-400 text-sm">Build a library of optimized prompts that become part of your business's proprietary intellectual property, securing your competitive advantage.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ export const MemberDirectory = () => {
         </div>
         <h1 className="text-5xl font-black italic tracking-tighter mb-4 uppercase">Member Directory</h1>
         <p className="text-slate-400 text-lg font-light tracking-wide max-w-2xl mx-auto">
-          Connect with other digital architects in the Hatteras Archipelago.
+          Connect with other digital architects in the Hatteras Collective.
         </p>
       </motion.div>
 

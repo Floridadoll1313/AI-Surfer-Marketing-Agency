@@ -22,7 +22,7 @@ import { SupabaseVault } from './pages/SupabaseVault';
 import { Profile } from './pages/Profile';
 import { Dashboard } from './pages/Dashboard';
 import { MemberDirectory } from './pages/MemberDirectory';
-import { ArchipelagoMap } from './pages/ArchipelagoMap';
+import { HatterasMap } from './pages/HatterasMap';
 import { Marketplace } from './pages/Marketplace';
 import { News } from './pages/News';
 import { PromptToolkit } from './pages/PromptToolkit';
@@ -50,7 +50,7 @@ export default function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/directory" element={<MemberDirectory />} />
-          <Route path="/map" element={<ArchipelagoMap />} />
+          <Route path="/map" element={<HatterasMap />} />
           <Route path="/marketplace" element={<Marketplace />} />
           <Route path="/news" element={<News />} />
           <Route path="/toolkit" element={<PromptToolkit />} />

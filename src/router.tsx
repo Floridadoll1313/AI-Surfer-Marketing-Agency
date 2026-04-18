@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 
 import Dashboard from "./pages/members/Dashboard";
 import Members from "./pages/members/Members";
+import CheckoutAI from "./pages/members/CheckoutAI";
 
 // Simple auth wrapper (expand later if needed)
 function RequireAuth({ children }) {

@@ -2,7 +2,7 @@
   "entities": {
     "User": {
       "title": "User",
-      "description": "A user of the digital archipelago",
+      "description": "A user of the digital collective",
       "type": "object",
       "properties": {
         "uid": { "type": "string", "description": "The unique ID of the user" },

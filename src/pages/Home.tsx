@@ -116,7 +116,7 @@ export const Home = () => {
         </motion.div>
         
         <p className="text-neon-cyan text-sm font-black tracking-[0.5em] uppercase mb-8">
-          Digital Archipelago v3.1
+          Hatteras Digital Collective v3.1
         </p>
         
         <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light tracking-wide leading-relaxed">
@@ -291,6 +291,12 @@ export const Home = () => {
           <h3 className="text-4xl md:text-6xl font-black italic mb-6 tracking-tighter">READY TO SURF THE AI WAVE?</h3>
           <p className="text-slate-400 mb-10 text-lg font-light tracking-wide max-w-2xl mx-auto">Join the elite circle of digital architects and automate your future in the Neon Reef.</p>
           <div className="flex flex-wrap justify-center gap-6">
+            <Link 
+              to="/members"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-neon-pink text-white font-black uppercase tracking-tighter hover:bg-white hover:text-black transition-all rounded-xl shadow-[0_0_30px_rgba(255,0,255,0.3)] hover:shadow-[0_0_50px_rgba(255,0,255,0.5)]"
+            >
+              Enter Members Area <Lock size={20} fill="currentColor" />
+            </Link>
             <Link 
               to="/chat"
               className="inline-flex items-center gap-3 px-10 py-5 bg-neon-cyan text-black font-black uppercase tracking-tighter hover:bg-white transition-all rounded-xl shadow-[0_0_30px_rgba(0,255,255,0.3)] hover:shadow-[0_0_50px_rgba(0,255,255,0.5)]"

@@ -27,7 +27,7 @@ export const AISurfer = () => {
   const personas = [
     { id: 'Surfer', name: 'Surfer', icon: Globe, instruction: "You are the OTD AI Surfer, a digital ecosystem guide. You use oceanic metaphors and remain professional yet adventurous." },
     { id: 'Architect', name: 'Architect', icon: Brain, instruction: "You are the lead Neural Architect. Your responses are highly structured, technical, and prioritize systematic integrity." },
-    { id: 'Visionary', name: 'Visionary', icon: Sparkles, instruction: "You are the Archipelago Visionary. Your responses are creative, abstract, more futuristic, and focus on expansionist possibilities." },
+    { id: 'Visionary', name: 'Visionary', icon: Sparkles, instruction: "You are the Collective Visionary. Your responses are creative, abstract, more futuristic, and focus on expansionist possibilities." },
     { id: 'Specialist', name: 'Specialist', icon: Zap, instruction: "You are the Tech Specialist. Your responses are extremely concise, direct, and efficient. No fluff." },
   ];
 
@@ -63,7 +63,7 @@ export const AISurfer = () => {
 
       const personaData = personas.find(p => p.id === selectedPersona) || personas[0];
       const config: any = {
-        systemInstruction: `${personaData.instruction} You are currently acting within the Hatteras Digital Archipelago environment.`,
+        systemInstruction: `${personaData.instruction} You are currently acting within the Hatteras Digital Collective environment.`,
       };
 
       if (highThinking && modelType === 'pro') {
@@ -320,6 +320,68 @@ export const AISurfer = () => {
           {highThinking && modelType === 'pro' && <span className="text-neon-pink">Thinking: HIGH</span>}
         </div>
         <span>Neural Link: Stable</span>
+      </div>
+
+      {/* Info Sections */}
+      <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-neon-cyan">The Navigator (How it Works)</h2>
+          <div className="space-y-4">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold text-sm mb-2">1. Grounded Search</h4>
+              <p className="text-slate-400 text-xs">AI Surfer doesn't just guess. It performs real-time queries across the global neural web to ground its responses in current facts and data.</p>
+            </div>
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold text-sm mb-2">2. Persona Mapping</h4>
+              <p className="text-slate-400 text-xs">Switch between Architect, Visionary, and Specialist personas to adjust the cognitive approach—from technical precision to high-level strategy.</p>
+            </div>
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
+              <h4 className="text-white font-bold text-sm mb-2">3. Thinking Loops</h4>
+              <p className="text-slate-400 text-xs">With 'High Thinking' active, the model verbalizes its chain of thought, identifying pitfalls and opportunities before finalized output manifests.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="space-y-6"
+        >
+          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-neon-pink">The Yield (Business Value)</h2>
+          <div className="space-y-6">
+            <div className="flex gap-4">
+              <div className="w-10 h-10 bg-neon-pink/10 rounded-xl flex items-center justify-center border border-neon-pink/20 shrink-0">
+                <Zap size={16} className="text-neon-pink" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-sm mb-1">Strategic Decisions</h4>
+                <p className="text-slate-400 text-xs">Harness high-thinking cognitive passes to analyze complex business scenarios and get nuanced strategic recommendations.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-10 h-10 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
+                <Globe size={16} className="text-neon-cyan" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-sm mb-1">Market Intelligence</h4>
+                <p className="text-slate-400 text-xs">Use real-time search grounding to stay updated on competitors, trends, and global events without leaving your ecosystem hub.</p>
+              </div>
+            </div>
+            <div className="flex gap-4">
+              <div className="w-10 h-10 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
+                <Brain size={16} className="text-neon-green" />
+              </div>
+              <div>
+                <h4 className="text-white font-bold text-sm mb-1">Technical Troubleshooting</h4>
+                <p className="text-slate-400 text-xs">The 'Architect' persona provides deep technical insights, helping your team debug logic and optimize system architectures rapidly.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

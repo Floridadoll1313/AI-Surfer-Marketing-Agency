@@ -24,7 +24,7 @@ export const News = () => {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-latest",
-        contents: `Generate a "Daily Briefing" for the Hatteras Digital Archipelago. 
+        contents: `Generate a "Daily Briefing" for the Hatteras Digital Collective. 
         Context from recent activity:
         Recent Chat: ${chatContext}
         Recent Stories: ${storiesContext}
@@ -32,13 +32,13 @@ export const News = () => {
         Style: Sophisticated, futuristic, architectural, and slightly oceanic. 
         Sections: 
         1. Neural Status (Overall ecosystem health)
-        2. Archipelago Highlights (Key events or discussions)
+        2. Collective Highlights (Key events or discussions)
         3. Manifestation Trends (What people are building)
         4. Architect's Wisdom (A short inspiring quote)
         
         Keep it concise and formatted in Markdown.`,
         config: {
-          systemInstruction: "You are the Chief Editor of Hatteras Daily, the official news node of the Digital Archipelago."
+          systemInstruction: "You are the Chief Editor of Hatteras Daily, the official news node of the Digital Collective."
         }
       });
 
@@ -132,7 +132,7 @@ export const News = () => {
 
       <div className="mt-12 text-center">
         <p className="text-slate-600 text-[10px] uppercase tracking-[0.2em]">
-          Archipelago News Node • Updated {new Date().toLocaleDateString()}
+          Collective News Node • Updated {new Date().toLocaleDateString()}
         </p>
       </div>
     </div>
