@@ -2,6 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+<img src="/logo.png" alt="Logo" />
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
