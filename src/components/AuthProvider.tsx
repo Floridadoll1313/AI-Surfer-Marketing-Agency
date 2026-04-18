@@ -34,13 +34,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         const userSnap = await getDoc(userRef);
         
         if (!userSnap.exists()) {
-          await setDoc(userRef, {
+          const userData = {
             uid: firebaseUser.uid,
             displayName: firebaseUser.displayName,
             email: firebaseUser.email,
             photoURL: firebaseUser.photoURL,
             role: 'user',
             createdAt: serverTimestamp()
+          };
+          await setDoc(userRef, userData);
+          
+          // Sync to public profile
+          await setDoc(doc(db, 'users_public', firebaseUser.uid), {
+            uid: firebaseUser.uid,
+            displayName: firebaseUser.displayName,
+            photoURL: firebaseUser.photoURL,
           });
         } else {
           const userData = userSnap.data();

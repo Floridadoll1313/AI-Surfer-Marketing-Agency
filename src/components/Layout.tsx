@@ -1,12 +1,14 @@
 import React from 'react';
 import { Navbar } from './Navbar';
 import { Logo } from './Logo';
+import { Soundscape } from './Soundscape';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="animate-ocean-gradient min-h-screen relative pb-32">
-      <header className="pt-12 flex justify-center sticky top-0 z-40 bg-transparent backdrop-blur-sm pb-4">
-        <Logo size="w-64" withTagline />
+      <Soundscape />
+      <header className="pt-8 flex justify-center sticky top-0 z-40 bg-transparent backdrop-blur-xl pb-6 border-b border-white/5 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+        <Logo size="h-24 md:h-32" withTagline />
       </header>
       <main className="px-6">
         {children}

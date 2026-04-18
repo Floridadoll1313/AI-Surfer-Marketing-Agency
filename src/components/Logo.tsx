@@ -1,20 +1,28 @@
 import React from 'react';
 import { cn } from '../lib/utils';
+import { Droplet } from 'lucide-react';
 
-export const Logo = ({ size = 'w-48', withTagline = false }: { size?: string, withTagline?: boolean }) => {
+interface LogoProps {
+  className?: string;
+  size?: string;
+  withTagline?: boolean;
+}
+
+export const Logo: React.FC<LogoProps> = ({ className, size = "h-12", withTagline = false }) => {
   return (
-    <div className={cn("flex flex-col items-center transition-all duration-500 hover:scale-105", size)}>
-      <div className="relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-neon-cyan via-neon-pink to-neon-green rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-        <div className="relative px-7 py-4 bg-black rounded-lg leading-none flex items-center">
-          <span className="flex items-center space-x-5">
-            <span className="pr-6 text-gray-100 font-black italic tracking-tighter text-2xl">OTD AI SURFER</span>
-          </span>
-        </div>
+    <div className={cn("flex flex-col items-center justify-center gap-2", className)}>
+      <div className={cn("relative group", size)}>
+        <Droplet className={cn("text-neon-cyan animate-pulse transition-transform group-hover:scale-110", size)} />
+        <div className="absolute inset-0 bg-neon-cyan/20 blur-xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
       </div>
       {withTagline && (
-        <div className="mt-4 text-[10px] tracking-[0.4em] text-neon-cyan/60 uppercase font-black">
-          Digital Ecosystem Architect
+        <div className="flex flex-col items-center">
+          <span className="text-xl font-black italic tracking-tighter uppercase text-white leading-none">
+            Ocean Tide Drop
+          </span>
+          <span className="text-[8px] font-black tracking-[0.4em] uppercase text-slate-500 mt-1">
+            Hatteras Digital Archipelago
+          </span>
         </div>
       )}
     </div>

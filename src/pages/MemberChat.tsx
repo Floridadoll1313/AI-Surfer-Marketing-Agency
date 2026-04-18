@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
-import { MessageSquare, Send, User, LogIn } from 'lucide-react';
+import { MessageSquare, Send, User, LogIn, Lock } from 'lucide-react';
 import { 
   collection, 
   addDoc, 
@@ -28,9 +28,14 @@ export const MemberChat = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!user) {
+      setMessages([]);
+      return;
+    }
+
     const q = query(
       collection(db, 'chat_messages'), 
-      orderBy('created_at', 'asc'),
+      orderBy('created_at', 'desc'),
       limit(50)
     );
     
@@ -39,13 +44,17 @@ export const MemberChat = () => {
         id: doc.id,
         ...doc.data()
       })) as Message[];
-      setMessages(messagesData);
+      // Reverse to show in chronological order (oldest at top, newest at bottom)
+      setMessages(messagesData.reverse());
     }, (error) => {
-      handleFirestoreError(error, OperationType.LIST, 'chat_messages');
+      // Only handle error if user is still logged in to avoid noise during logout
+      if (user) {
+        handleFirestoreError(error, OperationType.LIST, 'chat_messages');
+      }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     scrollToBottom();
