@@ -133,7 +133,7 @@ export const Memorial = () => {
                 className="glass-card p-6 rounded-2xl border border-white/5 relative group"
               >
                 <div className="absolute top-4 right-4 text-[10px] text-slate-600 font-mono">
-                  {new Date(story.created_at).toLocaleDateString()}
+                  {story.created_at?.toDate ? story.created_at.toDate().toLocaleDateString() : 'Just now'}
                 </div>
                 <div className="text-neon-cyan font-bold mb-2 text-sm uppercase tracking-widest">{story.name}</div>
                 <p className="text-slate-300 leading-relaxed italic">"{story.content}"</p>
