@@ -7,6 +7,9 @@ import Dashboard from "./pages/members/Dashboard";
 import Members from "./pages/members/Members";
 import CheckoutAI from "./pages/members/CheckoutAI";
 
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
+
 // Simple auth wrapper (expand later if needed)
 function RequireAuth({ children }) {
   const token = localStorage.getItem("membership");
@@ -17,8 +20,6 @@ function RequireAuth({ children }) {
 
   return children;
 }
-
-
 
 // 404 fallback for unknown member tools
 function MemberNotFound() {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/services", element: <Services /> },
   { path: "/contact", element: <Contact /> },
+
+  // CHECKOUT RESULT ROUTES
+  { path: "/success", element: <Success /> },
+  { path: "/cancel", element: <Cancel /> },
 
   // MEMBERS AREA — now fully structured
   {
