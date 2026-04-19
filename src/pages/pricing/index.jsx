@@ -17,6 +17,18 @@ export default function PricingOverview() {
           </Link>
         ))}
       </div>
+    </div>import { products } from '../../lib/products'
+import ProductCard from '../../components/ProductCard'
+
+export default function PricingPage() {
+  return (
+    <div className="pricing-grid">
+      {products.map((p) => (
+        <ProductCard key={p.slug} product={p} />
+      ))}
     </div>
+  )
+}
+
   )
 }
