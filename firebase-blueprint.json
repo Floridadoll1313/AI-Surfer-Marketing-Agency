@@ -11,7 +11,8 @@
         "photoURL": { "type": "string", "format": "uri", "description": "The profile photo URL of the user" },
         "bio": { "type": "string", "description": "A short biography of the user" },
         "location": { "type": "string", "description": "The geographic location of the user" },
-        "role": { "type": "string", "enum": ["user", "admin"], "description": "The role of the user" }
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "The role of the user" },
+        "subscriptionStatus": { "type": "string", "enum": ["none", "active", "canceled"], "description": "Membership status" }
       },
       "required": ["uid", "email"]
     },

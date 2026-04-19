@@ -12,7 +12,7 @@ const modules = [
     duration: '45 min',
     level: 'Beginner',
     thumbnail: 'https://picsum.photos/seed/ai/800/450',
-    videoUrl: 'https://media.w3.org/2010/05/sintel/trailer.mp4',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     description: 'Understanding the core concepts of LLMs and neural networks.'
   },
   {
@@ -21,7 +21,7 @@ const modules = [
     duration: '1h 20min',
     level: 'Intermediate',
     thumbnail: 'https://picsum.photos/seed/automation/800/450',
-    videoUrl: 'https://media.w3.org/2010/05/bunny/trailer.mp4',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     description: 'Building complex multi-step automations with Zapier and Make.'
   },
   {
@@ -30,7 +30,7 @@ const modules = [
     duration: '2h 15min',
     level: 'Advanced',
     thumbnail: 'https://picsum.photos/seed/agent/800/450',
-    videoUrl: 'https://media.w3.org/2010/05/video/movie_300.mp4',
+    videoUrl: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     description: 'Deploying autonomous agents with custom tools and memory.'
   }
 ];
