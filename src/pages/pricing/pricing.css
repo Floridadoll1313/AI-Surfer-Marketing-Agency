@@ -1,13 +1,76 @@
+/* 🌊 Full-page oceanic cinematic background */
+.pricing-page {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 255, 255, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(180, 0, 255, 0.12),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #020611, #030b18, #04101f);
+  padding-bottom: 80px;
+}
+
+/* 🌅 Cinematic hero section */
+.pricing-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.pricing-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #e8faff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.pricing-hero-subtitle {
+  margin-top: 12px;
+  font-size: 1.2rem;
+  color: #b8d7e0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 🧊 Product grid layout */
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
-  padding: 40px;
-}
-
-.pricing-page-container {
+  padding: 40px 20px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 20px;
 }
 
+/* Smooth fade-in animation for the grid */
+.pricing-grid > * {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.pricing-grid > *:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.pricing-grid > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.pricing-grid > *:nth-child(4) {
+  animation-delay: 0.45s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
