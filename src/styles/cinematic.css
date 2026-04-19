@@ -1,0 +1,139 @@
+/* CINEMATIC GLOBALS */
+
+body {
+  background: radial-gradient(circle at 50% 0%, #00111a, #00070d 60%);
+  color: #e8faff;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Neon glow utility */
+.glow {
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.45));
+}
+
+/* Page titles */
+.title {
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 2rem;
+  background: linear-gradient(90deg, #00eaff, #7df9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+/* Grid for overview */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 3rem;
+}
+
+/* Product cards */
+.card {
+  background: rgba(0, 20, 30, 0.6);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: #e8faff;
+  transition: 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #00eaff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+/* Product page hero */
+.hero-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  margin-bottom: 2rem;
+}
+
+/* Narrative section */
+.narrative {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  padding: 1rem 2rem;
+}
+
+/* Features */
+.features {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.features li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: #00eaff;
+}
+
+/* Checkout button */
+.checkout-button {
+  display: block;
+  margin: 3rem auto;
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #00eaff, #0099cc);
+  color: #00141c;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.checkout-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Thank you page */
+.thank-you-page {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.thank-you-page h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00eaff, #7df9ff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.thank-you-page p {
+  font-size: 1.4rem;
+  opacity: 0.85;
+}
