@@ -1,23 +1,36 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+<Routes>
 
-import PricingOverview from './pages/pricing'
-import ProductPage from './pages/pricing/[slug]'
-import ThankYou from './pages/thank-you'
+  {/* Public Pages */}
+  <Route path="/" element={<Home />} />
+  <Route path="/services" element={<Services />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/join" element={<JoinCollective />} />
+  <Route path="/lore" element={<Lore />} />
+  <Route path="/marketplace" element={<Marketplace />} />
+  <Route path="/archipelago" element={<ArchipelagoMap />} />
+  <Route path="/hatteras" element={<HatterasMap />} />
+  <Route path="/game-builds" element={<GameBuilds />} />
+  <Route path="/ai-surfer" element={<AISurfer />} />
+  <Route path="/ai-studio" element={<AIStudio />} />
+  <Route path="/automations" element={<Automations />} />
+  <Route path="/blueprints" element={<Blueprints />} />
+  <Route path="/admin" element={<AdminDashboard />} />
+  <Route path="/news" element={<News />} />
+  <Route path="/web-builds" element={<WebBuilds />} />
 
-// Import your global + cinematic styling
-import './index.css'
-import './styles/cinematic.css'
+  {/* Pricing System */}
+  <Route path="/pricing" element={<PricingOverview />} />
+  <Route path="/pricing/:slug" element={<ProductPage />} />
+  <Route path="/thank-you" element={<ThankYou />} />
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/pricing" element={<PricingOverview />} />
-        <Route path="/pricing/:slug" element={<ProductPage />} />
-        <Route path="/thank-you" element={<ThankYou />} />
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
-)
+  {/* Members Area (Protected) */}
+  <Route
+    path="/members/*"
+    element={
+      <ProtectedRoute>
+        <MembersRouter />
+      </ProtectedRoute>
+    }
+  />
+
+</Routes>
