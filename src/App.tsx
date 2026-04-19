@@ -2,7 +2,6 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
-<img src="/logo.png" alt="Logo" />
 
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -27,6 +26,8 @@ import { HatterasMap } from './pages/HatterasMap';
 import { Marketplace } from './pages/Marketplace';
 import { News } from './pages/News';
 import { PromptToolkit } from './pages/PromptToolkit';
+import { JoinCollective } from './pages/JoinCollective';
+import { SubscriptionGate } from './components/SubscriptionGate';
 import { AuthProvider } from './components/AuthProvider';
 
 export default function App() {
@@ -42,19 +43,22 @@ export default function App() {
           <Route path="/frisco" element={<Automations />} />
           <Route path="/hatteras" element={<Vault />} />
           <Route path="/memorial" element={<Memorial />} />
-          <Route path="/chat" element={<MemberChat />} />
-          <Route path="/academy" element={<ModuleLibrary />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/studio" element={<AIStudio />} />
-          <Route path="/ai-surfer" element={<AISurfer />} />
-          <Route path="/supabase-vault" element={<SupabaseVault />} />
+          <Route path="/join" element={<JoinCollective />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/directory" element={<MemberDirectory />} />
-          <Route path="/map" element={<HatterasMap />} />
-          <Route path="/marketplace" element={<Marketplace />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/toolkit" element={<PromptToolkit />} />
+          <Route path="/academy" element={<ModuleLibrary />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+
+          {/* Member Protected Routes */}
+          <Route path="/chat" element={<SubscriptionGate><MemberChat /></SubscriptionGate>} />
+          <Route path="/studio" element={<SubscriptionGate><AIStudio /></SubscriptionGate>} />
+          <Route path="/ai-surfer" element={<SubscriptionGate><AISurfer /></SubscriptionGate>} />
+          <Route path="/supabase-vault" element={<SubscriptionGate><SupabaseVault /></SubscriptionGate>} />
+          <Route path="/directory" element={<SubscriptionGate><MemberDirectory /></SubscriptionGate>} />
+          <Route path="/map" element={<SubscriptionGate><HatterasMap /></SubscriptionGate>} />
+          <Route path="/marketplace" element={<SubscriptionGate><Marketplace /></SubscriptionGate>} />
+          <Route path="/news" element={<SubscriptionGate><News /></SubscriptionGate>} />
+          <Route path="/toolkit" element={<SubscriptionGate><PromptToolkit /></SubscriptionGate>} />
         </Routes>
       </Layout>
     </Router>

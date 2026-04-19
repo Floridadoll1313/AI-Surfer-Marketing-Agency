@@ -15,6 +15,8 @@ interface AuthContextType {
   login: () => Promise<void>;
   logout: () => Promise<void>;
   isAdmin: boolean;
+  isMember: boolean;
+  checkMemberStatus: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,6 +25,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isMember, setIsMember] = useState(false);
+
+  const checkMemberStatus = async () => {
+    if (!auth.currentUser) return;
+    const userRef = doc(db, 'users', auth.currentUser.uid);
+    const userSnap = await getDoc(userRef);
+    if (userSnap.exists()) {
+      const data = userSnap.data();
+      setIsMember(data.subscriptionStatus === 'active' || data.role === 'admin');
+    }
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -40,6 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             email: firebaseUser.email,
             photoURL: firebaseUser.photoURL,
             role: 'user',
+            subscriptionStatus: 'none',
             createdAt: serverTimestamp()
           };
           await setDoc(userRef, userData);
@@ -50,12 +64,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
           });
+          setIsMember(false);
         } else {
           const userData = userSnap.data();
           setIsAdmin(userData.role === 'admin' || firebaseUser.email === 'oceantidedrop@gmail.com');
+          setIsMember(userData.subscriptionStatus === 'active' || userData.role === 'admin' || firebaseUser.email === 'oceantidedrop@gmail.com');
         }
       } else {
         setIsAdmin(false);
+        setIsMember(false);
       }
       
       setLoading(false);
@@ -82,7 +99,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, isAdmin }}>
+    <AuthContext.Provider value={{ user, loading, login, logout, isAdmin, isMember, checkMemberStatus }}>
       {children}
     </AuthContext.Provider>
   );
