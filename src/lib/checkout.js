@@ -1,16 +1,19 @@
-// src/lib/checkout.js
+// Cloudflare‑safe Stripe loader
+// This prevents Vite/Rollup from trying to bundle @stripe/stripe-js on the server.
 
-import { loadStripe } from '@stripe/stripe-js'
+let stripePromise = null;
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+export function getStripe() {
+  if (typeof window === "undefined") {
+    // Prevents SSR / Cloudflare build from touching Stripe
+    return null;
+  }
 
-export async function redirectToCheckout(priceId) {
-  const stripe = await stripePromise
+  if (!stripePromise) {
+    stripePromise = import("@stripe/stripe-js").then((m) =>
+      m.loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
+    );
+  }
 
-  await stripe.redirectToCheckout({
-    lineItems: [{ price: priceId, quantity: 1 }],
-    mode: 'subscription',
-    successUrl: `${window.location.origin}/thank-you`,
-    cancelUrl: `${window.location.origin}/pricing`
-  })
+  return stripePromise;
 }
