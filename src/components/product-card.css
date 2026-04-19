@@ -7,6 +7,23 @@
   box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
+
+  opacity: 0;
+  filter: brightness(0.7);
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    filter 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+.product-card.visible {
+  opacity: 1;
+  filter: brightness(1);
+  transform: translateY(0);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.25),
+              0 0 80px rgba(0, 120, 255, 0.15);
 }
 
 .product-card:hover {
@@ -20,6 +37,7 @@
   position: relative;
   border-radius: 16px;
   overflow: hidden;
+  perspective: 800px;
 }
 
 .product-image-frame::before {
@@ -34,8 +52,8 @@
     rgba(0, 120, 255, 0.8),
     rgba(180, 0, 255, 0.8)
   );
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
@@ -52,6 +70,13 @@
   width: 100%;
   border-radius: 14px;
   display: block;
+  transition: transform 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+/* 🌊 Parallax hover motion */
+.product-card:hover .product-image {
+  transform: translateZ(18px) scale(1.03);
 }
 
 .product-title {
