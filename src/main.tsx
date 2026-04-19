@@ -1,4 +1,5 @@
 // src/main.jsx
+import './styles/cinematic.css'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PricingOverview from './pages/pricing'
