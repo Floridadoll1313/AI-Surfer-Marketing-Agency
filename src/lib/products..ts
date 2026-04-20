@@ -1,11 +1,20 @@
-// src/lib/products.js
+export interface Product {
+  slug: string
+  name: string
+  image: string
+  alt: string
+  seoTitle: string
+  narrative: string
+  features: string[]
+  stripePriceId: string
+}
 
 import brandImg from './brand-architecture.png'
-import cinematicImg from './cinematic web design systems.png'
+import cinematicImg from './cinematic-web-design-systems.png'
 import membershipImg from './subscription.png'
 import workflowImg from './workflow.png'
 
-export const products = [
+export const products: Product[] = [
   {
     slug: 'brand-architecture',
     name: 'Brand Architecture & Identity Systems',
