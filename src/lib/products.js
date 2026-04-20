@@ -1,9 +1,9 @@
 // src/lib/products.js
 
-import brandImg from './products/brand architecture.png'
-import cinematicImg from './products/cinematic web design systems.png'
-import membershipImg from './products/subscription.png'
-import workflowImg from './products/workflow.png'
+import brandImg from './brand-architecture.png'
+import cinematicImg from './cinematic web design systems.png'
+import membershipImg from './subscription.png'
+import workflowImg from './workflow.png'
 
 export const products = [
   {
