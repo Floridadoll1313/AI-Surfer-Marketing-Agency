@@ -1,5 +1,6 @@
 import React from 'react'
-import { products } from '../../lib/products'
+import { products } from "../../lib/products.ts"
+
 import ProductCard from '../../components/ProductCard'
 import './pricing.css'
 
