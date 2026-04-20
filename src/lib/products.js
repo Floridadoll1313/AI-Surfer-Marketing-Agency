@@ -1,6 +1,6 @@
 // src/lib/products.js
 
-import brandImg from './products/Brand Architecture.png'
+import brandImg from './products/brand architecture.png'
 import cinematicImg from './products/cinematic web design systems.png'
 import membershipImg from './products/subscription.png'
 import workflowImg from './products/workflow.png'
