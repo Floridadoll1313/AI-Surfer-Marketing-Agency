@@ -9,11 +9,14 @@ export async function onRequestPost(context) {
     if (!email || !priceId) {
       return new Response(
         JSON.stringify({ error: "Missing email or priceId" }),
-        { status: 400 }
+        { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY);
+    // Cloudflare requires explicit API version
+    const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+      apiVersion: "2023-10-16",
+    });
 
     const session = await stripe.checkout.sessions.create({
       customer_email: email,
@@ -28,13 +31,15 @@ export async function onRequestPost(context) {
       cancel_url: `${env.BASE_URL}/cancel`,
     });
 
-    return new Response(JSON.stringify({ url: session.url }), {
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({ url: session.url }),
+      { status: 200, headers: { "Content-Type": "application/json" } }
+    );
+
   } catch (err) {
     return new Response(
       JSON.stringify({ error: err.message }),
-      { status: 500 }
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
