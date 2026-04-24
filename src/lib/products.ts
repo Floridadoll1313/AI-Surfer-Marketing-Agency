@@ -10,7 +10,8 @@
 }
 
 import brandImg from './brand-architecture.png'
-import cinematicImg from './cinematic-web-design-systems.png'
+import cinematic from "./cinematicwebdesignsystems.png";
+
 import membershipImg from './subscription.png'
 import workflowImg from './workflow.png'
 
