@@ -1,4 +1,4 @@
- export interface Product {
+export interface Product {
   slug: string
   name: string
   image: string
@@ -9,9 +9,9 @@
   stripePriceId: string
 }
 
-import brandImg from './brand-architecture.png'
-import cinematic from "./cinematicwebdesignsystems.png";
-
+// Correct image imports based on your repo files
+import brandImg from './brandarchitecture.png'
+import cinematicImg from './cinematicwebdesignsystems.png'
 import membershipImg from './subscription.png'
 import workflowImg from './workflow.png'
 
