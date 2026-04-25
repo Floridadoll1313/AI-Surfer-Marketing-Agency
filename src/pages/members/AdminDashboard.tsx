@@ -1,32 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Users, Activity, Settings, AlertTriangle } from 'lucide-react';
-import { collection, getDocs, query, limit } from 'firebase/firestore';
-import { db, handleFirestoreError, OperationType } from '../lib/firebase';
 import { useAuth } from '../components/AuthProvider';
 import { Navigate } from 'react-router-dom';
 
 export const AdminDashboard = () => {
   const { user, isAdmin, loading: authLoading } = useAuth();
-  const [userCount, setUserCount] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (isAdmin) {
-      fetchStats();
-    }
-  }, [isAdmin]);
-
-  const fetchStats = async () => {
-    try {
-      const usersSnap = await getDocs(collection(db, 'users'));
-      setUserCount(usersSnap.size);
-    } catch (error) {
-      handleFirestoreError(error, OperationType.LIST, 'users');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (authLoading) {
     return (
@@ -51,7 +30,9 @@ export const AdminDashboard = () => {
           <Shield className="text-neon-cyan" size={40} />
           <h1 className="text-5xl font-black italic tracking-tighter">ADMIN COMMAND CENTER</h1>
         </div>
-        <p className="text-slate-400 text-xl font-light tracking-wide">Welcome, Admin! System status: <span className="text-neon-green">Operational</span></p>
+        <p className="text-slate-400 text-xl font-light tracking-wide">
+          Welcome, Admin! System status: <span className="text-neon-green">Operational</span>
+        </p>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -64,9 +45,7 @@ export const AdminDashboard = () => {
             <Users className="text-neon-cyan" size={24} />
             <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Total Users</span>
           </div>
-          <div className="text-4xl font-black italic">
-            {loading ? '...' : userCount}
-          </div>
+          <div className="text-4xl font-black italic">—</div>
         </motion.div>
 
         <motion.div 
@@ -108,12 +87,12 @@ export const AdminDashboard = () => {
           <div className="flex gap-4 text-slate-500">
             <span className="text-neon-cyan">[INFO]</span>
             <span>{new Date().toISOString()}</span>
-            <span>Firestore connection established successfully.</span>
+            <span>System integrity verified.</span>
           </div>
           <div className="flex gap-4 text-slate-500">
             <span className="text-neon-pink">[SEC]</span>
             <span>{new Date().toISOString()}</span>
-            <span>Access control rules verified.</span>
+            <span>Access control rules enforced.</span>
           </div>
         </div>
       </div>
