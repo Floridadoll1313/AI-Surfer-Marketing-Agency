@@ -42,7 +42,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setUser(firebaseUser);
       
       if (firebaseUser) {
-        // Sync user to Firestore
         const userRef = doc(db, 'users', firebaseUser.uid);
         const userSnap = await getDoc(userRef);
         
@@ -57,18 +56,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             createdAt: serverTimestamp()
           };
           await setDoc(userRef, userData);
-          
-          // Sync to public profile
+
           await setDoc(doc(db, 'users_public', firebaseUser.uid), {
             uid: firebaseUser.uid,
             displayName: firebaseUser.displayName,
             photoURL: firebaseUser.photoURL,
           });
+
           setIsMember(false);
         } else {
           const userData = userSnap.data();
-          setIsAdmin(userData.role === 'admin' || firebaseUser.email === 'oceantidedrop@gmail.com');
-          setIsMember(userData.subscriptionStatus === 'active' || userData.role === 'admin' || firebaseUser.email === 'oceantidedrop@gmail.com');
+          setIsAdmin(
+            userData.role === 'admin' || 
+            firebaseUser.email === 'oceantidedrop@gmail.com'
+          );
+          setIsMember(
+            userData.subscriptionStatus === 'active' ||
+            userData.role === 'admin' ||
+            firebaseUser.email === 'oceantidedrop@gmail.com'
+          );
         }
       } else {
         setIsAdmin(false);
@@ -99,7 +105,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, isAdmin, isMember, checkMemberStatus }}>
+    <AuthContext.Provider 
+      value={{ user, loading, login, logout, isAdmin, isMember, checkMemberStatus }}
+    >
       {children}
     </AuthContext.Provider>
   );
