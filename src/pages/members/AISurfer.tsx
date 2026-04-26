@@ -1,10 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Send, Bot, User, Sparkles, Brain, Zap, Loader2, Trash2, Settings2, Globe, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Send, 
+  Bot, 
+  User, 
+  Sparkles, 
+  Brain, 
+  Zap, 
+  Loader2, 
+  Trash2, 
+  Globe, 
+  ExternalLink 
+} from 'lucide-react';
 import { GoogleGenAI, ThinkingLevel } from "@google/genai";
-import { useAuth } from '../components/AuthProvider';
+import { useAuth } from '../../components/AuthProvider'; // FIXED: Up two levels
 import ReactMarkdown from 'react-markdown';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils'; // FIXED: Up two levels
 
 interface Message {
   role: 'user' | 'model';
@@ -32,8 +43,9 @@ export const AISurfer = () => {
   ];
 
   const getAI = () => {
-    const key = process.env.API_KEY || process.env.GEMINI_API_KEY;
-    if (!key) throw new Error('Neural key not found. Please configure in AI Studio.');
+    // Note: In production, call an API route instead of exposing your key on the client
+    const key = import.meta.env.VITE_GEMINI_API_KEY; 
+    if (!key) throw new Error('Neural key not found. Please configure in environment variables.');
     return new GoogleGenAI({ apiKey: key });
   };
 
@@ -57,44 +69,44 @@ export const AISurfer = () => {
     try {
       const ai = getAI();
       const modelName = 
-        modelType === 'pro' ? 'gemini-3.1-pro-preview' : 
-        modelType === 'flash' ? 'gemini-3-flash-preview' : 
-        'gemini-3.1-flash-lite-preview';
+        modelType === 'pro' ? 'gemini-2.0-pro-exp-02-05' : 
+        modelType === 'flash' ? 'gemini-2.0-flash' : 
+        'gemini-2.0-flash-lite-preview-02-05';
 
       const personaData = personas.find(p => p.id === selectedPersona) || personas[0];
-      const config: any = {
-        systemInstruction: `${personaData.instruction} You are currently acting within the Hatteras Digital Collective environment.`,
+      
+      const generationConfig: any = {
+        temperature: 0.7,
+        topP: 0.95,
+        topK: 40,
+        maxOutputTokens: 8192,
       };
 
       if (highThinking && modelType === 'pro') {
-        config.thinkingConfig = { thinkingLevel: ThinkingLevel.HIGH };
+        generationConfig.thinkingConfig = { includeThoughts: true };
       }
 
-      if (useSearch) {
-        config.tools = [{ googleSearch: {} }];
-      }
-
-      const response = await ai.models.generateContent({
+      const model = ai.getGenerativeModel({ 
         model: modelName,
+        systemInstruction: `${personaData.instruction} You are currently acting within the Velocity Drop environment.`,
+      });
+
+      const tools = useSearch ? [{ googleSearchRetrieval: {} }] : [];
+
+      const result = await model.generateContent({
         contents: [...messages, userMessage].map(m => ({
           role: m.role,
           parts: [{ text: m.content }]
         })),
-        config
+        tools,
+        generationConfig
       });
 
-      const sources = response.candidates?.[0]?.groundingMetadata?.groundingChunks
-        ?.filter((chunk: any) => chunk.web)
-        ?.map((chunk: any) => ({
-          title: chunk.web.title,
-          uri: chunk.web.uri
-        }));
-
+      const responseText = result.response.text();
+      
       const modelResponse: Message = { 
         role: 'model', 
-        content: response.text || "I encountered a ripple in the data stream. Please try again.",
-        thinking: response.candidates?.[0]?.content?.parts?.find((p: any) => p.thought)?.text,
-        sources: sources
+        content: responseText || "I encountered a ripple in the data stream. Please try again.",
       };
 
       setMessages(prev => [...prev, modelResponse]);
@@ -111,24 +123,24 @@ export const AISurfer = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto py-12 px-4 h-[calc(100vh-200px)] flex flex-col">
+    <div className="max-w-4xl mx-auto py-12 px-4 h-[calc(100vh-120px)] flex flex-col">
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center justify-between mb-8"
+        className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4"
       >
         <div className="flex items-center gap-4">
           <div className="p-2 bg-neon-cyan/10 rounded-xl border border-neon-cyan/20">
             <Bot className="text-neon-cyan" size={28} />
           </div>
           <div>
-            <h1 className="text-3xl font-black italic tracking-tighter">AI SURFER</h1>
+            <h1 className="text-3xl font-black italic tracking-tighter text-white">AI SURFER</h1>
             <p className="text-[10px] tracking-[0.3em] text-slate-500 uppercase font-bold">Neural Navigator</p>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-4">
-          <div className="flex p-1 bg-white/5 rounded-lg border border-white/10" title="Neural Persona">
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex p-1 bg-white/5 rounded-lg border border-white/10">
             {personas.map((p) => (
               <button
                 key={p.id}
@@ -136,87 +148,33 @@ export const AISurfer = () => {
                 className={cn(
                   "flex items-center gap-1.5 px-3 py-1 text-[10px] font-bold rounded transition-all",
                   selectedPersona === p.id 
-                    ? "bg-neon-cyan/20 text-neon-cyan" 
+                    ? "bg-neon-cyan text-black" 
                     : "text-slate-500 hover:text-white"
                 )}
               >
                 <p.icon size={12} />
-                {p.name.toUpperCase()}
+                <span className="hidden sm:inline">{p.name.toUpperCase()}</span>
               </button>
             ))}
           </div>
 
-          <div className="flex p-1 bg-white/5 rounded-lg border border-white/10" title="Neural Model">
-            <button 
-              onClick={() => setModelType('lite')}
-              className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${modelType === 'lite' ? 'bg-neon-green text-black' : 'text-slate-500 hover:text-white'}`}
-            >
-              LITE
-            </button>
-            <button 
-              onClick={() => setModelType('flash')}
-              className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${modelType === 'flash' ? 'bg-neon-cyan text-black' : 'text-slate-500 hover:text-white'}`}
-            >
-              FLASH
-            </button>
-            <button 
-              onClick={() => setModelType('pro')}
-              className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${modelType === 'pro' ? 'bg-neon-pink text-white' : 'text-slate-500 hover:text-white'}`}
-            >
-              PRO
-            </button>
-          </div>
-
-          {modelType === 'pro' && (
-            <div className="flex p-1 bg-white/5 rounded-lg border border-white/10">
-              <button 
-                onClick={() => setHighThinking(false)}
-                className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${!highThinking ? 'bg-white/10 text-white' : 'text-slate-500 hover:text-white'}`}
-              >
-                STANDARD
-              </button>
-              <button 
-                onClick={() => setHighThinking(true)}
-                className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${highThinking ? 'bg-neon-pink text-white shadow-[0_0_10px_rgba(255,0,85,0.3)]' : 'text-slate-500 hover:text-white'}`}
-              >
-                HIGH THINKING
-              </button>
-            </div>
-          )}
-
-          <button
-            onClick={() => setUseSearch(!useSearch)}
-            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg border transition-all ${
-              useSearch 
-                ? 'bg-neon-cyan/20 border-neon-cyan text-neon-cyan' 
-                : 'bg-white/5 border-white/10 text-slate-500 hover:border-white/20'
-            }`}
-            title="Search Grounding"
-          >
-            <Globe size={14} />
-            <span className="text-[10px] font-bold uppercase tracking-widest">Search</span>
-          </button>
-
           <button 
             onClick={clearChat}
             className="p-2 text-slate-500 hover:text-red-500 transition-colors"
-            title="Clear Session"
           >
             <Trash2 size={20} />
           </button>
         </div>
       </motion.div>
 
-      <div className="flex-1 glass-card rounded-3xl border border-white/10 overflow-hidden flex flex-col relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/5 to-transparent pointer-events-none" />
-        
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar relative z-10">
+      <div className="flex-1 glass-card rounded-3xl border border-white/10 overflow-hidden flex flex-col relative bg-white/5">
+        <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
           {messages.length === 0 && (
             <div className="h-full flex flex-col items-center justify-center text-center space-y-6 opacity-40">
               <Sparkles size={48} className="text-neon-cyan animate-pulse" />
               <div className="space-y-2">
-                <p className="text-xl font-black italic">AWAITING INPUT</p>
-                <p className="text-sm font-light tracking-widest uppercase">Initialize neural connection to begin</p>
+                <p className="text-xl font-black italic text-white">AWAITING INPUT</p>
+                <p className="text-sm font-light tracking-widest uppercase text-slate-400">Initialize neural connection</p>
               </div>
             </div>
           )}
@@ -236,78 +194,46 @@ export const AISurfer = () => {
                 }`}>
                   {msg.role === 'user' ? <User size={16} /> : <Bot size={16} />}
                 </div>
-                <div className={`max-w-[80%] p-4 rounded-2xl text-sm leading-relaxed ${
+                <div className={`max-w-[85%] p-4 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
                     ? 'bg-neon-cyan text-black font-medium rounded-tr-none'
                     : 'bg-white/5 text-slate-200 border border-white/10 rounded-tl-none'
                 }`}>
-                  <div className="markdown-body">
-                    <ReactMarkdown>{msg.content}</ReactMarkdown>
-                  </div>
-                  {msg.thinking && (
-                    <div className="mt-4 p-3 bg-black/20 border-l-2 border-neon-pink rounded text-[10px] text-slate-400 font-mono italic">
-                      <div className="flex items-center gap-1 mb-1 text-neon-pink uppercase font-black tracking-widest text-[8px]">
-                        <Brain size={8} /> Neural Thought Process
-                      </div>
-                      {msg.thinking}
-                    </div>
-                  )}
-                  {msg.sources && msg.sources.length > 0 && (
-                    <div className="mt-4 pt-4 border-t border-white/10 space-y-2">
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 flex items-center gap-1">
-                        <Globe size={10} /> Neural Sources
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {msg.sources.map((source, sIdx) => (
-                          <a 
-                            key={sIdx}
-                            href={source.uri}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 px-2 py-1 bg-white/5 border border-white/10 rounded text-[10px] text-neon-cyan hover:bg-neon-cyan hover:text-black transition-all"
-                          >
-                            {source.title} <ExternalLink size={8} />
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <ReactMarkdown className="prose prose-invert prose-sm max-w-none">
+                    {msg.content}
+                  </ReactMarkdown>
                 </div>
               </motion.div>
             ))}
           </AnimatePresence>
           
           {isTyping && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex gap-4"
-            >
+            <div className="flex gap-4">
               <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400">
                 <Bot size={16} />
               </div>
               <div className="bg-white/5 border border-white/10 p-4 rounded-2xl rounded-tl-none flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-neon-cyan rounded-full animate-bounce [animation-delay:-0.3s]" />
-                <div className="w-1.5 h-1.5 bg-neon-cyan rounded-full animate-bounce [animation-delay:-0.15s]" />
                 <div className="w-1.5 h-1.5 bg-neon-cyan rounded-full animate-bounce" />
+                <div className="w-1.5 h-1.5 bg-neon-cyan rounded-full animate-bounce [animation-delay:0.2s]" />
+                <div className="w-1.5 h-1.5 bg-neon-cyan rounded-full animate-bounce [animation-delay:0.4s]" />
               </div>
-            </motion.div>
+            </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
-        <form onSubmit={handleSend} className="p-4 bg-black/40 border-t border-white/10 flex gap-4 relative z-10">
+        <form onSubmit={handleSend} className="p-4 bg-black/40 border-t border-white/10 flex gap-4">
           <input 
             type="text" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask the AI Surfer anything..."
-            className="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-neon-cyan outline-none transition-colors text-slate-200"
+            className="flex-1 bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-neon-cyan outline-none transition-colors text-white"
           />
           <button 
             type="submit"
             disabled={isTyping || !input.trim()}
-            className="bg-neon-cyan text-black p-4 rounded-xl hover:bg-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-neon-cyan text-black p-4 rounded-xl hover:brightness-110 transition-all disabled:opacity-50"
           >
             {isTyping ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
           </button>
@@ -317,71 +243,9 @@ export const AISurfer = () => {
       <div className="mt-4 flex justify-between text-[8px] font-black uppercase tracking-[0.3em] text-slate-600">
         <div className="flex gap-4">
           <span>Model: {modelType.toUpperCase()}</span>
-          {highThinking && modelType === 'pro' && <span className="text-neon-pink">Thinking: HIGH</span>}
+          <span>Persona: {selectedPersona.toUpperCase()}</span>
         </div>
         <span>Neural Link: Stable</span>
-      </div>
-
-      {/* Info Sections */}
-      <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 border-t border-white/10 pt-16">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="space-y-6"
-        >
-          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-neon-cyan">The Navigator (How it Works)</h2>
-          <div className="space-y-4">
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-              <h4 className="text-white font-bold text-sm mb-2">1. Grounded Search</h4>
-              <p className="text-slate-400 text-xs">AI Surfer doesn't just guess. It performs real-time queries across the global neural web to ground its responses in current facts and data.</p>
-            </div>
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-              <h4 className="text-white font-bold text-sm mb-2">2. Persona Mapping</h4>
-              <p className="text-slate-400 text-xs">Switch between Architect, Visionary, and Specialist personas to adjust the cognitive approach—from technical precision to high-level strategy.</p>
-            </div>
-            <div className="p-5 bg-white/5 rounded-2xl border border-white/10">
-              <h4 className="text-white font-bold text-sm mb-2">3. Thinking Loops</h4>
-              <p className="text-slate-400 text-xs">With 'High Thinking' active, the model verbalizes its chain of thought, identifying pitfalls and opportunities before finalized output manifests.</p>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="space-y-6"
-        >
-          <h2 className="text-2xl font-black italic tracking-tighter uppercase text-neon-pink">The Yield (Business Value)</h2>
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-neon-pink/10 rounded-xl flex items-center justify-center border border-neon-pink/20 shrink-0">
-                <Zap size={16} className="text-neon-pink" />
-              </div>
-              <div>
-                <h4 className="text-white font-bold text-sm mb-1">Strategic Decisions</h4>
-                <p className="text-slate-400 text-xs">Harness high-thinking cognitive passes to analyze complex business scenarios and get nuanced strategic recommendations.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-neon-cyan/10 rounded-xl flex items-center justify-center border border-neon-cyan/20 shrink-0">
-                <Globe size={16} className="text-neon-cyan" />
-              </div>
-              <div>
-                <h4 className="text-white font-bold text-sm mb-1">Market Intelligence</h4>
-                <p className="text-slate-400 text-xs">Use real-time search grounding to stay updated on competitors, trends, and global events without leaving your ecosystem hub.</p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 bg-neon-green/10 rounded-xl flex items-center justify-center border border-neon-green/20 shrink-0">
-                <Brain size={16} className="text-neon-green" />
-              </div>
-              <div>
-                <h4 className="text-white font-bold text-sm mb-1">Technical Troubleshooting</h4>
-                <p className="text-slate-400 text-xs">The 'Architect' persona provides deep technical insights, helping your team debug logic and optimize system architectures rapidly.</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );
