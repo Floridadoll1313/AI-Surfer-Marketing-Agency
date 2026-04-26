@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Users, Activity, Settings, AlertTriangle } from 'lucide-react';
-import { useAuth } from '../components/AuthProvider';
+import { supabase } from '../../lib/supabase';
 import { Navigate } from 'react-router-dom';
 
 export const AdminDashboard = () => {
-  const { user, isAdmin, loading: authLoading } = useAuth();
+  const [user, setUser] = useState<any>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  if (authLoading) {
+  // ---------------------------
+  //   ADMIN AUTH CHECK
+  // ---------------------------
+  useEffect(() => {
+    const load = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+
+      // Admin check: email-based (adjust as needed)
+      const adminEmails = [
+        "shannon@oceantidedrop.com",
+        "admin@oceantidedrop.com"
+      ];
+
+      if (adminEmails.includes(user.email)) {
+        setIsAdmin(true);
+      }
+
+      setLoading(false);
+    };
+
+    load();
+  }, []);
+
+  // ---------------------------
+  //   LOADING STATE
+  // ---------------------------
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-neon-cyan"></div>
@@ -15,10 +49,16 @@ export const AdminDashboard = () => {
     );
   }
 
+  // ---------------------------
+  //   ACCESS DENIED
+  // ---------------------------
   if (!isAdmin) {
     return <Navigate to="/" replace />;
   }
 
+  // ---------------------------
+  //   ADMIN DASHBOARD UI
+  // ---------------------------
   return (
     <div className="max-w-6xl mx-auto py-12">
       <motion.div 
