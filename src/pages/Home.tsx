@@ -1,168 +1,80 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { 
-  Globe, Zap, Database, Bot, Lock, ArrowRight, Sparkles, Wand2, 
-  Users, MapPin 
-} from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Waves, Zap, Rocket, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../lib/supabase';
-import { collection, query, getDocs, limit } from 'firebase/firestore';
-import { db } from '../lib/firebase';
 
-// ---------------------------
-//   STATIC CONTENT
-// ---------------------------
-
-const villages = [
-  { name: 'Rodanthe', title: 'Web Builds', description: 'Frontend & Backend Architecture. High-performance digital structures.', icon: Globe, path: '/rodanthe', color: 'from-cyan-500 to-blue-600' },
-  { name: 'Avon', title: 'Game Builds', description: 'Immersive systems and interactive experiences.', icon: Zap, path: '/avon', color: 'from-yellow-400 to-orange-500' },
-  { name: 'Buxton', title: 'Workflows', description: 'Active automation pipelines and business logic.', icon: Database, path: '/buxton', color: 'from-purple-500 to-pink-600' },
-  { name: 'Frisco', title: 'Automations', description: 'Live system feeds and autonomous agents.', icon: Bot, path: '/frisco', color: 'from-green-400 to-emerald-600' },
-  { name: 'Hatteras', title: 'The Vault', description: 'Confidential process maps and secure SOPs.', icon: Lock, path: '/hatteras', color: 'from-red-500 to-rose-700' }
-];
-
-const aiFeatures = [
-  { name: 'Creative Studio', title: 'AI Manifestation', description: 'Generate high-quality images and cinematic videos with Gemini & Veo.', icon: Wand2, path: '/studio', color: 'from-neon-cyan to-neon-pink', badge: 'NEW' },
-  { name: 'AI Surfer', title: 'Neural Navigator', description: 'Multi-turn intelligent chat with high-thinking capabilities.', icon: Sparkles, path: '/ai-surfer', color: 'from-neon-green to-neon-cyan', badge: 'BETA' }
-];
-
-// ---------------------------
-//   HOME COMPONENT
-// ---------------------------
-
+// Named export to match your build pattern
 export const Home = () => {
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    const checkAdmin = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
-
-      const adminQuery = query(collection(db, "admins"), limit(1));
-      const snapshot = await getDocs(adminQuery);
-
-      snapshot.forEach(doc => {
-        if (doc.data().email === user.email) {
-          setIsAdmin(true);
-        }
-      });
-    };
-
-    checkAdmin();
-  }, []);
-
   return (
-    <div className="min-h-screen w-full bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white selection:bg-neon-cyan selection:text-black">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black" />
+          {/* Animated Background Element */}
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3] 
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+            className="absolute -top-1/2 -left-1/2 w-full h-full bg-neon-cyan/10 blur-[120px] rounded-full"
+          />
+        </div>
 
-      {/* HERO */}
-      <section className="relative w-full h-[80vh] flex flex-col justify-center items-center text-center px-6">
-        <motion.h1 
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent"
-        >
-          Ocean Tide Drop AI Surfer
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="mt-4 text-lg md:text-2xl text-gray-300 max-w-2xl"
-        >
-          A cinematic AI-powered agency built on movement, sanctuary, and creation.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="mt-8"
-        >
-          <Link 
-            to="/services"
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-semibold hover:opacity-90 transition flex items-center gap-2"
+        <div className="relative z-10 text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Explore Services <ArrowRight size={18} />
-          </Link>
-        </motion.div>
+            <div className="flex justify-center mb-6">
+              <Waves className="text-neon-cyan animate-pulse" size={64} />
+            </div>
+            <h1 className="text-7xl md:text-9xl font-black italic tracking-tighter uppercase mb-4">
+              Velocity <span className="text-neon-cyan">Drop</span> 💧👄
+            </h1>
+            <p className="text-xl md:text-2xl font-light tracking-[0.2em] uppercase text-slate-400 mb-10">
+              High-Speed Neural Solutions & Digital Flow
+            </p>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
+              <Link 
+                to="/pricing" 
+                className="px-10 py-5 bg-white text-black font-black uppercase text-sm tracking-widest rounded-2xl hover:bg-neon-cyan transition-all transform hover:scale-105"
+              >
+                Catch the Wave
+              </Link>
+              <Link 
+                to="/services" 
+                className="px-10 py-5 bg-transparent border border-white/20 text-white font-black uppercase text-sm tracking-widest rounded-2xl hover:bg-white/10 transition-all"
+              >
+                View Manifest
+              </Link>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* VILLAGES */}
-      <section className="px-6 py-20">
-        <h2 className="text-3xl md:text-5xl font-bold mb-10 text-center">Villages of Hatteras Island</h2>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {villages.map((village, i) => (
-            <motion.div
-              key={village.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15 }}
-              className={`p-6 rounded-2xl bg-gradient-to-br ${village.color} shadow-xl`}
+      {/* Features Grid */}
+      <section className="py-32 px-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { icon: Zap, title: "Neural Speed", desc: "Instant AI automation deployment." },
+            { icon: Rocket, title: "Velocity Scale", desc: "Built for rapid business expansion." },
+            { icon: Globe, title: "Global Sync", desc: "Worldwide digital asset availability." }
+          ].map((feature, i) => (
+            <motion.div 
+              key={i}
+              whileHover={{ y: -10 }}
+              className="glass-card p-10 rounded-[3rem] border border-white/10 bg-white/5"
             >
-              <village.icon size={40} className="mb-4" />
-              <h3 className="text-2xl font-bold">{village.name}</h3>
-              <p className="text-gray-200 mt-2">{village.description}</p>
-
-              <Link 
-                to={village.path}
-                className="inline-block mt-4 text-white font-semibold underline"
-              >
-                Enter
-              </Link>
+              <feature.icon className="text-neon-pink mb-6" size={40} />
+              <h3 className="text-2xl font-black uppercase italic mb-4">{feature.title}</h3>
+              <p className="text-slate-500 font-medium leading-relaxed">{feature.desc}</p>
             </motion.div>
           ))}
         </div>
       </section>
-
-      {/* AI FEATURES */}
-      <section className="px-6 py-20 bg-black/40 backdrop-blur-xl">
-        <h2 className="text-3xl md:text-5xl font-bold mb-10 text-center">AI Systems</h2>
-
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {aiFeatures.map((feature, i) => (
-            <motion.div
-              key={feature.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.2 }}
-              className={`p-6 rounded-2xl bg-gradient-to-br ${feature.color} shadow-xl`}
-            >
-              <div className="flex items-center gap-3">
-                <feature.icon size={36} />
-                <h3 className="text-2xl font-bold">{feature.title}</h3>
-                {feature.badge && (
-                  <span className="px-2 py-1 text-xs bg-white/20 rounded-lg">{feature.badge}</span>
-                )}
-              </div>
-
-              <p className="text-gray-200 mt-3">{feature.description}</p>
-
-              <Link 
-                to={feature.path}
-                className="inline-block mt-4 text-white font-semibold underline"
-              >
-                Launch
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* ADMIN PANEL LINK */}
-      {isAdmin && (
-        <div className="text-center py-10">
-          <Link 
-            to="/admin"
-            className="px-6 py-3 bg-red-600 rounded-xl font-semibold hover:bg-red-700 transition"
-          >
-            Admin Dashboard
-          </Link>
-        </div>
-      )}
-
     </div>
   );
 };
