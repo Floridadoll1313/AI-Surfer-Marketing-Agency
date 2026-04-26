@@ -1,11 +1,21 @@
-import { Navigate } from 'react-router-dom'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../components/AuthProvider';
 
-export default function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const token = localStorage.getItem('membership_token')
+export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+  const { user, loading } = useAuth();
 
-  if (!token) {
-    return <Navigate to="/pricing" replace />
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-neon-cyan border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
   }
 
-  return children
-}
+  if (!user) {
+    return <Navigate to="/join" replace />;
+  }
+
+  return <>{children}</>;
+};
