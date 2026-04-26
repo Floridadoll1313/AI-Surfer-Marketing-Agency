@@ -1,29 +1,32 @@
-import { Routes, Route } from 'react-router-dom'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
-import Dashboard from './Dashboard'
-import Members from './Members'
-import MembersNotFound from './MembersNotFound'
+// FIXED: Using Named Imports { } to match your component exports
+import { Dashboard } from './Dashboard';
+import { Profile } from './Profile';
+import { AIStudio } from './AIStudio';
+import { AISurfer } from './AISurfer';
+import { PromptToolkit } from './PromptToolkit';
+import { Workflows } from './Workflows';
+import { Automations } from './Automations';
+import { Tools } from './Tools';
+import { Vault } from './Vault';
 
-import AIStudio from './AIStudio'
-import AISurfer from './AISurfer'
-import AdminDashboard from './AdminDashboard'
-import Automations from './Automations'
-import Blueprints from './Blueprints'
-import CheckoutAI from './CheckoutAI'
-import GameBuilds from './GameBuilds'
-import HatterasMap from './HatterasMap'
-import MemberChat from './MemberChat'
-import MemberDirectory from './MemberDirectory'
-import ModuleLibrary from './ModuleLibrary'
-import Profile from './Profile'
-import Progression from './Progression'
-import PromptToolkit from './PromptToolkit'
-import SupabaseVault from './SupabaseVault'
-import ToolLoader from './ToolLoader'
-import Tools from './Tools'
-import Vault from './Vault'
-import WebBuilds from './WebBuilds'
-import Workflows from './Workflows'
+// Add curly braces to these as you update the individual files to 'export const'
+import Members from './Members';
+import MembersNotFound from './MembersNotFound';
+import AdminDashboard from './AdminDashboard';
+import Blueprints from './Blueprints';
+import CheckoutAI from './CheckoutAI';
+import GameBuilds from './GameBuilds';
+import HatterasMap from './HatterasMap';
+import MemberChat from './MemberChat';
+import MemberDirectory from './MemberDirectory';
+import ModuleLibrary from './ModuleLibrary';
+import Progression from './Progression';
+import SupabaseVault from './SupabaseVault';
+import ToolLoader from './ToolLoader';
+import WebBuilds from './WebBuilds';
 
 export default function MembersRouter() {
   return (
@@ -32,6 +35,7 @@ export default function MembersRouter() {
       <Route path="dashboard" element={<Dashboard />} />
       <Route path="members" element={<Members />} />
 
+      {/* Neural Core Modules */}
       <Route path="ai-studio" element={<AIStudio />} />
       <Route path="ai-surfer" element={<AISurfer />} />
       <Route path="admin" element={<AdminDashboard />} />
@@ -53,8 +57,8 @@ export default function MembersRouter() {
       <Route path="web-builds" element={<WebBuilds />} />
       <Route path="workflows" element={<Workflows />} />
 
-      {/* Catch-all */}
+      {/* Catch-all for broken neural links */}
       <Route path="*" element={<MembersNotFound />} />
     </Routes>
-  )
+  );
 }
