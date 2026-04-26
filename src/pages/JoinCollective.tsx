@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Zap, Sparkles, Check, ArrowRight, Loader2, Bot, Globe, Database, Newspaper } from 'lucide-react';
-import { useAuth } from '../components/AuthProvider';
+import { supabase } from '../lib/supabase';
 
 export const JoinCollective = () => {
-  const { user, login } = useAuth();
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubscribe = async () => {
+    // 🔐 Get current Supabase user
+    const { data: { user } } = await supabase.auth.getUser();
+
+    // If not logged in → trigger Supabase OAuth
     if (!user) {
-      await login();
+      await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin + '/join' }
+      });
       return;
     }
 
@@ -20,11 +26,9 @@ export const JoinCollective = () => {
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          userId: user.uid,
+          userId: user.id,
           email: user.email,
         }),
       });
