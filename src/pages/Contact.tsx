@@ -27,45 +27,73 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Neural Mail</p>
-                  <p className="text-lg font-bold italic">hello@velocitydrop.ai</p>
+                  <p className="text-lg font-bold italic">hello@oceantidedrop.com</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-6">
-                <div className="p-3 rounded-xl bg-neon-cyan/10 text-neon-cyan">
+                <div className="p-3 rounded-xl bg-neon-pink/10 text-neon-pink">
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">HQ Coordinate</p>
-                  <p className="text-lg font-bold italic">Charleston, SC // West Ashley</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">HQ Location</p>
+                  <p className="text-lg font-bold italic">West Ashley, Charleston, SC</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="glass-card p-10 rounded-[3rem] border border-white/10 bg-white/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <MessageSquare size={120} />
+          <motion.form 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="space-y-6"
+          >
+            <div>
+              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
+                Your Name
+              </label>
+              <input 
+                type="text"
+                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
+                placeholder="Enter your name"
+              />
             </div>
-            <form className="space-y-6 relative z-10">
-              <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Identity</label>
-                <input type="text" className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-6 mt-2 focus:border-neon-pink/50 outline-none transition-all uppercase text-xs font-bold tracking-widest" placeholder="YOUR NAME" />
-              </div>
-              <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Communication Link</label>
-                <input type="email" className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-6 mt-2 focus:border-neon-pink/50 outline-none transition-all uppercase text-xs font-bold tracking-widest" placeholder="EMAIL ADDRESS" />
-              </div>
-              <div>
-                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Message Packet</label>
-                <textarea rows={4} className="w-full bg-black/40 border border-white/10 rounded-2xl py-4 px-6 mt-2 focus:border-neon-pink/50 outline-none transition-all uppercase text-xs font-bold tracking-widest" placeholder="YOUR MESSAGE..."></textarea>
-              </div>
-              <button className="w-full py-5 bg-white text-black rounded-2xl font-black uppercase text-xs tracking-[0.2em] hover:bg-neon-pink transition-all flex items-center justify-center gap-3">
-                <Send size={16} /> Transmit Data
-              </button>
-            </form>
-          </div>
+
+            <div>
+              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
+                Email
+              </label>
+              <input 
+                type="email"
+                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
+                Message
+              </label>
+              <textarea 
+                rows={5}
+                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
+                placeholder="Tell us about your project..."
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit"
+              className="w-full py-4 rounded-xl bg-neon-pink text-black font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-white transition-all"
+            >
+              <Send size={18} />
+              Send Message
+            </button>
+          </motion.form>
         </motion.div>
       </div>
     </div>
   );
 };
+
+export default Contact;
