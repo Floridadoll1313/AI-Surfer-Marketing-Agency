@@ -1,21 +1,41 @@
-// src/lib/firebase.ts
-// Restored Firebase client for MemberChat
-
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Your Firebase config — replace with your real values
+/* -------------------------------------------------------
+   FIREBASE CONFIG
+------------------------------------------------------- */
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
+/* -------------------------------------------------------
+   INITIALIZE
+------------------------------------------------------- */
 const app = initializeApp(firebaseConfig);
-
-// Firestore database instance
 export const db = getFirestore(app);
+
+/* -------------------------------------------------------
+   ERROR HANDLING (required by Memorial page)
+------------------------------------------------------- */
+export enum OperationType {
+  CREATE = "CREATE",
+  LIST = "LIST",
+  UPDATE = "UPDATE",
+  DELETE = "DELETE",
+}
+
+export function handleFirestoreError(
+  error: any,
+  operation: OperationType,
+  collection: string
+) {
+  console.error(
+    `🔥 Firestore ${operation} error in collection "${collection}":`,
+    error
+  );
+}
