@@ -1,18 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Globe, Zap, Database, Bot, Lock, Heart, Video, MessageSquare, LogOut, Shield, Sparkles, Wand2, User, LayoutDashboard, Users, Map as MapIcon, ShoppingBag, Newspaper } from 'lucide-react';
+import { Home, Users, Heart, DollarSign, Phone, MessageSquare, LogOut, Shield, Sparkles, Wand2, User, LayoutDashboard, Map as MapIcon, ShoppingBag, Newspaper, Database } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAuth } from './AuthProvider';
 
-const navItems = [
+const publicNav = [
   { name: 'Home', path: '/', icon: Home },
-  { name: 'Rodanthe', path: '/rodanthe', icon: Globe },
-  { name: 'Avon', path: '/avon', icon: Zap },
-  { name: 'Buxton', path: '/buxton', icon: Database },
-  { name: 'Frisco', path: '/frisco', icon: Bot },
-  { name: 'Hatteras', path: '/hatteras', icon: Lock },
-  { name: 'Memorial', path: '/memorial', icon: Heart },
-  { name: 'Academy', path: '/academy', icon: Video },
+  { name: 'Members', path: '/members', icon: Users },      // NEW
+  { name: 'Bulls', path: '/bulls', icon: Heart },          // NEW
+  { name: 'Pricing', path: '/pricing', icon: DollarSign },
+  { name: 'Contact', path: '/contact', icon: Phone },
 ];
 
 const memberItems = [
@@ -24,7 +21,7 @@ const memberItems = [
   { name: 'Map', path: '/map', icon: MapIcon, color: 'text-neon-pink' },
   { name: 'Marketplace', path: '/marketplace', icon: ShoppingBag, color: 'text-neon-pink' },
   { name: 'Daily', path: '/news', icon: Newspaper, color: 'text-neon-green' },
-  { name: 'S-Vault', path: '/supabase-vault', icon: Database, color: 'text-neon-purple' },
+  { name: 'S‑Vault', path: '/supabase-vault', icon: Database, color: 'text-neon-purple' },
 ];
 
 export const Navbar = () => {
@@ -33,7 +30,9 @@ export const Navbar = () => {
 
   return (
     <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 px-6 py-3 glass-card rounded-full flex items-center gap-4 border border-white/10 shadow-2xl">
-      {navItems.map((item) => {
+
+      {/* PUBLIC NAVIGATION */}
+      {publicNav.map((item) => {
         const Icon = item.icon;
         const isActive = location.pathname === item.path;
         return (
@@ -52,6 +51,8 @@ export const Navbar = () => {
           </Link>
         );
       })}
+
+      {/* ADMIN */}
       {isAdmin && (
         <Link
           to="/admin"
@@ -67,19 +68,7 @@ export const Navbar = () => {
         </Link>
       )}
 
-      {/* Member Area Toggle/Link */}
-      {user && !isMember && (
-        <Link
-          to="/join"
-          className={cn(
-            "px-4 py-2 rounded-full transition-all duration-300 group relative border border-neon-cyan/50 bg-neon-cyan/10 text-neon-cyan hover:bg-neon-cyan hover:text-black",
-            location.pathname === '/join' && "bg-neon-cyan text-black"
-          )}
-        >
-          <span className="text-[10px] font-black uppercase tracking-widest whitespace-nowrap">Join Collective</span>
-        </Link>
-      )}
-
+      {/* MEMBER NAVIGATION */}
       {user && isMember && (
         <div className="flex items-center gap-2 border-l border-white/10 pl-4 ml-2">
           {memberItems.map((item) => {
@@ -104,6 +93,7 @@ export const Navbar = () => {
         </div>
       )}
 
+      {/* DASHBOARD + PROFILE + LOGOUT */}
       {user && (
         <div className="flex items-center gap-2 border-l border-white/10 pl-4 ml-2">
           <Link
@@ -118,6 +108,7 @@ export const Navbar = () => {
               DASHBOARD
             </span>
           </Link>
+
           <Link
             to="/profile"
             className={cn(
@@ -130,6 +121,7 @@ export const Navbar = () => {
               PROFILE
             </span>
           </Link>
+
           <button
             onClick={logout}
             className="p-2 rounded-full text-slate-400 hover:text-red-500 transition-all duration-300 group relative"
