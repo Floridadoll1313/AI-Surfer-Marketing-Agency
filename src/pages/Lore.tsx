@@ -34,3 +34,5 @@ export const Lore = () => {
     </div>
   );
 };
+
+export default Lore;
