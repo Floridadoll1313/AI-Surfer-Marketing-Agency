@@ -2,9 +2,10 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../components/AuthProvider';
 
-export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
 
+  // Show loading screen while auth state resolves
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -13,9 +14,13 @@ export const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
+  // If user is not logged in → send them to MEMBERS (Stripe Pricing Table)
   if (!user) {
-    return <Navigate to="/join" replace />;
+    return <Navigate to="/members" replace />;
   }
 
+  // If user is logged in → allow access
   return <>{children}</>;
 };
+
+export default ProtectedRoute;
