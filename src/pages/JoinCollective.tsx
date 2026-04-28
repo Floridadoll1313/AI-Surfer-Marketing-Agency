@@ -8,10 +8,8 @@ export const JoinCollective = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleSubscribe = async () => {
-    // 🔐 Get current Supabase user
     const { data: { user } } = await supabase.auth.getUser();
 
-    // If not logged in → trigger Supabase OAuth
     if (!user) {
       await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -56,7 +54,6 @@ export const JoinCollective = () => {
 
   return (
     <div className="min-h-screen bg-black text-white py-24 px-6 relative overflow-hidden">
-      {/* Background Decor */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-neon-cyan/10 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-neon-cyan/5 blur-[120px] rounded-full" />
       <div className="absolute top-1/2 -right-24 w-96 h-96 bg-neon-pink/5 blur-[120px] rounded-full" />
@@ -171,3 +168,5 @@ export const JoinCollective = () => {
     </div>
   );
 };
+
+export default JoinCollective;
