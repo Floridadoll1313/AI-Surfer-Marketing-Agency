@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Neon brand colors */
+/* --------------------------------------------- */
+/*  NEON BRAND COLORS — OCEAN TIDE DROP SYSTEM   */
+/* --------------------------------------------- */
+
 .text-neon-cyan { color: #00faff; }
 .text-neon-pink { color: #ff4dff; }
 .text-neon-green { color: #4dff88; }
@@ -10,10 +13,44 @@
 .bg-neon-cyan { background-color: #00faff; }
 .bg-neon-pink { background-color: #ff4dff; }
 
-/* Glass card */
+/* Opacity variants for background glows */
+.bg-neon-cyan\/10 { background-color: rgba(0, 250, 255, 0.10); }
+.bg-neon-pink\/10 { background-color: rgba(255, 77, 255, 0.10); }
+
+/* --------------------------------------------- */
+/*  GLASS CARD — CINEMATIC OCEAN UI              */
+/* --------------------------------------------- */
+
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------- */
+/*  BACKGROUND GLOW FALLBACKS (GUARANTEED)       */
+/* --------------------------------------------- */
+
+.home-bg-cyan {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  transform: translateX(-50%);
+  background: rgba(0, 255, 255, 0.12);
+  filter: blur(200px);
+  pointer-events: none;
+}
+
+.home-bg-pink {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 700px;
+  height: 700px;
+  background: rgba(255, 0, 255, 0.12);
+  filter: blur(180px);
+  pointer-events: none;
 }
