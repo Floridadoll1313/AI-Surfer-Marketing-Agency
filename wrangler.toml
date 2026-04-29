@@ -1,4 +1,5 @@
-name = "otdaisurfer"
+# wrangler.toml
+name = 'otdaisurfer13'
 pages_build_output_dir = "dist"
 
 [vars]
