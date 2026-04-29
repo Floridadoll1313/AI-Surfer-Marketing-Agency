@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Pricing from "./pages/pricing/Pricing.jsx";
 import Members from "./pages/Members";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/notfound/NotFound.jsx";
 import { useAuth } from "./components/AuthProvider";
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
           }
         />
 
-        {/* Admin-only example (optional) */}
+        {/* Admin-only */}
         <Route
           path="/admin"
           element={
