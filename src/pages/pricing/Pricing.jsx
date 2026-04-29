@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/pricing.css";
+import "./pricing.css";
 
 export default function PricingPage() {
   return (
