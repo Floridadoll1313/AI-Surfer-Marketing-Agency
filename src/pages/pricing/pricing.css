@@ -1,27 +1,60 @@
-import React from "react";
-import "./pricing.css";
+/* Full-page background */
+.pricing-page {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.15), transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(180, 0, 255, 0.15), transparent 60%),
+              linear-gradient(to bottom, #020617, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 80px;
+}
 
-export default function PricingPage() {
-  return (
-    <div className="pricing-page">
-      {/* Hero Section */}
-      <section className="pricing-hero">
-        <h1 className="pricing-hero-title">Choose Your Path</h1>
-        <p className="pricing-hero-subtitle">
-          Cinematic systems, automation ecosystems, and AI‑powered creative tools —
-          all aligned with your vision.
-        </p>
-      </section>
+/* Hero Section */
+.pricing-hero {
+  text-align: center;
+  padding: 80px 20px 40px;
+  max-width: 800px;
+}
 
-      {/* Stripe Pricing Table */}
-      <div className="pricing-grid">
-        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+.pricing-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
 
-        <stripe-pricing-table
-          pricing-table-id="prctbl_1TQw5yRwAZCPDqtylQB0Si0N"
-          publishable-key="pk_live_51Q2XUORwAZCPDqtydW4uiu9lb4c3lQmiD3stgOYTwouLpIZgGshtd83dt82kZl8olvhEIvJAVBTZJnCuUnCK757o00guoyHSoi"
-        ></stripe-pricing-table>
-      </div>
-    </div>
-  );
+.pricing-hero-subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Pricing Grid */
+.pricing-grid {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Fade-in animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricing-page,
+.pricing-hero,
+.pricing-grid {
+  animation: fadeUp 0.8s ease forwards;
 }
