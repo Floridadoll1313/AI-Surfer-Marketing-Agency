@@ -1,49 +1,55 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-
-// Public Pages
 import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Pricing from "./pages/Pricing";
+import Pricing from "./pages/pricing/Pricing.jsx";
+import Members from "./pages/Members";
+import NotFound from "./pages/NotFound";
+import { useAuth } from "./components/AuthProvider";
 
-// Member System
-import SubscriptionGate from "./components/SubscriptionGate";
-import MemberChat from "./pages/members/MemberChat";
-import AIStudio from "./pages/members/AIStudio";
-import AISurfer from "./pages/members/AISurfer";
-import SupabaseVault from "./pages/members/SupabaseVault";
-import MemberDirectory from "./pages/members/MemberDirectory";
-import HatterasMap from "./pages/members/HatterasMap";
-import Marketplace from "./pages/members/Marketplace";
-import News from "./pages/members/News";
-import PromptToolkit from "./pages/members/PromptToolkit";
+const App = () => {
+  const { isMember, isAdmin } = useAuth();
 
-export default function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
+        <Route path="/pricing" element={<Pricing />} />
 
-          {/* PUBLIC ROUTES */}
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/pricing" element={<Pricing />} />
+        {/* Members-only */}
+        <Route
+          path="/members"
+          element={
+            isMember ? (
+              <Members />
+            ) : (
+              <div style={{ padding: "2rem", textAlign: "center" }}>
+                <h2>You must be logged in to access this page.</h2>
+              </div>
+            )
+          }
+        />
 
-          {/* MEMBER PROTECTED ROUTES */}
-          <Route path="/chat" element={<SubscriptionGate><MemberChat /></SubscriptionGate>} />
-          <Route path="/studio" element={<SubscriptionGate><AIStudio /></SubscriptionGate>} />
-          <Route path="/ai-surfer" element={<SubscriptionGate><AISurfer /></SubscriptionGate>} />
-          <Route path="/supabase-vault" element={<SubscriptionGate><SupabaseVault /></SubscriptionGate>} />
-          <Route path="/directory" element={<SubscriptionGate><MemberDirectory /></SubscriptionGate>} />
-          <Route path="/map" element={<SubscriptionGate><HatterasMap /></SubscriptionGate>} />
-          <Route path="/marketplace" element={<SubscriptionGate><Marketplace /></SubscriptionGate>} />
-          <Route path="/news" element={<SubscriptionGate><News /></SubscriptionGate>} />
-          <Route path="/toolkit" element={<SubscriptionGate><PromptToolkit /></SubscriptionGate>} />
+        {/* Admin-only example (optional) */}
+        <Route
+          path="/admin"
+          element={
+            isAdmin ? (
+              <div style={{ padding: "2rem" }}>
+                <h1>Admin Dashboard</h1>
+              </div>
+            ) : (
+              <div style={{ padding: "2rem", textAlign: "center" }}>
+                <h2>Admins only.</h2>
+              </div>
+            )
+          }
+        />
 
-        </Routes>
-      </Layout>
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </Router>
   );
-}
+};
+
+export default App;
