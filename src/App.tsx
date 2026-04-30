@@ -1,4 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+<Router>
+  <Navbar />
+  <Routes>
+    {/* your routes */}
+  </Routes>
+</Router>import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Pricing from "./pages/pricing/Pricing.jsx";
 import Members from "./pages/Members";
