@@ -2,42 +2,53 @@ import React from "react";
 import { motion } from "motion/react";
 import { Sparkles, Zap, ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-
-      {/* Cinematic Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Cyan Glow */}
-        <div className="
-          absolute top-0 left-1/2 -translate-x-1/2 
-          w-[500px] h-[500px] md:w-[800px] md:h-[800px] 
-          bg-neon-cyan/10 blur-[180px]
-        " />
-
-        {/* Pink Glow */}
-        <div className="
-          absolute bottom-0 right-0 
-          w-[400px] h-[400px] md:w-[650px] md:h-[650px] 
-          bg-neon-pink/10 blur-[160px]
-        " />
+        <div
+          className="
+            absolute top-0 left-1/2 -translate-x-1/2
+            w-[500px] h-[500px] md:w-[800px] md:h-[800px]
+            bg-neon-cyan-10 blur-[180px]
+          "
+        />
+        <div
+          className="
+            absolute bottom-0 right-0
+            w-[400px] h-[400px] md:w-[650px] md:h-[650px]
+            bg-neon-pink-10 blur-[160px]
+          "
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
-        
-        {/* HERO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-8"
+          className="text-center space-y-10"
         >
+          <img
+            src={logo}
+            alt="Ocean Tide Drop Logo"
+            className="
+              mx-auto
+              h-24 w-auto
+              md:h-32
+              max-w-[180px]
+              object-contain
+              drop-shadow-[0_0_35px_rgba(0,255,255,0.45)]
+            "
+          />
+
           <div className="flex justify-center">
             <Sparkles className="text-neon-cyan animate-pulse" size={48} />
           </div>
 
           <h1 className="text-7xl md:text-8xl font-black italic tracking-tighter leading-[0.9]">
-            AI Surfer  
+            AI Surfer
             <br />
             <span className="text-neon-cyan drop-shadow-[0_0_25px_rgba(0,255,255,0.4)]">
               Marketing Agency
@@ -45,7 +56,7 @@ export default function Home() {
           </h1>
 
           <p className="text-slate-400 text-xl max-w-2xl mx-auto leading-relaxed">
-            Cinematic branding, automated intelligence, and neon‑ocean storytelling.  
+            Cinematic branding, automated intelligence, and neon‑ocean storytelling.
             Built for founders who want their digital presence to feel alive.
           </p>
 
@@ -66,7 +77,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* FEATURE STRIP */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -97,7 +107,6 @@ export default function Home() {
             </p>
           </div>
         </motion.div>
-
       </div>
     </div>
   );
