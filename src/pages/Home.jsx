@@ -9,8 +9,19 @@ export default function Home() {
 
       {/* Cinematic Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-neon-cyan/10 blur-[200px]" />
-        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-neon-pink/10 blur-[180px]" />
+        {/* Cyan Glow */}
+        <div className="
+          absolute top-0 left-1/2 -translate-x-1/2 
+          w-[500px] h-[500px] md:w-[800px] md:h-[800px] 
+          bg-neon-cyan/10 blur-[180px]
+        " />
+
+        {/* Pink Glow */}
+        <div className="
+          absolute bottom-0 right-0 
+          w-[400px] h-[400px] md:w-[650px] md:h-[650px] 
+          bg-neon-pink/10 blur-[160px]
+        " />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
