@@ -1,126 +1,98 @@
+/* ---------------------------------------------------------
+   PRODUCT CARD — OCEAN TIDE DROP
+   Cinematic neon surf styling for ProductCard.jsx
+---------------------------------------------------------- */
+
+/* CARD WRAPPER */
 .product-card {
-  background: rgba(10, 15, 25, 0.55);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
-  padding: 28px;
-  border: 1px solid rgba(0, 255, 255, 0.15);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-
-  opacity: 0;
-  filter: brightness(0.7);
-  transform: translateY(20px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    filter 0.8s ease,
-    box-shadow 0.8s ease;
-}
-
-.product-card.visible {
-  opacity: 1;
-  filter: brightness(1);
-  transform: translateY(0);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.25),
-              0 0 80px rgba(0, 120, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.25),
-              0 0 80px rgba(0, 120, 255, 0.15);
+  border-color: #00faff;
+  box-shadow: 0 0 25px rgba(0, 250, 255, 0.35);
+  transform: translateY(-4px);
 }
 
-/* 🔥 GLOW FRAME AROUND IMAGE */
+/* IMAGE FRAME */
 .product-image-frame {
-  position: relative;
-  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
   overflow: hidden;
-  perspective: 800px;
-}
-
-.product-image-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.8),
-    rgba(0, 120, 255, 0.8),
-    rgba(180, 0, 255, 0.8)
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0% { opacity: 0.45; }
-  50% { opacity: 1; }
-  100% { opacity: 0.45; }
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .product-image {
   width: 100%;
-  border-radius: 14px;
-  display: block;
-  transition: transform 0.4s ease;
-  transform-style: preserve-3d;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* 🌊 Parallax hover motion */
-.product-card:hover .product-image {
-  transform: translateZ(18px) scale(1.03);
-}
-
+/* TITLE */
 .product-title {
-  margin-top: 18px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #e8faff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: white;
 }
 
+/* NARRATIVE */
 .product-narrative {
-  margin-top: 10px;
-  color: #b8d7e0;
-  font-size: 0.95rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
   line-height: 1.5;
 }
 
+/* FEATURES LIST */
 .product-features {
-  margin-top: 16px;
-  color: #dffaff;
-  padding-left: 18px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #cbd5e1;
   font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
+.product-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.product-features li::before {
+  content: "•";
+  color: #00faff;
+  font-weight: bold;
+}
+
+/* BUTTON */
 .product-button {
-  margin-top: 22px;
-  width: 100%;
-  padding: 12px 0;
-  border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.4),
-    rgba(0, 120, 255, 0.4)
-  );
-  border: 1px solid rgba(0, 255, 255, 0.4);
-  color: white;
-  font-weight: 600;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  background: #00faff;
+  color: black;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.7rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
 .product-button:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.7),
-    rgba(0, 120, 255, 0.7)
-  );
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  background: white;
 }
