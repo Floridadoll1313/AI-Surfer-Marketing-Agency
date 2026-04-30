@@ -2,13 +2,13 @@ import React from "react";
 import { motion } from "motion/react";
 import { Sparkles, Zap, ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // <-- HERO LOGO IMPORT
+import logo from "../assets/logo.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
 
-      {/* Cinematic Background Glow */}
+      {/* BACKGROUND GLOWS */}
       <div className="absolute inset-0 pointer-events-none">
 
         {/* Cyan Glow */}
@@ -30,8 +30,9 @@ export default function Home() {
         />
       </div>
 
+      {/* MAIN CONTENT */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
-        
+
         {/* HERO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,13 +40,16 @@ export default function Home() {
           className="text-center space-y-10"
         >
 
-          {/* HERO LOGO — NEW */}
+          {/* HERO LOGO */}
           <img
             src={logo}
             alt="Ocean Tide Drop Logo"
             className="
-              h-24 w-auto mx-auto
+              mx-auto
+              h-24 w-auto
               md:h-32
+              max-w-[180px]
+              object-contain
               drop-shadow-[0_0_35px_rgba(0,255,255,0.45)]
             "
           />
