@@ -1,8 +1,172 @@
 {
-  "name": "OTD AI SURFER",
-  "description": "Digital Ecosystem Architect Portfolio and Member Sanctuary based on Hatteras Island, NC.",
-  "requestFramePermissions": [
-    "camera",
-    "microphone"
-  ]
+    "name": "OTD AI SURFER",
+    "description": "Digital Ecosystem Architect Portfolio and Member Sanctuary based on Hatteras Island, NC.",
+    "requestFramePermissions": [
+        "camera",
+        "microphone"
+    ],
+    "meta": {
+        "requiredExtensions": {
+            "codexEditor": "0.26.0"
+        },
+        "validationCount": 1,
+        "validationCountAudio": 1,
+        "generator": {
+            "userName": "",
+            "userEmail": ""
+        },
+        "abbreviation": ""
+    },
+    "type": {
+        "flavorType": {
+            "currentScope": {
+                "GEN": [],
+                "EXO": [],
+                "LEV": [],
+                "NUM": [],
+                "DEU": [],
+                "JOS": [],
+                "JDG": [],
+                "RUT": [],
+                "1SA": [],
+                "2SA": [],
+                "1KI": [],
+                "2KI": [],
+                "1CH": [],
+                "2CH": [],
+                "EZR": [],
+                "NEH": [],
+                "EST": [],
+                "JOB": [],
+                "PSA": [],
+                "PRO": [],
+                "ECC": [],
+                "SNG": [],
+                "ISA": [],
+                "JER": [],
+                "LAM": [],
+                "EZK": [],
+                "DAN": [],
+                "HOS": [],
+                "JOL": [],
+                "AMO": [],
+                "OBA": [],
+                "JON": [],
+                "MIC": [],
+                "NAM": [],
+                "HAB": [],
+                "ZEP": [],
+                "HAG": [],
+                "ZEC": [],
+                "MAL": [],
+                "MAT": [],
+                "MRK": [],
+                "LUK": [],
+                "JHN": [],
+                "ACT": [],
+                "ROM": [],
+                "1CO": [],
+                "2CO": [],
+                "GAL": [],
+                "EPH": [],
+                "PHP": [],
+                "COL": [],
+                "1TH": [],
+                "2TH": [],
+                "1TI": [],
+                "2TI": [],
+                "TIT": [],
+                "PHM": [],
+                "HEB": [],
+                "JAS": [],
+                "1PE": [],
+                "2PE": [],
+                "1JN": [],
+                "2JN": [],
+                "3JN": [],
+                "JUD": [],
+                "REV": []
+            },
+            "flavor": {
+                "name": "default",
+                "usfmVersion": "3.0",
+                "translationType": "unknown",
+                "audience": "general",
+                "projectType": "unknown"
+            },
+            "name": "default"
+        }
+    },
+    "projectName": "AI-Surfer-Marketing-Agency",
+    "edits": [
+        {
+            "editMap": [
+                "meta",
+                "generator"
+            ],
+            "value": {
+                "userName": "",
+                "userEmail": ""
+            },
+            "timestamp": 1777573469699,
+            "type": "user-edit",
+            "author": "unknown"
+        },
+        {
+            "editMap": [
+                "meta",
+                "validationCount"
+            ],
+            "value": 1,
+            "timestamp": 1777573469700,
+            "type": "user-edit",
+            "author": "unknown"
+        },
+        {
+            "editMap": [
+                "meta",
+                "validationCountAudio"
+            ],
+            "value": 1,
+            "timestamp": 1777573469700,
+            "type": "user-edit",
+            "author": "unknown"
+        },
+        {
+            "editMap": [
+                "meta",
+                "abbreviation"
+            ],
+            "value": "",
+            "timestamp": 1777573469700,
+            "type": "user-edit",
+            "author": "unknown"
+        },
+        {
+            "editMap": [
+                "languages"
+            ],
+            "value": [
+                null,
+                null
+            ],
+            "timestamp": 1777573469700,
+            "type": "user-edit",
+            "author": "unknown"
+        },
+        {
+            "editMap": [
+                "spellcheckIsEnabled"
+            ],
+            "value": false,
+            "timestamp": 1777573469700,
+            "type": "user-edit",
+            "author": "unknown"
+        }
+    ],
+    "languages": [
+        null,
+        null
+    ],
+    "spellcheckIsEnabled": false
 }
