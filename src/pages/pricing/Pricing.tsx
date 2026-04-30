@@ -1,31 +1,42 @@
-import React from "react";
-import ProductCard from "../../components/ProductCard";
-import { products } from "./products";
+import React from 'react';
+import { ProductCard } from '../../components/ProductCard';
 
-export default function Pricing() {
+export const Pricing: React.FC = () => {
   return (
-    <main className="min-h-screen bg-black text-white pt-32 pb-24 px-6">
-      <div className="max-w-7xl mx-auto space-y-12">
-
-        {/* HEADER */}
-        <div className="text-center space-y-4">
-          <h1 className="text-5xl md:text-6xl font-black tracking-tight">
-            Choose Your Path
-          </h1>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            Four cinematic surf‑themed tiers designed to match your momentum,
-            your ambition, and the myth you're building.
-          </p>
-        </div>
-
-        {/* PRODUCT GRID */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
-
+    <div className="min-h-screen bg-black text-white px-6 py-20">
+      {/* HERO */}
+      <div className="text-center mb-20">
+        <h1 className="text-5xl font-black uppercase italic mb-4 text-neon-cyan">
+          Choose Your Tier
+        </h1>
+        <p className="text-slate-400 uppercase tracking-[0.3em] text-xs">
+          Calibrate Your Neural Surf Engine
+        </p>
       </div>
-    </main>
+
+      {/* GRID */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+        <ProductCard
+          title="Neural Node"
+          description="Your entry into the neural field. Activate your first node."
+          slug="neural-node"
+          image="/images/neural-node.jpg"
+        />
+
+        <ProductCard
+          title="Ocean Pro"
+          description="Calibrate your oceanic resonance and unlock deeper flow."
+          slug="ocean-pro"
+          image="/images/ocean-pro.jpg"
+        />
+
+        <ProductCard
+          title="Founders Realm"
+          description="Enter the inner sanctum. Reserved for realmwalkers only."
+          slug="founders-realm"
+          image="/images/founders-realm.jpg"
+        />
+      </div>
+    </div>
   );
-}
+};
