@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { Sparkles, Zap, ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png"; // <-- HERO LOGO IMPORT
 
 export default function Home() {
   return (
@@ -35,8 +36,20 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-8"
+          className="text-center space-y-10"
         >
+
+          {/* HERO LOGO — NEW */}
+          <img
+            src={logo}
+            alt="Ocean Tide Drop Logo"
+            className="
+              h-24 w-auto mx-auto
+              md:h-32
+              drop-shadow-[0_0_35px_rgba(0,255,255,0.45)]
+            "
+          />
+
           <div className="flex justify-center">
             <Sparkles className="text-neon-cyan animate-pulse" size={48} />
           </div>
