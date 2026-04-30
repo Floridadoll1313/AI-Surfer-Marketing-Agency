@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "motion/react";
 import { Sparkles, Zap, ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // <-- REQUIRED to prevent Vite fallback
 
 export default function Home() {
   return (
@@ -16,9 +15,8 @@ export default function Home() {
           className="
             absolute top-0 left-1/2 -translate-x-1/2
             w-[500px] h-[500px] md:w-[800px] md:h-[800px]
-            bg-neon-cyan/10 blur-[180px]
+            bg-neon-cyan-10 blur-[180px]
           "
-          style={{ backgroundImage: "none" }} // <-- prevents image fallback
         />
 
         {/* Pink Glow */}
@@ -26,9 +24,8 @@ export default function Home() {
           className="
             absolute bottom-0 right-0
             w-[400px] h-[400px] md:w-[650px] md:h-[650px]
-            bg-neon-pink/10 blur-[160px]
+            bg-neon-pink-10 blur-[160px]
           "
-          style={{ backgroundImage: "none" }} // <-- prevents image fallback
         />
       </div>
 
