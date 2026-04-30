@@ -2,7 +2,7 @@ import React from 'react';
 import { ProductCard } from '../../components/ProductCard';
 import { motion } from 'framer-motion';
 
-export const Pricing: React.FC = () => {
+const Pricing: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white px-6 py-20 relative overflow-hidden">
 
@@ -94,3 +94,5 @@ export const Pricing: React.FC = () => {
     </div>
   );
 };
+
+export default Pricing;
