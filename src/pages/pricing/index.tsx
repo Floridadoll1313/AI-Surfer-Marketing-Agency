@@ -7,7 +7,7 @@ export const PricingOverview = () => {
   const tiers = [
     {
       name: "Starter Swell",
-      price: "17",
+      price: "$149",
       desc: "Perfect for testing the waters with AI automation.",
       features: ["Basic Chatbot", "3 Automation Workflows", "Email Support", "Community Access"],
       icon: Waves,
@@ -15,72 +15,76 @@ export const PricingOverview = () => {
     },
     {
       name: "Velocity Pro",
-      price: "249",
+      price: "$249",
       desc: "High-speed solutions for growing digital presence.",
-      features: ["Advanced AI Agents", "Unlimited Workflows", "Priority Neural Link", "Custom Integration"],
+      features: ["Advanced AI Agents", "Unlimited Workflows", "Priority Neural Link", "Custom Integrations"],
       icon: Zap,
       color: "text-neon-cyan",
       popular: true
     },
     {
       name: "Elite Drop",
-      price: "349",
+      price: "$349",
       desc: "Full-scale enterprise digital transformation.",
-      features: ["White-label Solutions", "Dedicated AI Architect", "24/7 Priority Sync", "Early Feature Access"],
+      features: ["White-label Solutions", "Dedicated AI Architect", "24/7 Priority Sync", "Early Access to New Features"],
       icon: Crown,
       color: "text-neon-pink"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-4">
-      <div className="max-w-7xl mx-auto text-center mb-20">
-        <h1 className="text-6xl md:text-8xl font-black italic uppercase tracking-tighter mb-4">
-          The <span className="text-neon-cyan">Pricing</span>
-        </h1>
-        <p className="text-slate-500 font-medium tracking-widest uppercase text-xs">Choose Your Entry Velocity</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-black via-slate-900 to-slate-950 text-white flex flex-col items-center justify-center py-20 px-6">
+      <motion.h1
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-5xl font-bold mb-10 text-center neon-text"
+      >
+        Choose Your Wave
+      </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {tiers.map((tier, i) => (
+      <div className="grid md:grid-cols-3 gap-10 w-full max-w-6xl">
+        {tiers.map((tier, index) => (
           <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className={`glass-card p-10 rounded-[3rem] border ${tier.popular ? 'border-neon-cyan/50 bg-white/10' : 'border-white/10 bg-white/5'} relative flex flex-col`}
+            transition={{ delay: index * 0.2, duration: 0.6 }}
+            className={`relative rounded-2xl p-8 backdrop-blur-md bg-white/5 border border-slate-700 hover:border-neon-cyan transition-all duration-300 shadow-lg hover:shadow-neon-cyan/50`}
           >
-            {tier.popular && (
-              <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neon-cyan text-black text-[10px] font-black uppercase px-4 py-1 rounded-full tracking-widest">
-                Most Popular
-              </span>
-            )}
-            <tier.icon className={`mb-6 ${tier.color}`} size={40} />
-            <h3 className="text-2xl font-black uppercase italic mb-2">{tier.name}</h3>
-            <div className="mb-6">
-              <span className="text-5xl font-black italic">${tier.price}</span>
-              <span className="text-slate-500 text-xs uppercase tracking-widest ml-2">/ month</span>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className={`text-2xl font-semibold ${tier.color}`}>{tier.name}</h2>
+              <tier.icon className={`w-8 h-8 ${tier.color}`} />
             </div>
-            <p className="text-slate-400 text-sm mb-8 font-medium">{tier.desc}</p>
-            
-            <ul className="space-y-4 mb-10 flex-1">
-              {tier.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-xs font-bold uppercase tracking-wide">
-                  <Check size={14} className="text-neon-green" />
-                  {feature}
+
+            <p className="text-slate-300 mb-6">{tier.desc}</p>
+            <p className="text-4xl font-bold mb-6">{tier.price}</p>
+
+            <ul className="space-y-3 mb-8">
+              {tier.features.map((feature, i) => (
+                <li key={i} className="flex items-center text-slate-200">
+                  <Check className="w-5 h-5 text-neon-cyan mr-2" /> {feature}
                 </li>
               ))}
             </ul>
 
             <Link
-              to={`/pricing/${tier.name.toLowerCase().replace(' ', '-')}`}
-              className={`w-full py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest transition-all text-center ${tier.popular ? 'bg-neon-cyan text-black hover:bg-white' : 'bg-white/10 text-white hover:bg-white hover:text-black'}`}
+              to={`/pricing/${tier.name.toLowerCase().replace(/\s+/g, '-')}`}
+              className="block text-center py-3 rounded-xl bg-neon-cyan text-black font-semibold hover:bg-neon-pink transition-all duration-300"
             >
-              Initialize Plan
+              Ride This Wave
             </Link>
+
+            {tier.popular && (
+              <div className="absolute top-4 right-4 bg-neon-cyan text-black text-xs font-bold px-3 py-1 rounded-full">
+                Popular
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
     </div>
   );
 };
+
+export default PricingOverview;
