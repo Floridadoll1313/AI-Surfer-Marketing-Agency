@@ -1,17 +1,17 @@
 import React from 'react';
-import ProductCard from '../../components/ProductCard';
+import { ProductCard } from '../../components/ProductCard'; // ✅ use named import if ProductCard.tsx uses named export
 import { motion } from 'framer-motion';
+import '../../components/product-card.css'; // ✅ ensure correct CSS filename with dash
 
 const Pricing: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white px-6 py-20 relative overflow-hidden">
-
       {/* NEON OCEAN AURA */}
       <motion.div
         className="absolute inset-0 opacity-40 blur-[140px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 50% 20%, rgba(0,255,255,0.35), transparent 70%)",
+            'radial-gradient(circle at 50% 20%, rgba(0,255,255,0.35), transparent 70%)',
         }}
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 10, repeat: Infinity }}
@@ -40,19 +40,12 @@ const Pricing: React.FC = () => {
         variants={{
           hidden: {},
           visible: {
-            transition: {
-              staggerChildren: 0.25,
-            },
+            transition: { staggerChildren: 0.25 },
           },
         }}
       >
         {/* CARD 1 */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
           <ProductCard
             title="Neural Node"
             description="Your entry into the neural field. Activate your first node."
@@ -62,12 +55,7 @@ const Pricing: React.FC = () => {
         </motion.div>
 
         {/* CARD 2 */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
           <ProductCard
             title="Ocean Pro"
             description="Calibrate your oceanic resonance and unlock deeper flow."
@@ -77,12 +65,7 @@ const Pricing: React.FC = () => {
         </motion.div>
 
         {/* CARD 3 */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
           <ProductCard
             title="Founders Realm"
             description="Enter the inner sanctum. Reserved for realmwalkers only."
