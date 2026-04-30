@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png"; // ✅ Correct path for components folder
+import logo from "../assets/logo.png"; // Correct path
 
 export default function Navbar() {
   return (
@@ -12,7 +12,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Ocean Tide Drop Logo"
-            className="h-12 w-auto drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]"
+            className="h-12 md:h-14 w-auto drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]"
           />
           <span className="text-white font-black tracking-widest text-lg">
             OCEAN TIDE DROP
