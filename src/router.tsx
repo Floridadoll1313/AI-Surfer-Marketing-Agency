@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Members from "./pages/Members";
 import JoinCollective from "./pages/JoinCollective";
-import Pricing from "./pages/Pricing";
+import Pricing from "./pages/pricing/Pricing";
 import Dashboard from "./pages/Dashboard";
 import Lore from "./pages/Lore";
 import Marketplace from "./pages/Marketplace";
