@@ -1,37 +1,79 @@
-/* PRICING PAGE — OCEAN TIDE DROP */
+import React from 'react';
+import { ProductCard } from '../../components/ProductCard'; // ✅ named import if ProductCard.tsx uses named export
+import { motion } from 'framer-motion';
+import './pricing.css'; // ✅ this matches your actual filename
 
-.pricing-title {
-  @apply text-5xl md:text-6xl font-black tracking-tight text-center;
-}
+const Pricing: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-black text-white px-6 py-20 relative overflow-hidden">
+      {/* NEON OCEAN AURA */}
+      <motion.div
+        className="absolute inset-0 opacity-40 blur-[140px] pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 20%, rgba(0,255,255,0.35), transparent 70%)',
+        }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
 
-.pricing-subtitle {
-  @apply text-slate-400 text-lg max-w-2xl mx-auto text-center;
-}
+      {/* HERO */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-center mb-20 relative z-10"
+      >
+        <h1 className="pricing-title text-neon-cyan drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]">
+          Choose Your Tier
+        </h1>
+        <p className="pricing-subtitle uppercase tracking-[0.3em] text-xs">
+          Calibrate Your Neural Surf Engine
+        </p>
+      </motion.div>
 
-.pricing-grid {
-  @apply grid gap-10 md:grid-cols-2 lg:grid-cols-4 mt-16;
-}
+      {/* GRID WITH STAGGERED ANIMATION */}
+      <motion.div
+        className="pricing-grid max-w-6xl mx-auto relative z-10"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.25 } },
+        }}
+      >
+        {/* CARD 1 */}
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+          <ProductCard
+            title="Neural Node"
+            description="Your entry into the neural field. Activate your first node."
+            slug="neural-node"
+            image="/images/neural-node.jpg"
+          />
+        </motion.div>
 
-.pricing-card {
-  @apply glass-card p-8 rounded-3xl border border-white/10 flex flex-col gap-4 hover:border-neon-cyan transition-all;
-}
+        {/* CARD 2 */}
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+          <ProductCard
+            title="Ocean Pro"
+            description="Calibrate your oceanic resonance and unlock deeper flow."
+            slug="ocean-pro"
+            image="/images/ocean-pro.jpg"
+          />
+        </motion.div>
 
-.pricing-tag {
-  @apply text-xs uppercase tracking-[0.25em] text-slate-400;
-}
+        {/* CARD 3 */}
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+          <ProductCard
+            title="Founders Realm"
+            description="Enter the inner sanctum. Reserved for realmwalkers only."
+            slug="founders-realm"
+            image="/images/founders-realm.jpg"
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
 
-.pricing-name {
-  @apply text-2xl font-bold;
-}
-
-.pricing-price {
-  @apply text-3xl font-black;
-}
-
-.pricing-description {
-  @apply text-sm text-slate-400 leading-relaxed;
-}
-
-.pricing-button {
-  @apply mt-4 py-3 rounded-full bg-neon-cyan text-black font-bold uppercase tracking-[0.25em] text-xs hover:bg-white transition;
-}
+export default Pricing;
