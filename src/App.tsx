@@ -1,22 +1,18 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Pricing from "./pages/pricing/Pricing";
+import Members from "./pages/Members";
+import NotFound from "./pages/notfound/NotFound";
+import { useAuth } from "./components/AuthProvider";
 import Navbar from "./components/Navbar";
 
-<Router>
-  <Navbar />
-  <Routes>
-    {/* your routes */}
-  </Routes>
-</Router>import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Pricing from "./pages/pricing/Pricing.jsx";
-import Members from "./pages/Members";
-import NotFound from "./pages/notfound/NotFound.jsx";
-import { useAuth } from "./components/AuthProvider";
-
-const App = () => {
+export default function App() {
   const { isMember, isAdmin } = useAuth();
 
   return (
     <Router>
+      <Navbar />
+
       <Routes>
         {/* Public */}
         <Route path="/" element={<Home />} />
@@ -57,6 +53,4 @@ const App = () => {
       </Routes>
     </Router>
   );
-};
-
-export default App;
+}
