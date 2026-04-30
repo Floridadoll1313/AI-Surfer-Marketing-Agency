@@ -1,60 +1,37 @@
-/* Full-page background */
-.pricing-page {
-  min-height: 100vh;
-  width: 100%;
-  background: radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.15), transparent 60%),
-              radial-gradient(circle at 80% 80%, rgba(180, 0, 255, 0.15), transparent 60%),
-              linear-gradient(to bottom, #020617, #000);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 80px;
+/* PRICING PAGE — OCEAN TIDE DROP */
+
+.pricing-title {
+  @apply text-5xl md:text-6xl font-black tracking-tight text-center;
 }
 
-/* Hero Section */
-.pricing-hero {
-  text-align: center;
-  padding: 80px 20px 40px;
-  max-width: 800px;
+.pricing-subtitle {
+  @apply text-slate-400 text-lg max-w-2xl mx-auto text-center;
 }
 
-.pricing-hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-}
-
-.pricing-hero-subtitle {
-  font-size: 1.25rem;
-  color: #cbd5e1;
-  margin-top: 20px;
-  line-height: 1.6;
-}
-
-/* Pricing Grid */
 .pricing-grid {
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+  @apply grid gap-10 md:grid-cols-2 lg:grid-cols-4 mt-16;
 }
 
-/* Fade-in animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.pricing-card {
+  @apply glass-card p-8 rounded-3xl border border-white/10 flex flex-col gap-4 hover:border-neon-cyan transition-all;
 }
 
-.pricing-page,
-.pricing-hero,
-.pricing-grid {
-  animation: fadeUp 0.8s ease forwards;
+.pricing-tag {
+  @apply text-xs uppercase tracking-[0.25em] text-slate-400;
+}
+
+.pricing-name {
+  @apply text-2xl font-bold;
+}
+
+.pricing-price {
+  @apply text-3xl font-black;
+}
+
+.pricing-description {
+  @apply text-sm text-slate-400 leading-relaxed;
+}
+
+.pricing-button {
+  @apply mt-4 py-3 rounded-full bg-neon-cyan text-black font-bold uppercase tracking-[0.25em] text-xs hover:bg-white transition;
 }
