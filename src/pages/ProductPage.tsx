@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 
-// -------------------------------
-// TIER METADATA (CINEMATIC)
-// -------------------------------
+// ---------------------------------------------
+// TIER METADATA (CINEMATIC THEMES)
+// ---------------------------------------------
 const TIERS: Record<
   string,
   {
     title: string;
     color: string;
-    description: string;
     glow: string;
+    description: string;
   }
 > = {
   "neural-node": {
@@ -35,9 +35,9 @@ const TIERS: Record<
   },
 };
 
-// -------------------------------
-// PARTICLE GENERATOR
-// -------------------------------
+// ---------------------------------------------
+// PARTICLE FIELD
+// ---------------------------------------------
 const particles = Array.from({ length: 24 }, () => ({
   x: Math.random() * 100,
   y: Math.random() * 100,
@@ -45,30 +45,32 @@ const particles = Array.from({ length: 24 }, () => ({
   delay: Math.random() * 4,
 }));
 
-// -------------------------------
+// ---------------------------------------------
 // MAIN COMPONENT
-// -------------------------------
+// ---------------------------------------------
 export const ProductPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
 
   const tier = slug && TIERS[slug] ? TIERS[slug] : TIERS["neural-node"];
 
-  // OPTIONAL: Auto‑redirect after activation
-  // ----------------------------------------
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     navigate(`/members`);
-  //   }, 3500);
-  //   return () => clearTimeout(timer);
-  // }, [navigate]);
+  // Activation reveal state
+  const [activated, setActivated] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setActivated(true);
+    }, 3000); // 3-second activation ritual
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden flex items-center justify-center p-4">
 
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       {/* NEON OCEAN AURA BACKGROUND */}
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       <motion.div
         className="absolute inset-0 opacity-40 blur-[120px]"
         style={{
@@ -79,9 +81,9 @@ export const ProductPage: React.FC = () => {
         transition={{ duration: 8, repeat: Infinity }}
       />
 
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       {/* PARTICLE DRIFT LAYER */}
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       <div className="absolute inset-0 pointer-events-none">
         {particles.map((p, i) => (
           <motion.div
@@ -106,9 +108,9 @@ export const ProductPage: React.FC = () => {
         ))}
       </div>
 
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       {/* GLASS ACTIVATION CARD */}
-      {/* ------------------------------- */}
+      {/* --------------------------------------------- */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -153,6 +155,67 @@ export const ProductPage: React.FC = () => {
           <ArrowLeft size={14} /> Back to Tiers
         </Link>
       </motion.div>
+
+      {/* --------------------------------------------- */}
+      {/* ACTIVATION COMPLETE REVEAL OVERLAY */}
+      {/* --------------------------------------------- */}
+      {activated && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-xl"
+        >
+          <motion.div
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="text-center"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className={`text-5xl font-black uppercase tracking-widest mb-6 ${tier.color}`}
+            >
+              Activation Complete
+            </motion.div>
+
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className={`mx-auto w-32 h-32 rounded-full border-4 ${tier.color.replace(
+                'text-',
+                'border-'
+              )} ${tier.glow}`}
+            />
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4 }}
+              className="mt-8 text-slate-300 uppercase text-xs tracking-[0.3em]"
+            >
+              Welcome to the {tier.title}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2 }}
+              className="mt-10"
+            >
+              <Link
+                to="/members"
+                className="px-8 py-3 rounded-full bg-white/10 border border-white/20 text-white uppercase tracking-widest text-xs hover:bg-white/20 transition"
+              >
+                Enter Realm
+              </Link>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
