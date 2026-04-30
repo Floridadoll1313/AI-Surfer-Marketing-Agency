@@ -24,13 +24,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       )}
 
       <div className="product-card-title">{title}</div>
-
       <div className="product-card-desc">{description}</div>
 
       <Link to={`/product/${slug}`}>
-        <button className="product-card-button">
-          Activate
-        </button>
+        <button className="product-card-button">Activate</button>
       </Link>
     </div>
   );
