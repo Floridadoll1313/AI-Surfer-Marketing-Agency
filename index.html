@@ -2,24 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><div className="min-h-screen bg-black text-white py-24 px-4">
-  <div className="max-w-7xl mx-auto px-6">
-    {/* your content */}
-  </div>
-</div>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ocean Tide Drop AI Surfer</title>
 
-    <!-- Favicon -->
- <img
-  src="/logo.png"
-  alt="Ocean Tide Drop Logo"
-  className="w-32 md:w-40 lg:w-48 max-w-full h-auto mx-auto block"
-/>
-
-
-    <!-- Preload the cinematic background so the site never flashes white -->
+    <!-- Global Background + Fade-In -->
     <style>
       html, body {
         margin: 0;
@@ -30,24 +16,23 @@
         color: white;
       }
 
-      /* Smooth fade-in for the entire app */
       #root {
         opacity: 0;
         animation: fadeIn 1.2s ease forwards;
       }
 
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
     </style>
   </head>
 
   <body>
-    <!-- React Root -->
+    <!-- React mounts here -->
     <div id="root"></div>
 
-    <!-- Vite Entry -->
+    <!-- Vite entry point -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
