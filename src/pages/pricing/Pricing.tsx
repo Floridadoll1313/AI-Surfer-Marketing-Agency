@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductCard } from '../../components/ProductCard'; // ✅ use named import if ProductCard.tsx uses named export
+import ProductCard from '../../components/ProductCard'; // ✅ FIXED — default import
 import { motion } from 'framer-motion';
-import '../../components/product-card.css'; // ✅ ensure correct CSS filename with dash
+import '../../components/product-card.css';
 
 const Pricing: React.FC = () => {
   return (
