@@ -2,58 +2,35 @@ import React from "react";
 import { motion } from "motion/react";
 import { Sparkles, Zap, ArrowRight, Waves } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
 
-      {/* BACKGROUND GLOWS */}
+      {/* Cinematic Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
-
-        {/* Cyan Glow */}
-        <div
-          className="
-            absolute top-0 left-1/2 -translate-x-1/2
-            w-[500px] h-[500px] md:w-[800px] md:h-[800px]
-            bg-neon-cyan-10 blur-[180px]
-          "
-        />
-
-        {/* Pink Glow */}
-        <div
-          className="
-            absolute bottom-0 right-0
-            w-[400px] h-[400px] md:w-[650px] md:h-[650px]
-            bg-neon-pink-10 blur-[160px]
-          "
-        />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-neon-cyan/10 blur-[200px]" />
+        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-neon-pink/10 blur-[180px]" />
       </div>
 
-      {/* MAIN CONTENT */}
+      {/* CENTERING WRAPPER — this is what fixes your layout */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-24">
+
+        {/* LOGO — properly sized + centered */}
+        <div className="flex justify-center mb-12">
+          <img
+            src="/logo.png"
+            alt="Ocean Tide Drop Logo"
+            className="w-32 md:w-40 lg:w-48 max-w-full h-auto mx-auto block"
+          />
+        </div>
 
         {/* HERO */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center space-y-10"
+          className="text-center space-y-8"
         >
-
-          {/* HERO LOGO */}
-          <img
-            src={logo}
-            alt="Ocean Tide Drop Logo"
-            className="
-              mx-auto
-              h-24 w-auto
-              md:h-32
-              max-w-[180px]
-              object-contain
-              drop-shadow-[0_0_35px_rgba(0,255,255,0.45)]
-            "
-          />
-
           <div className="flex justify-center">
             <Sparkles className="text-neon-cyan animate-pulse" size={48} />
           </div>
