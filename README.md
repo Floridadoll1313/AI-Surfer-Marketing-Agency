@@ -1,20 +1,35 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🌊 Ocean Tide Drop AI Surfer — MCP Skill Pack
 
-# Run and deploy your AI Studio app
+A cinematic, glowing, mythic MCP skill pack that exposes the powers of the
+Ocean Tide Drop AI Surfer to any MCP-enabled application.
 
-This contains everything you need to run your app locally.
+## Tools Included
 
-View your app in AI Studio: https://ai.studio/apps/baeb31b1-d9e5-4973-9505-7bd0f6ce3139
+### 1. generateBranding
+Create cinematic surf-mythic brand copy.
 
-## Run Locally
+### 2. createLore
+Summon deep-water lore for characters, artifacts, and locations.
 
-**Prerequisites:**  Node.js
+### 3. summonWaveCopy
+Produce short-form surf-energy UI microcopy.
 
+### 4. saveToSupabase
+Persist generated content to Supabase.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 5. createStripeCheckout
+Generate Stripe Checkout sessions for surf-tier packages.
+
+## Installation
+
+Drop `.mcp.json` into your MCP client configuration:
+
+```json
+{
+  "mcpServers": {
+    "ocean-tide-drop-ai-surfer": {
+      "type": "http",
+      "url": "https://api.oceantidedrop.com/mcp"
+    }
+  }
+}
