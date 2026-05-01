@@ -1,0 +1,12 @@
+{
+  "name": "saveToSupabase",
+  "description": "Save generated content to Supabase for persistence and analytics.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "table": { "type": "string" },
+      "payload": { "type": "object" }
+    },
+    "required": ["table", "payload"]
+  }
+}
