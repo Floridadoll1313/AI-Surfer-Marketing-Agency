@@ -1,21 +1,30 @@
 import React from "react";
+import Logo from "../components/Logo";
 
 export default function Members() {
   return (
-    <main className="min-h-screen bg-black text-white pt-28 pb-24 px-6">
-      <div className="max-w-4xl mx-auto space-y-8">
-        <h1 className="text-4xl md:text-5xl font-black tracking-tight">
-          Members Collective
+    <div className="min-h-screen bg-black text-white py-24 px-4">
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* HERO */}
+        <h1 className="text-6xl font-black italic tracking-tighter text-center mb-4">
+          Members
         </h1>
-        <p className="text-slate-400 max-w-2xl">
-          A private archipelago of founders, artists, and operators building
-          luminous, weird, unforgettable brands together.
+        <p className="text-slate-400 text-center max-w-xl mx-auto">
+          Access exclusive tools, intelligence, and the Collective ecosystem.
         </p>
-        <p className="text-slate-400">
-          This is where experiments ship first, tools drop early, and stories
-          get pressure‑tested before they hit the wider ocean.
+
+        {/* LOGO BELOW HERO */}
+        <div className="mt-8 mb-16">
+          <Logo />
+        </div>
+
+        {/* CONTENT */}
+        <p className="text-center text-slate-500">
+          Member‑exclusive content coming online soon.
         </p>
+
       </div>
-    </main>
+    </div>
   );
 }
