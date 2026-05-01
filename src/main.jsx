@@ -1,4 +1,5 @@
-import NavBar from "../components/NavBar";
+import NavBar from "./components/NavBar";
+
 
 import React from "react";
 import ReactDOM from "react-dom/client";
