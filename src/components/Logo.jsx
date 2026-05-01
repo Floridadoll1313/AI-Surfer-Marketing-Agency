@@ -1,10 +1,5 @@
-export default function Logo({ size = 48 }) {
-  return (
-    <img
-      src="/logo.png"
-      alt="Ocean Tide Drop Logo"
-      style={{ height: size, width: size }}
-      className="drop-shadow-[0_0_12px_#00eaff]"
-    />
-  );
-}
+<img 
+  src="/logo.png"
+  alt="Ocean Tide Drop Logo"
+  className="w-32 md:w-40 lg:w-48 max-w-full h-auto mx-auto"
+/>
