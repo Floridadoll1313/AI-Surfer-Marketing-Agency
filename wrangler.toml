@@ -1,7 +1,0 @@
-name = "ai-surfer-marketing-agency"
-compatibility_date = "2024-09-01"
-pages_build_output_dir = "dist"
-
-[vars]
-VITE_SUPABASE_URL = "https://cctobgbyxjfabksnokbe.supabase.co"
-VITE_SUPABASE_ANON_KEY = "sb_publishable_MMlDjds0mfsZR4_0pjaUVw_bBqm_BJt"
