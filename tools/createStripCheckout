@@ -1,0 +1,15 @@
+{
+  "name": "createStripeCheckout",
+  "description": "Create a Stripe Checkout session for Ocean Tide Drop surf-tier packages.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "tier": {
+        "type": "string",
+        "enum": ["Dawn Patrol", "Breakline", "Hatteras Island", "Cape Point"]
+      },
+      "customer_email": { "type": "string" }
+    },
+    "required": ["tier"]
+  }
+}
