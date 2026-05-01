@@ -6,24 +6,27 @@
 
     <title>Ocean Tide Drop AI Surfer</title>
 
-    <!-- Favicon / Logo -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
 
-    <!-- Neon Ocean Glow -->
+    <!-- Global Neon Background (keeps the cinematic ocean look before React loads) -->
     <style>
       body {
         background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
         margin: 0;
         padding: 0;
         overflow-x: hidden;
+        font-family: 'Inter', sans-serif;
+        color: white;
       }
     </style>
   </head>
 
   <body>
+    <!-- React Root -->
     <div id="root"></div>
 
-    <!-- Vite React Entry -->
+    <!-- Vite Entry -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
