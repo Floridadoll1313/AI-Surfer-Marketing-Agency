@@ -1,3 +1,6 @@
+It creates a Supabase user server‑side, using the service role key.
+
+`js
 export async function onRequestPost(context) {
   const { request, env } = context;
 
@@ -11,13 +14,12 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Supabase Admin API endpoint for creating users
-    const url = `${env.VITE_SUPABASE_URL}/auth/v1/admin/users`;
+    const url = ${env.VITESUPABASEURL}/auth/v1/admin/users;
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
+        Authorization: Bearer ${env.SUPABASESERVICEROLE_KEY},
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -48,3 +50,4 @@ export async function onRequestPost(context) {
     );
   }
 }
+`
