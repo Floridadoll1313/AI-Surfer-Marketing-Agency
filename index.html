@@ -1,16 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Surfer Marketing Agency</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
-  </head>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ocean Tide Drop AI Surfer — MCP Server</title>
 
-  <body class="bg-black text-white">
-    <div id="root"></div>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at 50% 20%, #0a1f2e, #02070b 70%);
+    font-family: "Inter", sans-serif;
+    color: #e8faff;
+    overflow-x: hidden;
+  }
 
-    <!-- Vite React Entry -->
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #4fd1ff, #7afcff, #b8faff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 4s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% { filter: drop-shadow(0 0 12px #4fd1ff); }
+    50% { filter: drop-shadow(0 0 22px #7afcff); }
+  }
+
+  .hero p {
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 20px auto 40px;
+    opacity: 0.85;
+  }
+
+  .cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(90deg, #4fd1ff, #7afcff);
+    color: #00141f;
+    border-radius: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px #7afcff;
+  }
+
+  /* Animated Waves */
+  .waves {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 220px;
+    background: url('https://raw.githubusercontent.com/Floridadoll1313/assets/main/wave-layer.png');
+    background-size: cover;
+    animation: waveMove 12s linear infinite;
+    opacity: 0.35;
+  }
+
+  @keyframes waveMove {
+    from { background-position-x: 0; }
+    to { background-position-x: 1000px; }
+  }
+
+  /* Content Sections */
+  section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #7afcff, #b8faff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .tool {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(122, 252, 255, 0.15);
+  }
+
+  code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    display: block;
+    border-radius: 8px;
+    margin-top: 10px;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+  <h1>Ride the First Light of the MCP Era</h1>
+  <p>The Ocean Tide Drop AI Surfer MCP Server brings cinematic surf‑mythic energy directly into any MCP‑enabled app — Cursor, Claude Desktop, and beyond.</p>
+  <a class="cta" href="#connect">Connect to the Surfer</a>
+  <div class="waves"></div>
+</div>
+
+<section>
+  <h2>Included Tools</h2>
+
+  <div class="tool">
+    <strong>generateBranding</strong>
+    <p>Create cinematic surf‑mythic brand copy.</p>
+  </div>
+
+  <div class="tool">
+    <strong>createLore</strong>
+    <p>Summon deep‑water legends for characters, artifacts, and worlds.</p>
+  </div>
+
+  <div class="tool">
+    <strong>summonWaveCopy</strong>
+    <p>Produce short‑form UI microcopy with tidal momentum.</p>
+  </div>
+
+  <div class="tool">
+    <strong>saveToSupabase</strong>
+    <p>Persist generated content into Supabase.</p>
+  </div>
+
+  <div class="tool">
+    <strong>createStripeCheckout</strong>
+    <p>Generate Stripe Checkout sessions for surf‑tier packages.</p>
+  </div>
+</section>
+
+<section id="connect">
+  <h2>Connect to the MCP Server</h2>
+  <p>Add this to your MCP client configuration:</p>
+
+  <code>
+{
+  "mcpServers": {
+    "ocean-tide-drop-ai-surfer": {
+      "type": "http",
+      "url": "https://api.oceantidedrop.com/mcp"
+    }
+  }
+}
+  </code>
+</section>
+
+</body>
 </html>
