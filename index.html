@@ -9,15 +9,26 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
 
-    <!-- Global Neon Background (keeps the cinematic ocean look before React loads) -->
+    <!-- Preload the cinematic background so the site never flashes white -->
     <style>
-      body {
-        background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
+      html, body {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
         font-family: 'Inter', sans-serif;
+        background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
         color: white;
+      }
+
+      /* Smooth fade-in for the entire app */
+      #root {
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
       }
     </style>
   </head>
