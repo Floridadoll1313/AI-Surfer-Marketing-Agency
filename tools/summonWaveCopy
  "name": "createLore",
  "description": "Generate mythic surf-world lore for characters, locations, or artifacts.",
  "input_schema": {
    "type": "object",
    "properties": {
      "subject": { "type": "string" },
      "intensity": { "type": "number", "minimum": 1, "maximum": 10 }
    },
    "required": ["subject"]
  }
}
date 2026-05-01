@@ -1,0 +1,12 @@
+{
+  "name": "summonWaveCopy",
+  "description": "Produce short-form surf-energy microcopy for UI, taglines, and buttons.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "vibe": { "type": "string" },
+      "length": { "type": "string", "enum": ["short", "medium", "long"] }
+    },
+    "required": ["vibe"]
+  }
+}
