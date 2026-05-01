@@ -1,0 +1,15 @@
+{
+  "name": "generateBranding",
+  "description": "Generate cinematic, glowing, mythic brand copy for the Ocean Tide Drop universe.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "prompt": { "type": "string" },
+      "tone": {
+        "type": "string",
+        "enum": ["cinematic", "mythic", "glowing", "playful", "technical"]
+      }
+    },
+    "required": ["prompt"]
+  }
+}
