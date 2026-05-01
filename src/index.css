@@ -1,21 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Neon Ocean Glow */
+html, body {
+  background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
 
-/* NEON BRAND COLORS */
-.text-neon-cyan { color: #00faff; }
-.text-neon-pink { color: #ff4dff; }
-.text-neon-green { color: #4dff88; }
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-.bg-neon-cyan { background-color: #00faff; }
-.bg-neon-pink { background-color: #ff4dff; }
+::-webkit-scrollbar-thumb {
+  background: #00eaff;
+  border-radius: 10px;
+}
 
-.bg-neon-cyan-10 { background-color: rgba(0, 250, 255, 0.10); }
-.bg-neon-pink-10 { background-color: rgba(255, 77, 255, 0.10); }
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+::-webkit-scrollbar-track {
+  background: #00141c;
 }
