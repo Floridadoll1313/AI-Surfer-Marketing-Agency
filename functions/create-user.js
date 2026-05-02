@@ -1,4 +1,4 @@
-It creates a Supabase user server‑side, using the service role key.
+
 
 `js
 export async function onRequestPost(context) {
