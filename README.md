@@ -1,4 +1,4 @@
-# 🌊 Ocean Tide Drop AI Surfer — MCP Skill Pack
+# 🌊 Ocean Tide Drop AI Surfer — MCP Skill Pack 
 
 A cinematic, glowing, mythic MCP skill pack that exposes the powers of the
 Ocean Tide Drop AI Surfer to any MCP-enabled application.
