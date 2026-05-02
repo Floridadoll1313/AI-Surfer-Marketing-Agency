@@ -1,4 +1,4 @@
-// functions/admin/stats.ts
+// admin_functions/admin/stats.ts
 import { createClient } from '@supabase/supabase-js';
 
 export interface Env {
