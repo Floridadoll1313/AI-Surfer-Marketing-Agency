@@ -1,36 +1,43 @@
-<img
-  src="/logo.png"
-  alt="Ocean Tide Drop Logo"
-  className="w-32 md:w-40 lg:w-48 max-w-full h-auto mx-auto block"
-/>
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AdminDashboard from "./components/AdminDashboard";
 
-<Route path="/admin" element={<AdminDashboard />} />
+import Header from "./components/Header";
 
+// Core Pages
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Members from "./pages/Members";
+
+// Feature Pages
 import Marketplace from "./pages/Marketplace";
 import News from "./pages/News";
 import Memorial from "./pages/Memorial";
 import JoinCollective from "./pages/JoinCollective";
+
+// System Pages
 import Dashboard from "./pages/Dashboard";
 import Success from "./pages/Success";
 import ThankYou from "./pages/thank-you";
+
+// Pricing
 import PricingIndex from "./pages/pricing/index";
 import PricingDetail from "./pages/pricing/[slug]";
+
+// Worldbuilding
 import ArchipelagoMap from "./pages/ArchipelagoMap";
 import Lore from "./pages/Lore";
+
+// Admin
+import AdminDashboard from "./components/AdminDashboard";
 
 export default function App() {
   return (
     <Router>
-      <Routes>
+      {/* Global Header with Logo + Nav */}
+      <Header />
 
+      <Routes>
         {/* Core Pages */}
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -56,6 +63,8 @@ export default function App() {
         <Route path="/map" element={<ArchipelagoMap />} />
         <Route path="/lore" element={<Lore />} />
 
+        {/* Admin */}
+        <Route path="/admin" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
