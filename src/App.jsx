@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminDashboard from "./components/AdminDashboard";
+
+<Route path="/admin" element={<AdminDashboard />} />
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
