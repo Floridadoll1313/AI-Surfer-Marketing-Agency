@@ -1,24 +1,38 @@
 {
-    "name": "OTD AI SURFER",
-    "description": "Digital Ecosystem Architect Portfolio and Member Sanctuary based on Hatteras Island, NC.",
-    "requestFramePermissions": [
-        "camera",
-        "microphone"
-    ],
+    "format": "scripture burrito",
+    "projectName": "AI-Surfer-Marketing-Agency",
+    "projectId": "2jwiojdcnqh1sq812osrd6",
     "meta": {
-        "requiredExtensions": {
-            "codexEditor": "0.26.0"
-        },
-        "validationCount": 1,
-        "validationCountAudio": 1,
+        "version": "0.0.0",
+        "category": "Translation",
         "generator": {
+            "softwareName": "Codex Editor",
+            "softwareVersion": "0.26.0",
             "userName": "",
             "userEmail": ""
         },
-        "abbreviation": ""
+        "defaultLocale": "en",
+        "dateCreated": "Sat May 02 2026",
+        "normalization": "NFC",
+        "comments": [],
+        "requiredExtensions": {
+            "codexEditor": "0.26.0",
+            "frontierAuthentication": "0.5.0"
+        }
     },
+    "idAuthorities": {},
+    "identification": {},
+    "languages": [],
     "type": {
         "flavorType": {
+            "name": "default",
+            "flavor": {
+                "name": "default",
+                "usfmVersion": "3.0",
+                "translationType": "unknown",
+                "audience": "general",
+                "projectType": "unknown"
+            },
             "currentScope": {
                 "GEN": [],
                 "EXO": [],
@@ -86,87 +100,22 @@
                 "3JN": [],
                 "JUD": [],
                 "REV": []
-            },
-            "flavor": {
-                "name": "default",
-                "usfmVersion": "3.0",
-                "translationType": "unknown",
-                "audience": "general",
-                "projectType": "unknown"
-            },
-            "name": "default"
+            }
         }
     },
-    "projectName": "AI-Surfer-Marketing-Agency",
-    "edits": [
+    "confidential": false,
+    "agencies": [],
+    "targetAreas": [],
+    "localizedNames": {},
+    "ingredients": {},
+    "copyright": {
+        "shortStatements": []
+    },
+    "users": [
         {
-            "editMap": [
-                "meta",
-                "generator"
-            ],
-            "value": {
-                "userName": "",
-                "userEmail": ""
-            },
-            "timestamp": 1777573469699,
-            "type": "user-edit",
-            "author": "unknown"
-        },
-        {
-            "editMap": [
-                "meta",
-                "validationCount"
-            ],
-            "value": 1,
-            "timestamp": 1777573469700,
-            "type": "user-edit",
-            "author": "unknown"
-        },
-        {
-            "editMap": [
-                "meta",
-                "validationCountAudio"
-            ],
-            "value": 1,
-            "timestamp": 1777573469700,
-            "type": "user-edit",
-            "author": "unknown"
-        },
-        {
-            "editMap": [
-                "meta",
-                "abbreviation"
-            ],
-            "value": "",
-            "timestamp": 1777573469700,
-            "type": "user-edit",
-            "author": "unknown"
-        },
-        {
-            "editMap": [
-                "languages"
-            ],
-            "value": [
-                null,
-                null
-            ],
-            "timestamp": 1777573469700,
-            "type": "user-edit",
-            "author": "unknown"
-        },
-        {
-            "editMap": [
-                "spellcheckIsEnabled"
-            ],
-            "value": false,
-            "timestamp": 1777573469700,
-            "type": "user-edit",
-            "author": "unknown"
+            "userName": "otdaisurfer",
+            "codexVersion": "1.107.0",
+            "updatedAt": 1777741728628
         }
-    ],
-    "languages": [
-        null,
-        null
-    ],
-    "spellcheckIsEnabled": false
+    ]
 }

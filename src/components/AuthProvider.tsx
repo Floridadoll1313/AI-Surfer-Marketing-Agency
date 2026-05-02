@@ -5,7 +5,7 @@ import React, {
   useState,
   ReactNode,
 } from "react";
-import { createClient, User, Session } from "@supabase/supabase-js";
+import { createClient, User } from "@supabase/supabase-js";
 
 /* -------------------------------------------------------
    SUPABASE CLIENT
@@ -81,10 +81,10 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   /* -------------------------------------------------------
-     ROLE FLAGS (simple + safe)
+     ROLE FLAGS
   ------------------------------------------------------- */
   const isAdmin = user?.email === "shannon@oceantidedrop.com";
-  const isMember = !!user; // Stripe handles membership — user logged in = member
+  const isMember = !!user;
 
   /* -------------------------------------------------------
      CONTEXT VALUE

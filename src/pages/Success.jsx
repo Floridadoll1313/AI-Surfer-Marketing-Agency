@@ -1,24 +1,27 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Success: React.FC = () => {
+const Success = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-[#02111f] to-black flex items-center justify-center p-6">
-      <motion.div
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="p-12 rounded-[3rem] border border-white/10 bg-white/5 backdrop-blur-2xl shadow-[0_0_40px_rgba(0,255,255,0.15)] text-center max-w-lg glass-card"
-      >
-        <CheckCircle
-          className="mx-auto mb-6 text-cyan-300 drop-shadow-[0_0_12px_rgba(0,255,255,0.6)]"
-          size={72}
-        />
+    <div className="min-h-screen bg-gradient-to-b from-black via-[#02111f] to-black flex items-center justify-center text-white px-6">
+      <div className="max-w-lg text-center">
+        <h1 className="text-4xl font-bold mb-4">Payment Successful</h1>
+        <p className="text-lg opacity-80 mb-6">
+          Your subscription is active. Welcome to the Ocean Tide Drop inner circle.
+        </p>
 
-        <h1 className="text-4xl font-black italic uppercase text-white tracking-wide mb-4">
-          Sync Successful
+        <Link
+          to="/members"
+          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition"
+        >
+          Go to Members Area
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Success;
         </h1>
 
         <p className="text-cyan-200/80 mb-10 font-medium leading-relaxed">

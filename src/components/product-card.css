@@ -1,126 +1,60 @@
 .product-card {
-  background: rgba(10, 15, 25, 0.55);
-  backdrop-filter: blur(18px);
-  border-radius: 18px;
-  padding: 28px;
-  border: 1px solid rgba(0, 255, 255, 0.15);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-
-  opacity: 0;
-  filter: brightness(0.7);
-  transform: translateY(20px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease,
-    filter 0.8s ease,
-    box-shadow 0.8s ease;
-}
-
-.product-card.visible {
-  opacity: 1;
-  filter: brightness(1);
-  transform: translateY(0);
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.25),
-              0 0 80px rgba(0, 120, 255, 0.15);
+  overflow: hidden;
 }
 
 .product-card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-6px);
   box-shadow: 0 0 40px rgba(0, 255, 255, 0.25),
-              0 0 80px rgba(0, 120, 255, 0.15);
+              0 0 80px rgba(255, 0, 128, 0.15);
 }
 
-/* 🔥 GLOW FRAME AROUND IMAGE */
-.product-image-frame {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  perspective: 800px;
-}
-
-.product-image-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 16px;
-  padding: 2px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.8),
-    rgba(0, 120, 255, 0.8),
-    rgba(180, 0, 255, 0.8)
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: glowPulse 4s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0% { opacity: 0.45; }
-  50% { opacity: 1; }
-  100% { opacity: 0.45; }
-}
-
-.product-image {
+.product-card-image img {
   width: 100%;
-  border-radius: 14px;
-  display: block;
-  transition: transform 0.4s ease;
-  transform-style: preserve-3d;
+  height: auto;
+  border-radius: 1.5rem;
+  transition: transform 0.6s ease;
 }
 
-/* 🌊 Parallax hover motion */
-.product-card:hover .product-image {
-  transform: translateZ(18px) scale(1.03);
+.product-card:hover .product-card-image img {
+  transform: scale(1.05);
 }
 
-.product-title {
-  margin-top: 18px;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #e8faff;
-}
-
-.product-narrative {
-  margin-top: 10px;
-  color: #b8d7e0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.product-features {
-  margin-top: 16px;
-  color: #dffaff;
-  padding-left: 18px;
-  font-size: 0.9rem;
-}
-
-.product-button {
-  margin-top: 22px;
-  width: 100%;
-  padding: 12px 0;
-  border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.4),
-    rgba(0, 120, 255, 0.4)
-  );
-  border: 1px solid rgba(0, 255, 255, 0.4);
+.product-card-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
   color: white;
-  font-weight: 600;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.product-button:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 255, 255, 0.7),
-    rgba(0, 120, 255, 0.7)
-  );
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+.product-card-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.product-card-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: white;
+  background: linear-gradient(90deg, #ff0080, #00eaff);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.product-card-button:hover {
+  opacity: 0.8;
 }

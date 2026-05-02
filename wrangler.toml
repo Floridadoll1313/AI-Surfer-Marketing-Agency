@@ -1,5 +1,6 @@
-name = "otdaisurfer"
+name = "ai-surfer-marketing-agency"
 pages_build_output_dir = "dist"
+compatibility_date = "2024-09-01"
 
 [vars]
 VITE_SUPABASE_URL = "https://cctobgbyxjfabksnokbe.supabase.co"

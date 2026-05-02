@@ -1,75 +1,44 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Bot, Code, Cpu, Globe, Terminal, Zap } from 'lucide-react';
+import React from "react";
+import { Zap, Waves, Sparkles } from "lucide-react";
 
-export const Services = () => {
-  const serviceList = [
-    { 
-      title: "Neural Automation", 
-      icon: Bot, 
-      desc: "Custom AI agents designed to handle repetitive logic workflows." 
-    },
-    { 
-      title: "High-Velocity Web", 
-      icon: Globe, 
-      desc: "Next-gen React & Vite storefronts built for extreme performance." 
-    },
-    { 
-      title: "API Ecosystems", 
-      icon: Code, 
-      desc: "Robust FastAPI backends and Supabase integration for scaling data." 
-    },
-    { 
-      title: "Smart Automations", 
-      icon: Cpu, 
-      desc: "Connecting your digital presence with cross-platform synchronization." 
-    }
-  ];
-
+export default function Services() {
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-4">
-      <div className="max-w-7xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-20 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-cyan/10 border border-neon-cyan/20 text-neon-cyan mb-6">
-            <Zap size={14} className="fill-current" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Service Manifest</span>
-          </div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase tracking-tighter mb-6">
-            Digital <span className="text-neon-cyan">Flow</span>
-          </h1>
-          <p className="text-slate-500 max-w-2xl mx-auto font-light text-lg">
-            We build the neural pathways for modern digital commerce. Velocity-driven, AI-integrated.
-          </p>
-        </motion.div>
+    <main className="min-h-screen bg-black text-white pt-28 pb-24 px-6">
+      <div className="max-w-5xl mx-auto space-y-10">
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight">
+          Services
+        </h1>
+        <p className="text-slate-400 max-w-2xl">
+          A stacked lineup of cinematic systems, built for founders who want
+          their brand to feel like a mythic signal in the dark.
+        </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {serviceList.map((service, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-10 rounded-[3rem] border border-white/10 bg-white/5 hover:border-neon-cyan/30 transition-all group"
-            >
-              <div className="flex items-start justify-between mb-8">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-neon-cyan group-hover:bg-neon-cyan group-hover:text-black transition-all">
-                  <service.icon size={32} />
-                </div>
-                <Terminal size={16} className="text-slate-700" />
-              </div>
-              <h3 className="text-3xl font-black italic uppercase mb-4">{service.title}</h3>
-              <p className="text-slate-400 leading-relaxed font-medium">{service.desc}</p>
-            </motion.div>
-          ))}
+        <div className="grid gap-8 md:grid-cols-3">
+          <div className="glass-card p-6 rounded-3xl border border-white/10">
+            <Zap className="text-neon-cyan mb-3" />
+            <h2 className="font-bold mb-2">Dawn Patrol</h2>
+            <p className="text-sm text-slate-400">
+              Starter cinematic identity, landing page, and AI‑assisted content.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 rounded-3xl border border-white/10">
+            <Waves className="text-neon-pink mb-3" />
+            <h2 className="font-bold mb-2">Breakline</h2>
+            <p className="text-sm text-slate-400">
+              Multi‑page experience, automations, and content engine tuned to your voice.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 rounded-3xl border border-white/10">
+            <Sparkles className="text-neon-green mb-3" />
+            <h2 className="font-bold mb-2">Hatteras Island</h2>
+            <p className="text-sm text-slate-400">
+              Ongoing retainer, live experiments, and evolving mythic brand systems.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
-};
-
-export default Services;
-
+}
