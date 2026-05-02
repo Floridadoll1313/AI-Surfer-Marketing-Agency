@@ -1,3 +1,9 @@
+<img
+  src="/logo.png"
+  alt="Ocean Tide Drop Logo"
+  className="w-32 md:w-40 lg:w-48 max-w-full h-auto mx-auto block"
+/>
+
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminDashboard from "./components/AdminDashboard";
