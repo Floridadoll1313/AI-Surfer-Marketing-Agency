@@ -3,36 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ocean Tide Drop AI Surfer</title>
-
-    <!-- Global Background + Fade-In -->
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        font-family: 'Inter', sans-serif;
-        background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
-        color: white;
-      }
-
-      #root {
-        opacity: 0;
-        animation: fadeIn 1.2s ease forwards;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-    </style>
+    <title>Ocean Tide Drop AI</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
 
-  <body>
-    <!-- React mounts here -->
+  <body class="bg-black text-white">
     <div id="root"></div>
-
-    <!-- Vite entry point -->
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
