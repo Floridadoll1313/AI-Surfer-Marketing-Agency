@@ -1,11 +1,8 @@
 name = "ocean-tide-drop"
-main = "worker/index.ts"
-compatibility_date = "2024-11-01"
+compatibility_date = "2024-12-01"
 
-[workflows]
-surferPipeline = "workflows/surferPipeline.ts"
+# Required for Cloudflare Pages (v2 root directory strategy)
+pages_build_output_dir = "dist"
 
-[[d1_databases]]
-binding = "DB"
-database_name = "ocean_tide_drop"
-database_id = "xxxx"
+# Optional but recommended for Workers compatibility
+main = "dist/_worker.js"
