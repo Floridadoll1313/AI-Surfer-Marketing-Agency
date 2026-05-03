@@ -34,7 +34,7 @@ import AdminDashboard from "./components/AdminDashboard";
 export default function App() {
   return (
     <Router>
-      {/* Global Header with Logo + Nav */}
+      {/* Global Header */}
       <Header />
 
       <Routes>
