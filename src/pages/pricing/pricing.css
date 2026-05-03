@@ -1,0 +1,37 @@
+/* PRICING PAGE — OCEAN TIDE DROP */
+
+.pricing-title {
+  @apply text-5xl md:text-6xl font-black tracking-tight text-center;
+}
+
+.pricing-subtitle {
+  @apply text-slate-400 text-lg max-w-2xl mx-auto text-center;
+}
+
+.pricing-grid {
+  @apply grid gap-10 md:grid-cols-2 lg:grid-cols-4 mt-16;
+}
+
+.pricing-card {
+  @apply glass-card p-8 rounded-3xl border border-white/10 flex flex-col gap-4 hover:border-neon-cyan transition-all;
+}
+
+.pricing-tag {
+  @apply text-xs uppercase tracking-[0.25em] text-slate-400;
+}
+
+.pricing-name {
+  @apply text-2xl font-bold;
+}
+
+.pricing-price {
+  @apply text-3xl font-black;
+}
+
+.pricing-description {
+  @apply text-sm text-slate-400 leading-relaxed;
+}
+
+.pricing-button {
+  @apply mt-4 py-3 rounded-full bg-neon-cyan text-black font-bold uppercase tracking-[0.25em] text-xs hover:bg-white transition;
+}

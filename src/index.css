@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NEON BRAND COLORS */
+.text-neon-cyan { color: #00faff; }
+.text-neon-pink { color: #ff4dff; }
+.text-neon-green { color: #4dff88; }
+
+.bg-neon-cyan { background-color: #00faff; }
+.bg-neon-pink { background-color: #ff4dff; }
+
+.bg-neon-cyan-10 { background-color: rgba(0, 250, 255, 0.10); }
+.bg-neon-pink-10 { background-color: rgba(255, 77, 255, 0.10); }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

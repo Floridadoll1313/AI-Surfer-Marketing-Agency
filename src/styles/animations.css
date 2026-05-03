@@ -1,0 +1,137 @@
+/* ============================================================
+   NEON OCEAN ANIMATION PACK
+   Smooth, cinematic, GPU‑accelerated motion for your universe
+   ============================================================ */
+
+/* --- 1. Neon Pulse (soft breathing glow) --- */
+@keyframes neon-pulse {
+  0% {
+    box-shadow: 0 0 6px var(--ocean-glow);
+  }
+  50% {
+    box-shadow: 0 0 14px var(--ocean-accent);
+  }
+  100% {
+    box-shadow: 0 0 6px var(--ocean-glow);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2.8s ease-in-out infinite;
+}
+
+/* --- 2. Ocean Drift (slow ambient movement) --- */
+@keyframes ocean-drift {
+  0% {
+    transform: translate3d(0px, 0px, 0);
+  }
+  50% {
+    transform: translate3d(6px, -6px, 0);
+  }
+  100% {
+    transform: translate3d(0px, 0px, 0);
+  }
+}
+
+.ocean-drift {
+  animation: ocean-drift 12s ease-in-out infinite;
+}
+
+/* --- 3. Glow Sweep (horizontal shimmer) --- */
+@keyframes glow-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-120%);
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(120%);
+  }
+}
+
+.glow-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-120%);
+  animation: glow-sweep 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* --- 4. Pulse Ring (radial ripple) --- */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.25;
+  }
+  70% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+.pulse-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--ocean-accent);
+  animation: pulse-ring 2.8s ease-out infinite;
+  pointer-events: none;
+}
+
+/* --- 5. Hover Lift (subtle elevation) --- */
+.hover-lift {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px var(--ocean-glow);
+}
+
+/* --- 6. Fade In (soft entrance) --- */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
+/* --- 7. Lore Glow (mythic ambient aura) --- */
+@keyframes lore-glow {
+  0% {
+    filter: drop-shadow(0 0 4px var(--ocean-glow));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px var(--ocean-accent));
+  }
+  100% {
+    filter: drop-shadow(0 0 4px var(--ocean-glow));
+  }
+}
+
+.lore-glow {
+  animation: lore-glow 4s ease-in-out infinite;
+}
