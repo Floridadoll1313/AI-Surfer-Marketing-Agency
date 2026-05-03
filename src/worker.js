@@ -32,10 +32,6 @@ async function handleMe(request, env) {
   }
 
   // TODO: Replace with real D1 query
-  // const member = await env.DB.prepare(
-  //   "SELECT tier, status FROM members WHERE email = ?"
-  // ).bind(email).first();
-
   const member = null; // TEMP
 
   if (!member || member.status !== "active") {
@@ -56,13 +52,6 @@ async function handleSteps(request, env) {
   }
 
   // TODO: Replace with real D1 join
-  // const row = await env.DB.prepare(`
-  //   SELECT s.streak_days, s.waves_ridden, s.badges
-  //   FROM steps s
-  //   JOIN members m ON m.id = s.member_id
-  //   WHERE m.email = ?
-  // `).bind(email).first();
-
   const row = {
     streak_days: 7,
     waves_ridden: 42,
