@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import cf from "@cloudflare/vite-plugin";
+import { cloudflare } from "@cloudflare/vite-plugin"
 
 // This config works for:
 // - Cloudflare Pages
