@@ -202,7 +202,7 @@ Every component and page reflects this identity.
 ---
 
 🐚 Credits
-Created by Ocean  
+Created by Shannon Foster
 Architected with cinematic precision  
 Powered by React, Vite, and Cloudflare Pages
 
