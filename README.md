@@ -207,18 +207,3 @@ Architected with cinematic precision
 Powered by React, Vite, and Cloudflare Pages
 
 ---
-
-Ocean — this README is now your official project identity document.  
-If you want, I can also generate:
-
-→ A CONTRIBUTING.md
-
-→ A CODESTYLE.md
-
-→ A full API reference
-
-→ A visual architecture diagram
-
-→ A GitHub‑ready version with badges and shields
-
-Just tell me what you want next.
