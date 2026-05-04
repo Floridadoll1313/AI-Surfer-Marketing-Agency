@@ -1,37 +1,67 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Zap, Waves, Crown } from 'lucide-react';
+import { Check, Waves, Zap, Flame, Crown } from 'lucide-react';
 
+// NEW 4‑TIER SURF SYSTEM
 const tiers = [
   {
-    name: "Starter Swell",
-    slug: "starter-swell",
-    price: "$149",
-    desc: "Perfect for testing the waters with AI automation.",
-    features: ["Basic Chatbot", "3 Automation Workflows", "Email Support", "Community Access"],
+    name: "Dawn Patrol",
+    slug: "dawn-patrol",
+    price: "$97",
+    desc: "Your cinematic entry point. Clean landing, AI‑assisted content, and your first automated workflows.",
+    features: [
+      "Cinematic landing page",
+      "AI‑assisted content engine",
+      "Starter automations",
+      "Brand color tuning",
+    ],
     icon: Waves,
-    color: "text-slate-400"
+    color: "text-slate-300",
   },
   {
-    name: "Velocity Pro",
-    slug: "velocity-pro",
-    price: "$249",
-    desc: "High-speed solutions for growing digital presence.",
-    features: ["Advanced AI Agents", "Unlimited Workflows", "Priority Neural Link", "Custom Integrations"],
+    name: "Breakline",
+    slug: "breakline",
+    price: "$197",
+    desc: "A multi‑page experience with deeper automations and a tuned content engine that moves with your brand.",
+    features: [
+      "Multi‑page site",
+      "Advanced automations",
+      "Content engine tuning",
+      "Brand story expansion",
+    ],
     icon: Zap,
     color: "text-neon-cyan",
-    popular: true
+    popular: true,
   },
   {
-    name: "Elite Drop",
-    slug: "elite-drop",
-    price: "$349",
-    desc: "Full-scale enterprise digital transformation.",
-    features: ["White-label Solutions", "Dedicated AI Architect", "24/7 Priority Sync", "Early Access to New Features"],
+    name: "Hatteras Island",
+    slug: "hatteras-island",
+    price: "$297",
+    desc: "High‑touch creative systems, evolving brand identity, and ongoing cinematic refinement.",
+    features: [
+      "Ongoing creative direction",
+      "Cinematic brand evolution",
+      "AI content pipelines",
+      "Monthly experiments",
+    ],
+    icon: Flame,
+    color: "text-neon-pink",
+  },
+  {
+    name: "Cape Point",
+    slug: "cape-point",
+    price: "$497",
+    desc: "Full‑stack automation, AI‑driven content pipelines, and mythic brand architecture built for scale.",
+    features: [
+      "Full automation suite",
+      "AI‑driven content pipelines",
+      "Mythic brand architecture",
+      "Founder‑first creative systems",
+    ],
     icon: Crown,
-    color: "text-neon-pink"
-  }
+    color: "text-yellow-300",
+  },
 ];
 
 const PricingDetail = () => {
