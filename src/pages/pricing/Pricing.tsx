@@ -33,7 +33,7 @@ const Pricing: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* GRID WITH STAGGERED ANIMATION */}
+      {/* GRID */}
       <motion.div
         className="pricing-grid max-w-6xl mx-auto relative z-10"
         initial="hidden"
@@ -43,13 +43,7 @@ const Pricing: React.FC = () => {
           visible: { transition: { staggerChildren: 0.25 } },
         }}
       >
-        {/* DAWN PATROL */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
           <ProductCard
             title="Dawn Patrol"
             description="Your cinematic entry point. Clean landing, AI‑assisted content, and your first automated workflows."
@@ -58,12 +52,7 @@ const Pricing: React.FC = () => {
           />
         </motion.div>
 
-        {/* BREAKLINE */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: { opacity: 1, y: 0 },
-          }}
-        >
+        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
           <ProductCard
-            title="Breakline
+            title="Breakline"
+            description="A multi‑page experience with deeper autom
