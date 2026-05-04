@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from '../../components/ProductCard'; // ✅ FIXED — default import
+import ProductCard from '../../components/ProductCard'; // default import is correct
 import { motion } from 'framer-motion';
 import '../../components/product-card.css';
 
@@ -45,7 +45,12 @@ const Pricing: React.FC = () => {
         }}
       >
         {/* CARD 1 */}
-        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <ProductCard
             title="Neural Node"
             description="Your entry into the neural field. Activate your first node."
@@ -55,7 +60,12 @@ const Pricing: React.FC = () => {
         </motion.div>
 
         {/* CARD 2 */}
-        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <ProductCard
             title="Ocean Pro"
             description="Calibrate your oceanic resonance and unlock deeper flow."
@@ -65,7 +75,12 @@ const Pricing: React.FC = () => {
         </motion.div>
 
         {/* CARD 3 */}
-        <motion.div variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}>
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
           <ProductCard
             title="Founders Realm"
             description="Enter the inner sanctum. Reserved for realmwalkers only."
