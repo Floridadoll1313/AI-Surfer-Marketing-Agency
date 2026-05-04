@@ -1,23 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
-
-// This config works for:
-// - Cloudflare Pages
-// - Cloudflare Workers
-// - React 19
-// - Tailwind 4
-// - Your exact package.json setup
 
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    cloudflare(), // Enables Cloudflare Worker compatibility
   ],
 
-  // Cloudflare Pages requires this
   base: "/",
 
   build: {
