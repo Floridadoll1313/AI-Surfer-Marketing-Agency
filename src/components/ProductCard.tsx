@@ -1,7 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import './product-card.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   title: string;
@@ -10,7 +9,7 @@ interface ProductCardProps {
   image: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({
+export const ProductCard: React.FC<ProductCardProps> = ({
   title,
   description,
   slug,
@@ -18,54 +17,40 @@ const ProductCard: React.FC<ProductCardProps> = ({
 }) => {
   return (
     <motion.div
-      whileHover={{ y: -10, scale: 1.03 }}
-      transition={{ duration: 0.3 }}
-      className="relative group cursor-pointer"
+      whileHover={{ scale: 1.04 }}
+      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+      className="product-card group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md shadow-lg hover:shadow-neon-cyan/40 transition-all duration-300"
     >
-      <Link to={`/pricing/${slug}`}>
-        {/* BACKGROUND GLOW */}
-        <div
-          className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition duration-500 blur-2xl"
-          style={{
-            background:
-              'radial-gradient(circle at 50% 50%, rgba(0,255,255,0.4), transparent 70%)',
-          }}
+      {/* IMAGE */}
+      <div className="relative h-64 w-full overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
         />
 
-        {/* CARD */}
-        <div className="relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-xl shadow-xl transition-all duration-500 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_25px_rgba(0,255,255,0.4)]">
-          
-          {/* IMAGE */}
-          <div className="h-48 w-full overflow-hidden">
-            <img
-              src={image}
-              alt={title}
-              className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-            />
-          </div>
+        {/* GLOW OVERLAY */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 pointer-events-none" />
+      </div>
 
-          {/* CONTENT */}
-          <div className="p-6">
-            <h2 className="text-2xl font-bold mb-2 text-white drop-shadow-[0_0_10px_rgba(0,255,255,0.3)]">
-              {title}
-            </h2>
+      {/* CONTENT */}
+      <div className="p-6">
+        <h3 className="text-2xl font-black italic text-neon-cyan drop-shadow-[0_0_12px_rgba(0,255,255,0.4)] mb-2">
+          {title}
+        </h3>
 
-            <p className="text-slate-300 text-sm leading-relaxed mb-4">
-              {description}
-            </p>
+        <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+          {description}
+        </p>
 
-            {/* BUTTON */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="mt-4 inline-block px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-wide bg-cyan-400/20 border border-cyan-300/40 text-cyan-300 backdrop-blur-md transition-all duration-300 group-hover:bg-cyan-400/30 group-hover:border-cyan-300 group-hover:text-white"
-            >
-              Activate
-            </motion.div>
-          </div>
-        </div>
-      </Link>
+        {/* BUTTON */}
+        <Link
+          to={`/pricing/${slug}`}
+          className="block w-full text-center py-3 rounded-xl bg-neon-cyan text-black font-semibold hover:bg-neon-pink transition-all duration-300"
+        >
+          Explore Tier
+        </Link>
+      </div>
     </motion.div>
   );
 };
-
-export default ProductCard;
