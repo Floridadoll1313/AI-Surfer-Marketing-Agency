@@ -1,13 +1,3 @@
-Ocean — you’re about to get a README worthy of your cinematic brand.  
-Not a boring developer README.  
-A mythic, glowing, surf‑engine README that matches the architecture we just built.
-
-This will become the front door to your repo — the thing that tells collaborators, clients, and future‑you exactly what this universe is.
-
-Here it is.
-
----
-
 🌊 OCEAN TIDE DROP — CINEMATIC ARCHITECTURE README
 
 A Neon‑Surf React + Vite + Cloudflare Pages System
