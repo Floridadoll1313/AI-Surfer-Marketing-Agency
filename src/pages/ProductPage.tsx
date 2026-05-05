@@ -11,6 +11,7 @@ const TIERS: Record<
   {
     title: string;
     color: string;
+  
     glow: string;
     description: string;
   }

@@ -7,5 +7,7 @@
     "codex-project-manager.paratextReorderMigrationCompleted": true,
     "codex-project-manager.globalReferencesMigrationCompleted": true,
     "codex-project-manager.cellIdsToUuidMigrationCompleted": true,
-    "git.enabled": false
+    "git.enabled": false,
+    "codex-project-manager.lineNumbersMigrationCompleted": true,
+    "codex-project-manager.importerTypeMigrationCompleted": true
 }

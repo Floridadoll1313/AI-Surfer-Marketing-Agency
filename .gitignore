@@ -7,6 +7,9 @@
 .project/*.sqlite-wal
 .project/*.sqlite-shm
 
+# Don't sync temporary files
+.project/.temp/**
+
 # Don't sync user-specific files
 .project/complete_drafts.txt
 .project/localProjectSettings.json
