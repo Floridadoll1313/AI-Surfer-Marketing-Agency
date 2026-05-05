@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './product-card.css';
+import { ProductCard } from '../../components/ProductCard';
+
 
 interface ProductCardProps {
   title: string;

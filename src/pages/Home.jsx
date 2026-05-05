@@ -35,9 +35,9 @@ export default function Home() {
             alt="Ocean Tide Drop Logo"
             className="
               mx-auto
-              h-24 w-auto
-              md:h-32
-              max-w-[180px]
+              h-16 w-auto
+              md:h-20
+              max-w-[140px]
               object-contain
               drop-shadow-[0_0_35px_rgba(0,255,255,0.45)]
             "
