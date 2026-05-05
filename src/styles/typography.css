@@ -6,13 +6,17 @@
 /* --- BASE TEXT --- */
 
 body, p, span, li {
-  font-family: system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   color: var(--ocean-text);
   line-height: 1.55;
   font-size: 1rem;
 }
 
 /* --- HEADINGS --- */
+
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: 'Outfit', sans-serif;
+}
 
 h1, .h1 {
   font-size: 2.4rem;

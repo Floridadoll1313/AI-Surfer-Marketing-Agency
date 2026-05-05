@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+﻿import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Database, Lock, Shield, Plus, Trash2, Loader2, AlertCircle } from 'lucide-react';
 import { supabase } from '../../lib/supabase'; // FIXED: Up two levels
 import { useAuth } from '../../components/AuthProvider'; // FIXED: Up two levels
@@ -183,3 +183,4 @@ export const SupabaseVault = () => {
     </div>
   );
 };
+

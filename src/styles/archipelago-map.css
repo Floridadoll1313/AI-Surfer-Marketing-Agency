@@ -1,0 +1,37 @@
+.island-title {
+  color: var(--island-color, #00ffff);
+  transition: color 0.3s ease;
+}
+
+/* Optional: move other styles from ArchipelagoMap.tsx here if needed */
+.archipelago-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.archipelago-svg {
+  width: 100%;
+  max-width: 56rem; /* max-w-4xl */
+  height: 900px;
+}
+
+.island-info-card {
+  position: absolute;
+  bottom: 2.5rem; /* bottom-10 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgb(17, 24, 39); /* bg-gray-900 */
+  border: 1px solid rgba(6, 182, 212, 0.5); /* border-cyan-500/50 */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 1rem; /* rounded-2xl */
+  max-width: 28rem; /* max-w-md */
+  width: 100%;
+  backdrop-filter: blur(12px); /* backdrop-blur-md */
+}

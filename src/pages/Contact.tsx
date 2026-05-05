@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { Send, Mail, MapPin, MessageSquare } from 'lucide-react';
 
 export const Contact = () => {
@@ -97,3 +97,4 @@ export const Contact = () => {
 };
 
 export default Contact;
+

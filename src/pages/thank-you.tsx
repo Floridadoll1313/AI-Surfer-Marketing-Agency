@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+﻿import React from "react";
+import { motion } from "motion/react";
 import { Heart, Waves } from "lucide-react";
 
 const ThankYou: React.FC = () => {
@@ -38,3 +38,4 @@ const ThankYou: React.FC = () => {
 };
 
 export default ThankYou;
+

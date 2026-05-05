@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowLeft } from 'lucide-react';
 
 // ---------------------------------------------
@@ -20,19 +20,19 @@ const TIERS: Record<
     title: "Neural Node",
     color: "text-neon-pink",
     glow: "shadow-[0_0_40px_rgba(255,0,128,0.6)]",
-    description: "Initializing your neural field…",
+    description: "Initializing your neural fieldâ€¦",
   },
   "ocean-pro": {
     title: "Ocean Pro",
     color: "text-neon-cyan",
     glow: "shadow-[0_0_40px_rgba(0,255,255,0.6)]",
-    description: "Calibrating oceanic resonance…",
+    description: "Calibrating oceanic resonanceâ€¦",
   },
   "founders-realm": {
     title: "Founders Realm",
     color: "text-neon-gold",
     glow: "shadow-[0_0_40px_rgba(255,215,0,0.6)]",
-    description: "Opening the inner sanctum…",
+    description: "Opening the inner sanctumâ€¦",
   },
 };
 
@@ -220,3 +220,4 @@ export const ProductPage: React.FC = () => {
     </div>
   );
 };
+

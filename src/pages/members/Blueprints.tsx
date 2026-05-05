@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { Box, Layers, Zap, PenTool } from 'lucide-react';
 
 export const Blueprints = () => {
@@ -31,3 +31,4 @@ export const Blueprints = () => {
     </div>
   );
 };
+

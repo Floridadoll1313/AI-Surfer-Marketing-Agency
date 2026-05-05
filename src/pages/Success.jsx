@@ -1,27 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 
 const Success = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black via-[#02111f] to-black flex items-center justify-center text-white px-6">
-      <div className="max-w-lg text-center">
-        <h1 className="text-4xl font-bold mb-4">Payment Successful</h1>
-        <p className="text-lg opacity-80 mb-6">
-          Your subscription is active. Welcome to the Ocean Tide Drop inner circle.
-        </p>
-
-        <Link
-          to="/members"
-          className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold transition"
-        >
-          Go to Members Area
-        </Link>
-      </div>
-    </div>
-  );
-};
-
-export default Success;
+    <div className="min-h-screen bg-black flex items-center justify-center p-6 relative overflow-hidden">
+      {/* Background glow effects */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[120px] pointer-events-none" />
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative z-10 max-w-md w-full bg-gray-900/40 border border-cyan-500/30 p-8 rounded-3xl backdrop-blur-xl text-center"
+      >
+        <h1 className="text-4xl font-bold text-white mb-6">
+          Authentication Complete
         </h1>
 
         <p className="text-cyan-200/80 mb-10 font-medium leading-relaxed">

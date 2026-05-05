@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { Lock, FolderLock, Key, HardDrive } from 'lucide-react';
 
 export const Vault = () => {
@@ -50,3 +50,4 @@ export const Vault = () => {
     </div>
   );
 };
+

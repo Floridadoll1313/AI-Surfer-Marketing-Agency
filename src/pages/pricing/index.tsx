@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { Check, Zap, Waves, Crown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -84,3 +84,4 @@ export const PricingOverview = () => {
     </div>
   );
 };
+

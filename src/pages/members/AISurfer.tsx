@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+﻿import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   Send, 
   Bot, 
@@ -250,3 +250,4 @@ export const AISurfer = () => {
     </div>
   );
 };
+

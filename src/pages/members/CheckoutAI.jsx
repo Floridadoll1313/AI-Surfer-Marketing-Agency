@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { CreditCard, ShieldCheck } from 'lucide-react';
 
 export const CheckoutAI = () => {
@@ -23,3 +23,4 @@ export const CheckoutAI = () => {
     </div>
   );
 };
+

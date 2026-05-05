@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+﻿import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Send, MessageSquare, Shield, Zap } from 'lucide-react';
 import { useAuth } from '../../components/AuthProvider';
 import { cn } from '../../lib/utils';
@@ -10,7 +10,7 @@ export const MemberChat = () => {
 
   const chatHistory = [
     { id: 1, user: 'System', text: 'Neural link established. Welcome to Velocity Chat.', type: 'system' },
-    { id: 2, user: 'Florida doll', text: 'Velocity Drop 💧👄 is live!', type: 'user' },
+    { id: 2, user: 'Florida doll', text: 'Velocity Drop ðŸ’§ðŸ‘„ is live!', type: 'user' },
   ];
 
   return (
@@ -60,3 +60,4 @@ export const MemberChat = () => {
     </div>
   );
 };
+

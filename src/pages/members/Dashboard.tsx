@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { 
   LayoutDashboard, 
   Zap, 
@@ -43,7 +43,7 @@ export const Dashboard = () => {
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-500">Command Center</span>
           </div>
           <h1 className="text-5xl font-black italic tracking-tighter uppercase text-white">
-            Welcome, {user?.displayName?.split(' ')[0] || 'Architect'}
+            Welcome, {user?.user_metadata?.full_name?.split(' ')[0] || 'Architect'}
           </h1>
         </div>
         <button className="flex items-center gap-2 px-6 py-3 bg-neon-cyan text-black rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-white transition-all">
@@ -119,3 +119,4 @@ export const Dashboard = () => {
     </div>
   );
 };
+

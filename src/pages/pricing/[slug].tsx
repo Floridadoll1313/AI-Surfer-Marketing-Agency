@@ -1,6 +1,6 @@
-import React from 'react';
+﻿import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowLeft, Rocket } from 'lucide-react';
 
 // MUST be 'export const ProductPage' to match your main.tsx import

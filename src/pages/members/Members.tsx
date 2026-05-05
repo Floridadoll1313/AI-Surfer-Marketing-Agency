@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+﻿import React from 'react';
+import { motion } from 'motion/react';
 import { Users, UserPlus, Search } from 'lucide-react';
 
 export const Members = () => {
@@ -42,3 +42,4 @@ export const Members = () => {
     </div>
   );
 };
+

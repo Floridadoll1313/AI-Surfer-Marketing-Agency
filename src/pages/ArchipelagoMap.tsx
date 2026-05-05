@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Globe, Map as MapIcon, Info, Zap, Sparkles, Navigation } from 'lucide-react';
 import * as d3 from 'd3';
 import { useNavigate } from 'react-router-dom';
+import '../styles/archipelago-map.css';
 
 interface Island {
   id: string;
@@ -73,3 +74,64 @@ export const ArchipelagoMap = () => {
           .attr('r', 15)
           .attr('stroke-width', 4);
       })
+      .on('mouseleave', (event, d) => {
+        setSelectedIsland(null);
+        d3.select(event.currentTarget).select('circle')
+          .transition()
+          .duration(300)
+          .attr('r', 10)
+          .attr('stroke-width', 2);
+      })
+      .on('click', (event, d) => {
+        navigate(d.path);
+      });
+
+    islandGroups.append('circle')
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y)
+      .attr('r', 10)
+      .attr('fill', '#000')
+      .attr('stroke', d => d.color)
+      .attr('stroke-width', 2)
+      .style('filter', 'url(#glow)');
+
+    islandGroups.append('text')
+      .attr('x', d => d.x)
+      .attr('y', d => d.y - 20)
+      .attr('text-anchor', 'middle')
+      .attr('fill', '#fff')
+      .attr('font-size', '14px')
+      .attr('font-weight', 'bold')
+      .text(d => d.name);
+
+  }, [navigate]);
+
+  return (
+    <div className="archipelago-container">
+      <svg ref={svgRef} className="archipelago-svg" viewBox="0 0 800 900" />
+      
+      <AnimatePresence>
+        {selectedIsland && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="island-info-card"
+          >
+            <h3 
+              className="text-2xl font-bold mb-2 island-title" 
+              style={{ '--island-color': selectedIsland.color } as React.CSSProperties}
+            >
+              {selectedIsland.name}
+            </h3>
+            <p className="text-gray-300 mb-4">{selectedIsland.description}</p>
+            <div className="flex items-center text-cyan-400 text-sm font-semibold uppercase tracking-wider">
+              <span>Click to travel</span>
+              <Navigation className="ml-2 w-4 h-4" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};

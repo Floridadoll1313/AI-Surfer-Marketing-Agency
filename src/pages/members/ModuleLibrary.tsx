@@ -73,7 +73,7 @@ export const ModuleLibrary = () => {
         return;
       }
       try {
-        const progressRef = doc(db, 'user_progress', user.uid);
+        const progressRef = doc(db, 'user_progress', user.id);
         const progressSnap = await getDoc(progressRef);
         if (progressSnap.exists()) {
           setCompletedQuests(progressSnap.data().completedQuests || []);
@@ -93,7 +93,7 @@ export const ModuleLibrary = () => {
     
     setCompletingId(questId);
     try {
-      const progressRef = doc(db, 'user_progress', user.uid);
+      const progressRef = doc(db, 'user_progress', user.id);
       const progressSnap = await getDoc(progressRef);
       
       if (!progressSnap.exists()) {
