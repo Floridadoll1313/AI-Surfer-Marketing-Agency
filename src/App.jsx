@@ -30,7 +30,16 @@ import Lore from "./pages/Lore";
 
 // Admin
 import AdminDashboard from "./components/AdminDashboard";
+import { AuthProvider } from './hooks/useAuth';
 
+function App() {
+  return (
+    <AuthProvider>
+      {/* Your Routes and Components go here */}
+      <Router /> 
+    </AuthProvider>
+  );
+}
 export default function App() {
   return (
     <Router>
