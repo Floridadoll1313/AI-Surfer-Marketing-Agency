@@ -1,6 +1,4 @@
-
-`ts
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 
 type AuthState = {
   loading: boolean;
@@ -8,7 +6,15 @@ type AuthState = {
   tier: string | null;
 };
 
-export function useAuth(): AuthState {
+// 1. Create a Context to hold the auth state
+const AuthContext = createContext<AuthState>({
+  loading: true,
+  isMember: false,
+  tier: null,
+});
+
+// 2. The AuthProvider that your App.jsx is looking for
+export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<AuthState>({
     loading: true,
     isMember: false,
@@ -16,23 +22,25 @@ export function useAuth(): AuthState {
   });
 
   useEffect(() => {
-    // TODO: replace with real /api/me call
     async function fetchMe() {
       try {
-        // const res = await fetch("/api/me");
-        // const data = await res.json();
-        // setState({ loading: false, isMember: data.isMember, tier: data.tier });
-
-        // TEMP: fake non‑member
+        // TEMP: fake non‑member logic
         setState({ loading: false, isMember: false, tier: null });
       } catch {
         setState({ loading: false, isMember: false, tier: null });
       }
     }
-
     fetchMe();
   }, []);
 
-  return state;
+  return (
+    <AuthContext.Provider value={state}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
-`
+
+// 3. The useAuth hook that your pages use
+export function useAuth(): AuthState {
+  return useContext(AuthContext);
+}
