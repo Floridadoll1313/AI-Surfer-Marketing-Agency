@@ -17,7 +17,7 @@ export const products = [
     alt: "Breakline Surf Tier",
     image: "/images/breakline.jpg",
     narrative:
-      "Multi‑page experience, deeper automations, and a tuned content engine that moves with your brand.",
+      "A multi‑page experience with deeper automations and a tuned content engine that moves with your brand.",
     features: [
       "Multi‑page site",
       "Advanced automations",

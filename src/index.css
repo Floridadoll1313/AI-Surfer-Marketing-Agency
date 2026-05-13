@@ -1,21 +1,57 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 🌊 Neon Ocean Global Background */
+html, body {
+  background: radial-gradient(circle at 50% 20%, #003344, #000a0f 70%);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
-/* NEON BRAND COLORS */
-.text-neon-cyan { color: #00faff; }
-.text-neon-pink { color: #ff4dff; }
-.text-neon-green { color: #4dff88; }
+/* 🌊 Scrollbar Glow */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-.bg-neon-cyan { background-color: #00faff; }
-.bg-neon-pink { background-color: #ff4dff; }
+::-webkit-scrollbar-thumb {
+  background: #00eaff;
+  border-radius: 10px;
+}
 
-.bg-neon-cyan-10 { background-color: rgba(0, 250, 255, 0.10); }
-.bg-neon-pink-10 { background-color: rgba(255, 77, 255, 0.10); }
+::-webkit-scrollbar-track {
+  background: #00141c;
+}
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+/* 🌊 Fade-In Animation */
+.fade-in {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* 🌊 Navbar Glow */
+.navbar-glow {
+  box-shadow: 0 0 25px #00eaff55;
+}
+
+/* 🌊 Tailwind Custom Utilities */
+@layer utilities {
+  .shadow-neon {
+    box-shadow: 
+      0 0 20px rgba(0, 200, 255, 0.6),
+      0 0 40px rgba(0, 150, 255, 0.4);
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease forwards;
+  }
 }

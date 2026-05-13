@@ -1,100 +1,64 @@
+<<<<<<< HEAD
 ﻿import React from 'react';
 import { motion } from 'motion/react';
 import { Send, Mail, MapPin, MessageSquare } from 'lucide-react';
+=======
+import React from "react";
+import PageWrapper from "../components/PageWrapper";
+>>>>>>> origin/main
 
-export const Contact = () => {
+export default function Contact() {
   return (
-    <div className="min-h-screen bg-black text-white py-24 px-4">
-      <div className="max-w-5xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16"
+    <PageWrapper>
+      <h1 className="text-4xl font-bold text-cyan-300 mb-6">
+        Contact
+      </h1>
+
+      <p className="text-lg text-cyan-200 mb-10">
+        Reach out anytime — the tide is always listening.
+      </p>
+
+      <form className="max-w-xl mx-auto bg-black/40 p-6 rounded-xl shadow-neon backdrop-blur-md">
+        <label className="block mb-4">
+          <span className="text-cyan-300 font-semibold">Your Name</span>
+          <input
+            type="text"
+            className="w-full mt-2 p-3 rounded-lg bg-black/60 border border-cyan-500/40 text-white focus:border-cyan-300 outline-none"
+            placeholder="Enter your name"
+          />
+        </label>
+
+        <label className="block mb-4">
+          <span className="text-cyan-300 font-semibold">Email</span>
+          <input
+            type="email"
+            className="w-full mt-2 p-3 rounded-lg bg-black/60 border border-cyan-500/40 text-white focus:border-cyan-300 outline-none"
+            placeholder="you@example.com"
+          />
+        </label>
+
+        <label className="block mb-6">
+          <span className="text-cyan-300 font-semibold">Message</span>
+          <textarea
+            className="w-full mt-2 p-3 rounded-lg bg-black/60 border border-cyan-500/40 text-white focus:border-cyan-300 outline-none h-32"
+            placeholder="Tell me what’s on your mind…"
+          />
+        </label>
+
+        <button
+          type="submit"
+          className="w-full py-3 bg-cyan-400 text-black font-bold rounded-lg shadow-neon hover:bg-cyan-300 transition"
         >
-          <div>
-            <h1 className="text-6xl font-black italic uppercase tracking-tighter mb-8 leading-none">
-              Initialize <br /> <span className="text-neon-pink">Contact</span>
-            </h1>
-            <p className="text-slate-500 mb-12 font-medium">
-              Ready to sync your business with the Velocity Drop ecosystem? 
-              Our neural links are open 24/7.
-            </p>
-
-            <div className="space-y-8">
-              <div className="flex items-center gap-6">
-                <div className="p-3 rounded-xl bg-neon-pink/10 text-neon-pink">
-                  <Mail size={24} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Neural Mail</p>
-                  <p className="text-lg font-bold italic">hello@oceantidedrop.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-6">
-                <div className="p-3 rounded-xl bg-neon-pink/10 text-neon-pink">
-                  <MapPin size={24} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">HQ Location</p>
-                  <p className="text-lg font-bold italic">West Ashley, Charleston, SC</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <motion.form 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-6"
-          >
-            <div>
-              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
-                Your Name
-              </label>
-              <input 
-                type="text"
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
-                placeholder="Enter your name"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
-                Email
-              </label>
-              <input 
-                type="email"
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-bold uppercase tracking-widest mb-2 text-slate-400">
-                Message
-              </label>
-              <textarea 
-                rows={5}
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:border-neon-pink outline-none"
-                placeholder="Tell us about your project..."
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit"
-              className="w-full py-4 rounded-xl bg-neon-pink text-black font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-white transition-all"
-            >
-              <Send size={18} />
-              Send Message
-            </button>
-          </motion.form>
-        </motion.div>
-      </div>
-    </div>
+          Send Message
+        </button>
+      </form>
+    </PageWrapper>
   );
+<<<<<<< HEAD
 };
 
 export default Contact;
 
+=======
+}
+>>>>>>> origin/main

@@ -1,0 +1,42 @@
+https://productionresultssa11.blob.core.windows.net/actions-results/c3f5d919-6412-4fda-a086-00b83e2b4479/workflow-job-run-a12a6b51-8958-5528-9aca-56932940bd3c/logs/job/job-logs.txt?rsct=text%2Fplain&se=2026-05-10T15%3A52%3A58Z&sig=bkQXgySF%2BSx2nClI54kS7icXx1zEkhIm1zqU4DCSI58%3D&ske=2026-05-10T17%3A07%3A43Z&skoid=ca7593d4-ee42-46cd-af88-8b886a2f84eb&sks=b&skt=2026-05-10T13%3A07%3A43Z&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skv=2025-11-05&sp=r&spr=https&sr=b&st=2026-05-10T15%3A42%3A53Z&sv=2025-11-05name: SonarCloud
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Build and analyze
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for SonarCloud to analyze history
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with coverage
+        run: npm test -- --coverage || true
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=Floridadoll1313_AI-Surfer-Marketing-Agency
+            -Dsonar.organization=floridadoll1313
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.sources=.
+            -Dsonar.exclusions=node_modules/**,dist/**,build/**

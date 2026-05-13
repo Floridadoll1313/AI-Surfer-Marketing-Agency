@@ -1,37 +1,110 @@
-/* PRICING PAGE — OCEAN TIDE DROP */
+import React from "react";
+import { ProductCard } from "../../components/ProductCard"; // named export
+import { motion } from "framer-motion";
+import "./pricing.css";
 
-.pricing-title {
-  @apply text-5xl md:text-6xl font-black tracking-tight text-center;
-}
+const Pricing: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-black text-white px-6 py-20 relative overflow-hidden">
+      {/* NEON OCEAN AURA */}
+      <motion.div
+        className="absolute inset-0 opacity-40 blur-[140px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 20%, rgba(0,255,255,0.35), transparent 70%)",
+        }}
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
 
-.pricing-subtitle {
-  @apply text-slate-400 text-lg max-w-2xl mx-auto text-center;
-}
+      {/* HERO */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="text-center mb-20 relative z-10"
+      >
+        <h1 className="pricing-title text-neon-cyan drop-shadow-[0_0_20px_rgba(0,255,255,0.4)]">
+          Choose Your Tier
+        </h1>
 
-.pricing-grid {
-  @apply grid gap-10 md:grid-cols-2 lg:grid-cols-4 mt-16;
-}
+        <p className="pricing-subtitle uppercase tracking-[0.3em] text-xs">
+          Calibrate Your Neural Surf Engine
+        </p>
+      </motion.div>
 
-.pricing-card {
-  @apply glass-card p-8 rounded-3xl border border-white/10 flex flex-col gap-4 hover:border-neon-cyan transition-all;
-}
+      {/* GRID WITH STAGGERED ANIMATION */}
+      <motion.div
+        className="pricing-grid max-w-6xl mx-auto relative z-10"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.25 } },
+        }}
+      >
+        {/* DAWN PATROL */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <ProductCard
+            title="Dawn Patrol"
+            description="Your cinematic entry point. Clean landing, AI‑assisted content, and your first automated workflows."
+            slug="dawn-patrol"
+            image="/images/dawn-patrol.jpg"
+          />
+        </motion.div>
 
-.pricing-tag {
-  @apply text-xs uppercase tracking-[0.25em] text-slate-400;
-}
+        {/* BREAKLINE */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <ProductCard
+            title="Breakline"
+            description="A multi‑page experience with deeper automations and a tuned content engine that moves with your brand."
+            slug="breakline"
+            image="/images/breakline.jpg"
+          />
+        </motion.div>
 
-.pricing-name {
-  @apply text-2xl font-bold;
-}
+        {/* HATTERAS ISLAND */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <ProductCard
+            title="Hatteras Island"
+            description="High‑touch creative systems, evolving brand identity, and ongoing cinematic refinement."
+            slug="hatteras-island"
+            image="/images/hatteras.jpg"
+          />
+        </motion.div>
 
-.pricing-price {
-  @apply text-3xl font-black;
-}
+        {/* CAPE POINT */}
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <ProductCard
+            title="Cape Point"
+            description="Full‑stack automation, AI‑driven content pipelines, and mythic brand architecture built for scale."
+            slug="cape-point"
+            image="/images/cape-point.jpg"
+          />
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
 
-.pricing-description {
-  @apply text-sm text-slate-400 leading-relaxed;
-}
-
-.pricing-button {
-  @apply mt-4 py-3 rounded-full bg-neon-cyan text-black font-bold uppercase tracking-[0.25em] text-xs hover:bg-white transition;
-}
+export default Pricing;
